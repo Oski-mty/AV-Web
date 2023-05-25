@@ -1,0 +1,145 @@
+:root{
+	--blue:#2196F3;
+	--blue_light:#79F0FF;
+    --gray:#615D5D;
+    --blue_dark_1:#1C4D53;
+    --blue_dark_2:#0E3C60;
+}
+
+@font-face {
+    font-family:'Ubuntu Condensed';
+    src: url('../res/UbuntuCondensed-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: 'Ubuntu Condensed';
+    font-size: 18px;
+    
+}
+
+nav{
+    background-color: var(--blue);
+    font-weight: 700;
+    border: 3px solid black;
+}
+
+pre {
+    white-space: pre-wrap;
+    font-family: 'Ubuntu Condensed';
+    font-size: inherit;
+    line-height: 75%;
+}
+
+pre>span{
+    color: gray;
+}
+
+h1>u{
+    font-weight: lighter;
+}
+
+#descargarAPK{
+    border: 2px solid var(--blue);
+    border-radius: 1em;
+    background-color: var(--blue_light);
+    color: black;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    width: 10em;
+    height: 4em;
+}
+
+#descargarAPK:hover{
+    border: 2px solid var(--blue_light);
+    border-radius: 1em;
+    background-color: var(--blue);
+    color: white;
+    margin-top: 5em;
+    margin-bottom: 5em;
+    width: 10em;
+    height: 4em;
+}
+
+.title{
+    margin: auto;
+    border-radius: 25px;
+    border: 5px double black;
+    background-color: var(--blue_light);
+    width: fit-content;
+    padding: 10px;
+    
+}
+
+
+/* Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel */
+
+#carouselApkDoc{
+    background-color: var(--blue_dark_2);
+    border: 3px inset var(--blue);
+    border-radius: 15px;
+    width: 50%;
+    margin: auto;
+}
+
+.carousel-item-apkDoc{
+    height: 500px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.carousel-item-apkDoc>img{
+    border: 3px outset var(--blue);
+    border-radius: 15px;
+    opacity: 1;
+}
+
+#carouselApkDoc>.carousel-item-apkDoc>.carousel-caption>h5,p,h5{
+    -webkit-text-stroke: 1px black;
+    color: var(--blue_light);
+    font-weight: bold;
+    font-size: 25px;
+    margin: auto;
+}
+
+.carousel-caption{
+    padding-bottom: 0px;
+}
+
+#carouselApkDoc>button{
+    border-radius: 15px;
+}
+
+.carousel-indicators{
+    margin-bottom: 0px;
+}
+
+button>span{
+    width:30px;
+    background-color: var(--blue);
+    border-radius: 50%;
+}
+
+/* Accordion----Accordion----Accordion----Accordion----Accordion----Accordion----Accordion----Accordion----Accordion */
+
+.accordion-item{
+    background-color: var(--blue_light);
+    border: 1.5px solid var(--blue);
+   
+}
+
+.accordion-body,.row>p{
+    font-size: inherit ;
+    color: inherit;
+    font-weight: inherit;
+    margin: inherit;
+    -webkit-text-stroke: inherit;
+}
+
+.accordion-button{
+    font-weight: 600;
+    font-size: 22px;  
+}
+
+

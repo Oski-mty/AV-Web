@@ -1,0 +1,14 @@
+1.Cambiar alerts por toast o alerts de Bootstrap
+2.Investigar Loading...
+---------------------------------------------------------
+3.Terminar SignUp
+4.Hacer Login
+5.Investigar Verificación de correo
+----------------------------------------------------------
+6.CRUD Asignaturas
+7.CRUD Tareas
+8.LogOut
+
+
+https://www.youtube.com/watch?v=y9xTe__zQdY
+https://www.youtube.com/watch?v=Djh_eVj0D2w&t=2272s
