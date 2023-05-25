@@ -7,18 +7,30 @@
     <title>Agenda Virtual</title>
     <!--PAGE PICTURE-->
     <link rel="shortcut icon" href="../img/titleColor.ico" type="image/x-icon">
-    <!--BOOTSTRAP-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    
     <!--GOOGLE FONTS-->
-    <link rel= "stylesheet" type= "text/css" href="https://fonts.googleapis.com/css?family=Ubuntu Condensed">
-    <!--CSS-->
-    <link rel="stylesheet" href="styles.css">
-    <!--JS-->
-    <script defer src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu Condensed">
+    
+    <!--ANIMATE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <!--BOOTSTRAP-CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-JS-->
+    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <!--MY CSS-->
+    <link rel="stylesheet" href="./styles.css">
+    <!--MY JS-->
+    <script defer type="module" src="./main.js"></script>
 </head>
 <body>
+    <!--LOADING...-->
+    <div class="loadding-page d-none" id="loading-page">
+      <div class="cssload-box-loading"></div>
+    </div>
     <!--BARRA DE NAVEGACIÓN-->
     <nav class="navbar navbar-expand-lg my-3 mx-2 rounded shadow-lg">
       <div class="container-fluid">
@@ -48,7 +60,7 @@
               </ul>
             </li>
           </ul>
-          <button type="button" class="btn btn-light rounded-5 p-1" data-bs-toggle="modal" data-bs-target="#logOutModal">
+          <button type="button" id="btnLogOut" class="btn btn-light rounded-5 p-1">
             <ul class="navbar-nav">
               <li><a class="dropdown-item text-right " href="#" id="apkNav"><img src="../img/log_out.png" width="40em" height="40em" ></a></li>
             </ul>
@@ -339,24 +351,6 @@ Vistas utilizadas: <br>
                 </div>
             </div>
         </div>
-    </div>
-    <!--MODAL LOG-OUT-->
-    <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Cerrar Sesión</h1>
-            <button type="button" class="btn-close bg-danger rounded-5 p-2" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-info">Save changes</button>
-          </div>
-        </div>
-      </div>
     </div>
 </body>
 </html>

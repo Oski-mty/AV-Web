@@ -1,13 +1,13 @@
-1.Cambiar alerts por toast o alerts de Bootstrap
-2.Investigar Loading...
+
+
 ---------------------------------------------------------
-3.Terminar SignUp
-4.Hacer Login
-5.Investigar Verificación de correo
+1.Login con Google
+2.Investigar Reestablecimiento de contraseña
+3.Loading first than main page
 ----------------------------------------------------------
-6.CRUD Asignaturas
-7.CRUD Tareas
-8.LogOut
+4.CRUD Asignaturas
+5.CRUD Tareas
+
 
 
 https://www.youtube.com/watch?v=y9xTe__zQdY
