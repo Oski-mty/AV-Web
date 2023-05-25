@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agenda Virtual</title>
+    <!--PAGE PICTURE-->
+    <link rel="shortcut icon" href="../img/titleColor.ico" type="image/x-icon">
+    
+    <!--GOOGLE FONTS-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu Condensed">
+    
+    <!--ANIMATE CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
+    <!--BOOTSTRAP-CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-JS-->
+    <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <!--BOOTSTRAP-ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    
+    <!--MY CSS-->
+    <link rel="stylesheet" href="./styles.css">
+    <!--MY JS-->
+    <script defer type="module" src="./main.js"></script>
+</head>
+<body>
+  <!--LOADING...-->
+  <div class="loadding-page" id="loading-page">
+    <div class="cssload-box-loading"></div>
+  </div>
+   <!--CONTENIDO-->
+  <section id="Contenido" class="d-none">
+    <!--BARRA DE NAVEGACIÓN-->
+    <nav class="navbar navbar-expand-lg my-3 mx-2 rounded shadow-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="../img/app_icon.png" width="30em" height="30em"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#" id="appNav">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">Documentación</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item text-center" href="#" id="generalNav">General</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item text-center" href="#" id="webNav">Página Web</a></li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item text-center" href="#" id="apkNav">Aplicación Móvil</a></li>
+              </ul>
+            </li>
+          </ul>
+          <button type="button" id="btnLogOut" class="btn" >
+            <ul class="navbar-nav">
+              <li><a class="dropdown-item text-right " href="#" id="apkNav"><img src="../img/log_out.png" width="35em" height="35em" ></a></li>
+            </ul>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!--APLICACIÓN-->
+    <div id="appDiv" class="mx-4" style="display:none;">
+        <h1>APP</h1>
+    </div>
+    <!--DOCUMENTACIÓN-->
+    <div class="mx-4">
+      <div id="generalDiv" style="display:none;">
+            <h1 class="text-center title shadow">GENERAL</h1>
+            <div class="accordion my-4" id="accordionGeneral">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneGeneral" aria-expanded="false" aria-controls="collapseOneGeneral">
+                        Descripción
+                    </button>
+                  </h2>
+                  <div id="collapseOneGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+                    <div class="accordion-body">
+                            El nombre del proyecto es <b>Agenda Virtual</b> y como su nombre indica se trata del conjunto
+                            de una aplicación móvil y una aplicación web que te ayudarán a gestionar y organizar tus
+                            asignaturas y tareas.<br>
+                            Al usar una base de datos en la nube las tareas y asignaturas de cada usuario están
+                            sincronizadas en las dos aplicaciones.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoGeneral" aria-expanded="false" aria-controls="collapseTwoGeneral">
+                        Modelo de datos
+                    </button>
+                  </h2>
+                  <div id="collapseTwoGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+                    <div class="accordion-body row">
+                        <p class="col-lg">
+                            La base de datos nos la proporciona <a href="https://firebase.google.com" target="_blank">Firebase</a>, plataforma en la nube que nos proporciona una serie de herramientas<br>
+                            las cuales facilitan el desarrollo de aplicaciones. En concreto la herramienta que nos permite alojar y gestionar<br>
+                            la base de datos en la nube se llama Firestore. Se trata de una base de datos documental , un tipo de las 
+                            <a href="https://www.acens.com/wp-content/images/2014/02/bbdd-nosql-wp-acens.pdf" target="_blank">noSQL</a>,<br>
+                            a diferencia de las bases de datos relacionales una entidad o tabla equivale a una colección,<br>
+                            cada registro o fila de la tabla equivale a un documento y los atributos o columnas de la tabla son sustituidos por propiedades.<br>
+                            La estructura es formato JSON lo que permite manejar grandes cantidades de datos con mayor ligereza que las SQL.<br>
+                        </p>
+                        
+                        <img src="../img/Doc/MDD.png" width="auto" height="aria-expanded" class="col-lg-4 "/>
+                    </div>
+                  </div>
+                </div>
+            </div>
+      </div>
+      <div id="webDiv" style="display:none;">
+            <h1 class="text-center title shadow">PÁGINA WEB</h1>
+      </div>
+      <div id="apkDiv" style="display:none;">
+            <h1 class="text-center title shadow">APLICACIÓN MÓVIL</h1>
+            <div class="accordion my-4" id="accordionAPK">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOneAPK" aria-expanded="false" aria-controls="collapseOneAPK">
+                        Descripción
+                    </button>
+                  </h2>
+                  <div id="collapseOneAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                    <div class="accordion-body">
+                        Aplicación Android para gestionar y organizar tus asignaturas y tareas desde tu teléfono móvil.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwoAPK" aria-expanded="false" aria-controls="collapseTwoAPK">
+                      Requisitos técnicos
+                    </button>
+                  </h2>
+                  <div id="collapseTwoAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                    <div class="accordion-body">
+                      -Registrarse y loguearse en la aplicación. <br>
+                      -Desloguearse de la aplicación. <br>
+                      -Crear, Visualizar, Actualizar y Eliminar tareas de la base de datos. <br>
+                      -Crear, Visualizar y Eliminar asignaturas de la base de datos. <br>
+                      -Cambiar de tema (claro/oscuro).
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThreeAPK" aria-expanded="false" aria-controls="collapseThreeAPK">
+                        Tecnologías Backend
+                      </button>
+                    </h2>
+                    <div id="collapseThreeAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                      <div class="accordion-body">
+                        <pre>
+Lenguaje de programación: Kotlin. <br>
+Dependencias de kotlin utilizadas: <br>
+      -Corrutinas (procesos asíncronos). <br>
+      -ViewModel (intermediario entre UI y lógica de la aplicación). <br>
+      -LiveData (clase de contenedor de datos observables). <br>
+      -Fragment (Pantallas de la UI). <br>
+      -Navigation (Navegación entre fragmentos). <br>
+    <sub><u>Firebase:</u></sub><br>
+      -Analytics (Análisis de las acciones de los usuarios en la app). <br>
+      -Auth (Registro y login del usuario con correo y contraseña). <br>
+      -Auth-Google (Registro y login del usuario con Google). <br>
+      -FireStore (Acceso a la base de datos).
+                        </pre>
+                      </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFourAPK" aria-expanded="false" aria-controls="collapseFourAPK">
+                        Tecnologías y componentes Frontend
+                      </button>
+                    </h2>
+                    <div id="collapseFourAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                      <div class="accordion-body">
+                        <pre>
+Android xml. <br>
+Vistas utilizadas: <br>
+      -Contenedor de fragmentos. <br>
+          <span> Utilizado para contener las diferentes pantallas de la app. </span><br>
+      -Botones. <br>
+      -Vistas de texto plano. <br>
+      -Vistas de texto editable (inputs). <br>
+      -RecyclerView (deslizar hacia abajo hasta que no queden elementos que mostrar). <br>
+          <span> Utilizado para mostrar la lista de asignaturas y tareas. </span><br>
+      -Cards o tarjetas (contiene otras vistas, da la sensación de que flota). <br>
+          <span> Utilizado para mostrar cada elemento de la lista de asignaturas y tareas. </span><br>
+      -Datepicker (calendario para seleccionar una fecha). <br>
+          <span> Utilizado para seleccionar la fecha de entrega de la tarea. </span><br>
+      -FloatingActionButton (botón flotante). <br>
+          <span> Utilizado para insertar y modificar asignaturas y tareas. </span><br>
+      -Switch (interruptor). </span><br>
+          <span> Utilizado para marcar si la tarea está completa o no. </span>
+                        </pre>
+                      </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFiveAPK" aria-expanded="false" aria-controls="collapseFiveAPK">
+                      Interfaz de usuario (UI)
+                    </button>
+                  </h2>
+                  <div id="collapseFiveAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                    <div class="accordion-body">
+                      <div id="carouselApkDocUI" class="carousel slide">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                          <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        </div>
+                        <div class="carousel-inner align-self-stretch">
+                          <div class="carousel-item carousel-item-apkDoc active">
+                            <img src="../img/Doc/carrousel_UI/image1.png" class="d-block mx-auto" height="500em" alt="Primera pantalla, login.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Login</h5>
+                              <p>1º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image2.png" class="d-block mx-auto" height="500em" alt="Segunda pantalla, Lista de asignaturas.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Lista de asignaturas</h5>
+                              <p>2º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image3.png" class="d-block mx-auto" height="500em" alt="Tercera pantalla, Añadir asignatura.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Añadir asignatura</h5>
+                              <p>3º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image4.png" class="d-block mx-auto" height="500em" alt="Cuarta pantalla, Lista de tareas.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Lista de tareas</h5>
+                              <p>4º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image5.png" class="d-block mx-auto" height="500em" alt="Quinta pantalla, Añadir tarea.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Lista de tareas</h5>
+                              <p>5º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image6.png" class="d-block mx-auto" height="500em" alt="Sexta pantalla, Detalle de la tarea.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Lista de tareas</h5>
+                              <p>6º pantalla.</p>
+                            </div>
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_UI/image7.png" class="d-block mx-auto" height="500em" alt="Séptima pantalla, Modificar de la tarea.">
+                            <div class="carousel-caption d-none d-md-block">
+                              <h5>Lista de tareas</h5>
+                              <p>7º pantalla.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselApkDocUI" data-bs-slide="prev">
+                          <span class="bi bi-caret-left-fill" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselApkDocUI" data-bs-slide="next">
+                          <span class="bi bi-caret-right-fill" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSixAPK" aria-expanded="false" aria-controls="collapseSixAPK">
+                      Generar APK  con firma digital
+                    </button>
+                  </h2>
+                  <div id="collapseSixAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
+                    <div class="accordion-body">
+                      <div class="text-center">Requisitos: <a target="_blank" href="https://www.java.com/es/download/">Tener descargado e instalado Java</a></div> 
+                      <div id="carouselApkDocApk" class="carousel slide my-3">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                          <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="6" aria-label="Slide 7"></button>
+                        </div>
+                        <div class="carousel-inner align-self-stretch">
+                          <div class="carousel-item carousel-item-apkDoc active">
+                            <img src="../img/Doc/carrousel_APK/image1.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_APK/image2.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_APK/image3.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_APK/image4.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc">
+                            <img src="../img/Doc/carrousel_APK/image5.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc text-center">
+                            En mi caso tuve que <a target="_blank" href="https://mscdroidlabs.es/como-obtener-la-huella-digital-sha1-de-tu-app/">extraer la huella digital</a> (SHA-1) de la apk de producción generada e introducirla en la configuración general del proyecto en Firebase.
+                            <br><code>cd C:\Program Files\Java\&lt;jdk_versión&gt;\bin</code>
+                            <br><code>-list -v -keystore &lt;nombre_keystore&gt; -alias &lt;nombre_alias&gt;</code>
+                            <img src="../img/Doc/carrousel_APK/image6.png" class="d-block mx-auto" height="500em">
+                          </div>
+                          <div class="carousel-item carousel-item-apkDoc text-center">
+                            Si no hago esto no funcionaría el login con Google, esto se debe a que Firebase es mi proveedor de autenticación con Google.
+                            <img src="../img/Doc/carrousel_APK/image7.png" class="d-block mx-auto" height="500em">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselApkDocApk" data-bs-slide="prev">
+                          <span class="bi bi-caret-left-fill" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselApkDocApk" data-bs-slide="next">
+                          <span class="bi bi-caret-right-fill" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                       <div class="text-center">Explicación detallada: <a target="_blank" href="https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key">https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key</a></div> 
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <a href="res/AV.apk" download="Agenda Virtual"><button id="descargarAPK" type="button" class="btn faded">Descargar APK</button></a>
+                </div>
+            </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,98 @@
+/*-------------------------------VARIABLES-------------------------------*/
+
+
+:root{
+	--blue:#2196F3;
+	--blue_light:#79F0FF;
+    --gray:#615D5D;
+    --blue_dark_1:#1C4D53;
+    --blue_dark_2:#0E3C60;
+    --danger:#dc3545;
+}
+
+/*-------------------------------GENERAL-------------------------------*/
+
+@font-face {
+    font-family:'Ubuntu Condensed';
+    src: url('../res/UbuntuCondensed-Regular.ttf');
+    font-style: normal;
+    font-weight: normal;
+}
+
+body {
+    font-family: 'Ubuntu Condensed';
+    font-size: 18px;
+    background-color: #eee;
+    
+}
+
+.faded{
+    border: 2px solid var(--blue);
+    border-radius: 1em;
+    background-color: var(--blue_light);
+    color: black;
+    height: 2.2em;
+    width: fit-content ;
+    background: var(--blue);
+    background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
+    background: linear-gradient(to right, var(--blue_light),  var(--blue));
+}
+
+.faded:hover{
+    border: 2px solid var(--blue_light);
+    background-color: var(--blue);
+    color: white;
+    background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
+    background: linear-gradient(to left, var(--blue_light), var(--blue));
+}
+
+a{
+    color: var(--gray);
+}
+
+a:hover{
+    color: var(--blue);
+}
+
+.modal-body{
+    background-color: var(--blue_dark_2);
+}
+
+#liveAlertPlaceholder{
+    position: sticky;
+    top: 10px;
+}
+
+.btnGoogle{
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 25px;
+    background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
+    background: linear-gradient(to right, var(--blue_light),  var(--blue));
+}
+
+.btnGoogle:hover{
+    background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
+    background: linear-gradient(to left, var(--blue_light), var(--blue));
+}
+
+/*-------------------------------GRADIENTS-------------------------------*/
+.gradient-custom {
+    background: var(--blue);
+    background: -webkit-linear-gradient(to top, var(--blue_light), var(--blue),  var(--blue_dark_2), var(--blue_dark_1));
+    background: linear-gradient(to top, var(--blue_light),  var(--blue),  var(--blue_dark_2), var(--blue_dark_1));
+    border-radius: .3rem;
+}
+    
+@media (min-width: 768px) {
+    .gradient-form {
+        height: 100vh !important;
+        border-radius: .3rem;
+    }
+}
+
+@media (min-width: 769px) {
+    .gradient-custom {
+        border-radius: .3rem;
+    }
+}
