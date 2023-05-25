@@ -7,6 +7,7 @@
     --gray:#615D5D;
     --blue_dark_1:#1C4D53;
     --blue_dark_2:#0E3C60;
+    --danger:#dc3545;
 }
 
 /*-------------------------------GENERAL-------------------------------*/
@@ -30,8 +31,8 @@ body {
     border-radius: 1em;
     background-color: var(--blue_light);
     color: black;
-    height: 3rem;
-    width: 70px ;
+    height: 2.2em;
+    width: fit-content ;
     background: var(--blue);
     background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
     background: linear-gradient(to right, var(--blue_light),  var(--blue));
@@ -62,6 +63,18 @@ a:hover{
     top: 10px;
 }
 
+.btnGoogle{
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 25px;
+    background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
+    background: linear-gradient(to right, var(--blue_light),  var(--blue));
+}
+
+.btnGoogle:hover{
+    background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
+    background: linear-gradient(to left, var(--blue_light), var(--blue));
+}
 
 /*-------------------------------GRADIENTS-------------------------------*/
 .gradient-custom {

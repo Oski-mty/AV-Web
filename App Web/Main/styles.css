@@ -1,9 +1,10 @@
 :root{
 	--blue:#2196F3;
 	--blue_light:#79F0FF;
-    --gray:#615D5D;
-    --blue_dark_1:#1C4D53;
-    --blue_dark_2:#0E3C60;
+  --gray:#615D5D;
+  --blue_dark_1:#1C4D53;
+  --blue_dark_2:#0E3C60;
+  --danger:#dc3545;
 }
 
 @font-face {
@@ -40,36 +41,47 @@ h1>u{
     font-weight: lighter;
 }
 
-#descargarAPK{
-    border: 2px solid var(--blue);
-    border-radius: 1em;
-    background-color: var(--blue_light);
-    color: black;
-    margin-top: 5em;
-    margin-bottom: 5em;
-    width: 10em;
-    height: 4em;
-}
-
-#descargarAPK:hover{
-    border: 2px solid var(--blue_light);
-    border-radius: 1em;
-    background-color: var(--blue);
-    color: white;
-    margin-top: 5em;
-    margin-bottom: 5em;
-    width: 10em;
-    height: 4em;
-}
-
 .title{
     margin: auto;
     border-radius: 25px;
     border: 5px double black;
-    background-color: var(--blue_light);
     width: fit-content;
     padding: 10px;
     
+}
+
+.faded{
+  margin-top: 50px;
+  border: 2px solid var(--blue);
+  border-radius: 1em;
+  background-color: var(--blue_light);
+  color: black;
+  height: fit-content;
+  width: fit-content ;
+  background: var(--blue);
+  background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
+  background: linear-gradient(to right, var(--blue_light),  var(--blue));
+}
+
+.faded:hover{
+  border: 2px solid var(--blue_light);
+  background-color: var(--blue);
+  color: white;
+  background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
+  background: linear-gradient(to left, var(--blue_light), var(--blue));
+}
+
+#btnLogOut{
+ 
+  border-radius: 50%;
+  border: 2px solid black;
+  background-color: white;
+}
+
+#btnLogOut:hover{
+  
+  background: -webkit-linear-gradient(225deg, var(--danger), var(--blue_light));
+  background: linear-gradient(225deg, var(--danger), var(--blue_light));
 }
 
 
@@ -107,10 +119,6 @@ h1>u{
     padding-bottom: 0px;
 }
 
-#carouselApkDoc>button{
-    border-radius: 15px;
-}
-
 .carousel-indicators{
     margin-bottom: 0px;
 }
@@ -125,7 +133,7 @@ button>span{
 
 .accordion-item{
     background-color: var(--blue_light);
-    border: 1.5px solid var(--blue);
+    border: 1.5px solid var(--gray);
    
 }
 

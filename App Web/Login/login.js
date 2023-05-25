@@ -1,9 +1,17 @@
-//-----------------------IMPORTACIONES-----------------------------------//
+//-----------------------IMPORTs-----------------------------------//
 
-import {createUserWithEmailAndPassword , sendEmailVerification ,signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+import {
+    createUserWithEmailAndPassword, 
+    sendEmailVerification,
+    signInWithEmailAndPassword,
+    sendPasswordResetEmail,
+    GoogleAuthProvider,
+    signInWithPopup,
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
 import {auth} from "../FireBase.js";
 
-//-----------------------DECLARACIÓN DE VARIABLES-----------------------------------//
+//-----------------------DECLARATION OF VARIABLEs-----------------------------------//
 
 //FORMS
 const frmLogin = document.querySelector("#frmLogin");
@@ -11,9 +19,14 @@ const frmSignUp = document.querySelector("#frmSignUp");
 //LIVE-ALERT
 const alertPlaceholder = document.querySelector('#liveAlertPlaceholder');
 const alertPlaceholderModal = document.querySelector('#liveAlertPlaceholderModal');
+//FORGOTTEN PASSWORD
+const recoverPw = document.querySelector('#recuperarContrasenya');
+//LOGIN WITH GOOGLE BUTTON
+const btnGoogle = document.querySelector('#btnGoogle');
 
-//------------------------------EVENTOS/FUNCIONES-----------------------------------//
+//------------------------------EVENTs/FUNCTIONs-----------------------------------//
 
+//LogIn
 frmLogin.addEventListener('submit', async (e)=> {
 
     e.preventDefault();
@@ -23,16 +36,16 @@ frmLogin.addEventListener('submit', async (e)=> {
         await signInWithEmailAndPassword(auth, email, pw);
         if(auth.currentUser.emailVerified){
             frmLogin.reset();
-            window.location.href = "http://127.0.0.1:5500/App%20Web/Main/index.html";
+            window.location.href = "http://localhost:5500/App%20Web/Main/index.html";
         }else{
-            appendAlert("Estamos esperando a que verifiques tu email.","info");
+            appendAlert("Estamos esperando a que verifiques tu email.","warning");
         }
     }catch(error){
         const errorCode = error.code;
         if(errorCode=="auth/user-disabled"){
             appendAlert(email +": el usuario ha sido deshabilitado.","danger");
         }else if(errorCode=="auth/user-not-found"){
-            appendAlert(email +": el usuario no existe, registrate." ,"warning");
+            appendAlert(email +": el usuario no existe, registrate." ,"danger");
         }else if(errorCode=="auth/invalid-email"){
             appendAlert(email +": correo NO válido.","danger");
         }else if(errorCode=="auth/wrong-password"){
@@ -43,7 +56,7 @@ frmLogin.addEventListener('submit', async (e)=> {
     }
 });
 
-
+//LogOut
 frmSignUp.addEventListener('submit', async (e)=> {
 
     e.preventDefault();
@@ -52,7 +65,7 @@ frmSignUp.addEventListener('submit', async (e)=> {
     try{
         await createUserWithEmailAndPassword(auth, email, pw);
         await sendEmailVerification(auth.currentUser)
-        appendAlertModal("Usuario creado. Se ha mandado un correo de verificación a "+email , "success");
+        appendAlertModal("Usuario creado. Verifica el email recibido.", "success");
         frmSignUp.reset();
     }catch(error){
         const errorCode = error.code;
@@ -63,24 +76,53 @@ frmSignUp.addEventListener('submit', async (e)=> {
         }else if(errorCode=="auth/invalid-email"){
             appendAlertModal(email +": correo NO válido.", "danger");
         }else if(errorCode=="auth/weak-password"){
-            appendAlertModal("La contraseña debe tener al menos 6 caracteres.", "warning");
+            appendAlertModal("La contraseña debe tener al menos 6 caracteres.", "info");
         }else{
             console.log(error);
         }
     }
 });
 
-
+//Auth User Observer
 auth.onAuthStateChanged ( user =>{
+
     if(user){
-        console.log("Usuario activo"); 
+        console.log("Usuario activo");
+        if(user.emailVerified){
+            console.log("Usuario activo y verificado");
+            window.location.href = "http://localhost:5500/App%20Web/Main/index.html";
+        }
     }else{
         console.log("Usuario Inactivo");
     }
 });
 
+//Recover Password
+recoverPw.addEventListener ('click', async (e)=> {
 
+    let email = frmLogin["inputEmail"].value;
+
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    var isValidEmail = emailRegex.test(email);
+
+    if(email==""){
+        appendAlert("Introduce el email." , "warning");
+    }else if(isValidEmail){
+        try{
+            await sendPasswordResetEmail(auth ,email);
+            appendAlert("Te hemos enviado un correo para la recuperación de tu contraseña." , "success");
+        }catch(error){
+            console.log(error);
+        }
+    }else{
+        appendAlert("El email introducido no es válido." , "danger");
+    }
+    
+});
+
+//Bootstrap Live Alert
 const appendAlert = (message, type) => {
+
     let icon;
     if(type=="info"){
         icon='<i class="bi bi-info-circle-fill d-inline"></i>';
@@ -104,7 +146,9 @@ const appendAlert = (message, type) => {
     alertPlaceholder.append(wrapper)
 }
 
+//Bootstrap Live Alert in Modal
 const appendAlertModal = (message, type) => {
+
     let icon;
     if(type=="info"){
         icon='<i class="bi bi-info-circle-fill d-inline"></i>';
@@ -127,6 +171,17 @@ const appendAlertModal = (message, type) => {
     ].join('');
     alertPlaceholderModal.append(wrapper)
 }
+
+//LogIn with Google
+btnGoogle.addEventListener ('click', async (e)=> {
+
+    try{
+        const provider = new GoogleAuthProvider();
+        await signInWithPopup(auth , provider);
+    }catch(error){
+        console.log(error);
+    }
+});
 
 //------------------------------MAIN-----------------------------------//
 

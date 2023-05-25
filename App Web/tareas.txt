@@ -1,14 +1,9 @@
-
-
 ---------------------------------------------------------
-1.Login con Google
-2.Investigar Reestablecimiento de contraseña
-3.Loading first than main page
+
 ----------------------------------------------------------
 4.CRUD Asignaturas
 5.CRUD Tareas
-
-
-
-https://www.youtube.com/watch?v=y9xTe__zQdY
-https://www.youtube.com/watch?v=Djh_eVj0D2w&t=2272s
+----------------------------------------------------------
+6.Hacer pagina web segura ==> https://www.youtube.com/watch?v=yPyOi7OQHKM
+9.Plantillas de correo electrónico recoverPw & sendEmailVerification
+10.Cambiar de Span-English a FULL English

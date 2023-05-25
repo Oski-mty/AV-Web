@@ -1,9 +1,9 @@
-//-----------------------IMPORTACIONES-----------------------------------//
+//-----------------------IMPORTs-----------------------------------//
 
 import {auth} from "../FireBase.js";
 
 
-//-----------------------DECLARACIÓN DE VARIABLES-----------------------------------//
+//-----------------------DECLARATION OF VARIABLEs-----------------------------------//
 
 //NAV
 let appNav = document.querySelector("#appNav");
@@ -11,29 +11,29 @@ let generalNav = document.querySelector("#generalNav");
 let webDocNav = document.querySelector("#webNav");
 let apkDocNav = document.querySelector("#apkNav");
 //DIVs
+let contenido = document.querySelector("#Contenido");
 let app = document.querySelector("#appDiv");
 let generalDoc = document.querySelector("#generalDiv");
 let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
 let loadingDiv = document.querySelector("#loading-page");
-//BOTONES
+//BUTTONs
 let btnLogOut = document.querySelector("#btnLogOut");
 
 
-//------------------------------EVENTOS-----------------------------------//
+//------------------------------EVENTs-----------------------------------//
 
-//EVENTOS SPA (Single-Page-Aplication)
+//SPA EVENTs (Single-Page-Aplication)
 appNav.addEventListener("click",showApp);
 generalNav.addEventListener("click",showGeneralNav);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
-//EVENTOS DE BOTONES
+//BUTTONs EVENTs
 btnLogOut.addEventListener("click",logOut);
 
+//------------------------------FUNCTIONs-----------------------------------//
 
-//------------------------------FUNCIONES-----------------------------------//
-
-//FUNCIONES DE EVENTOS SPA (Single-Page-Aplication)
+//SPA EVENTs FUNCTIONs
 function showApp(){
 
     app.style.display = "block";
@@ -62,12 +62,15 @@ function showApkDoc(){
     apkDoc.style.display = "block";
     webDoc.style.display = "none";
 }
-function showLoading(){
-    loadingDiv.classList.remove("d-none"); 
-    setTimeout(()=>{loadingDiv.classList.add("d-none")},4000);
-}
+function showContenido(){
 
-//FUNCIONES DE FIREBASE AUTH
+    setTimeout(
+        ()=>{
+            loadingDiv.classList.add("d-none");
+            contenido.classList.remove("d-none");
+        },100);
+}
+//FIREBASE AUTH FUNCTIONs
 async function logOut(){
     try{
         await auth.signOut();
@@ -75,16 +78,15 @@ async function logOut(){
         console.log(error);
     }
 }
-
 auth.onAuthStateChanged ( user =>{
     if(user){
         console.log("Usuario activo");
     }else{
-        window.location.href = "http://127.0.0.1:5500/App%20Web/Login/login.html";
+        window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
     }
 });
 
 
 //------------------------------MAIN-----------------------------------//
 
-showLoading();
+showContenido();    
