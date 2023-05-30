@@ -7,6 +7,7 @@ import {
     doc,
     addDoc,
     setDoc,
+    getDocs,
     query,
     where,
     onSnapshot 
@@ -15,11 +16,13 @@ import {
 
 //-----------------------DECLARATION OF VARIABLEs-----------------------------------//
 
+
+//USEREMAIL
+let userEmail;
 //SUBJECTS
-let subjects = [] ;
-let currentSubject="currentSubject";
+
 //TASKS
-let tasks = [] ;
+
 //FORMS
 let addSubjectForm = document.querySelector("#addSubjectForm");
 //NAV
@@ -63,7 +66,7 @@ function showApp(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
-    writeSubjects();
+    getSubjects();
 }
 
 function showGeneralNav(){
@@ -99,8 +102,9 @@ function showContenido(){
         },100);
 }
 
-//FIREBASE AUTH FUNCTIONs
 
+
+//LOGOUT
 async function logOut(){
     try{
         await auth.signOut();
@@ -109,36 +113,9 @@ async function logOut(){
     }
 }
 
-//FIRESTORE <CREATE>
 
-async function addSubject(e){
 
-    e.preventDefault();
-
-    auth.onAuthStateChanged ( async user =>{
-
-        let subjectName = addSubjectForm["subjectName"].value;
-        let teacher = addSubjectForm["subjectTeacher"].value;
-        try {
-            await setDoc(doc(db,"users/"+user.email+"/asignaturas", subjectName),{name:subjectName , teacher:teacher},{merge: true});
-        }catch (error) {
-
-            console.error("Error adding document: ", error);
-        }
-        addSubjectForm.reset();
-        console.log(subjects);
-    });
-}
-
-async function addTask(){
-    
-    
-
-     
-}
-
-//FIRESTORE <READ>
-
+//AUTH ONCHANGE OBSERVER
 auth.onAuthStateChanged ( async user =>{
     
     if (user) {
@@ -149,56 +126,11 @@ auth.onAuthStateChanged ( async user =>{
 
             try {
 
-                //ADDING NEW USER
-                async function addingUser(){
-                    let provider = await auth.currentUser.providerData;
-                    let providerId = [];
-
-                    provider.forEach(element => {
-
-                        if (element.providerId == "google.com") {
-
-                            providerId.push("GOOGLE");
-
-                        } else if (element.providerId == "password") {
-
-                            providerId.push("BASIC");
-
-                        } else {
-                            console.log("Provider encontrado que no coincide con Google ni Password");
-                        }
-                    });
-
-                    await setDoc(doc(db, "users/", auth.currentUser.email), { provider: providerId }, { merge: true });
-                }
+                //Saving userEmail
+                userEmail = auth.currentUser.email;
+                //ADD NEW USER
                 addingUser();
-                console.info("User merge successfully");
-                //READING SUBJECTS
-                async function getSubjects(){
-                    const q = query(collection(db, "users/" + user.email + "/asignaturas")/*, where("state", "==", "CA")*/);
-                    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                        let subjectsRetrieved = [];
-                        querySnapshot.forEach((doc) => {
-                            subjectsRetrieved.push(doc.data());
-                        });
-                        subjects = subjectsRetrieved;
-                    });
-                }
-                getSubjects();
-                console.info("Subjects retrieved successfully");
-                //READING TASKS
-                async function getTasks(){
-                    const q = query(collection(db, "users/" + user.email + "/asignaturas/"+currentSubject+"/tareas")/*, where("state", "==", "CA")*/);
-                    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                        let tasksRetrieved = [];
-                        querySnapshot.forEach((doc) => {
-                            tasksRetrieved.push(doc.data());
-                        });
-                        tasks = tasksRetrieved;
-                    });
-                }
-                getTasks();
-                console.info("Tasks retrieved successfully");
+
 
             }catch (error) {
                 console.error(error);
@@ -214,20 +146,134 @@ auth.onAuthStateChanged ( async user =>{
 
 });
 
-function writeSubjects(){
-    subjects.forEach(subject => {
-        subjectsCanvas.innerHTML = '<div class="card col-3 mx-2 my-5 text-center appCard">'+
-                                    '<div class="card-body my-4"><h5 class="card-title"><i class="bi bi-journal-bookmark"></i> '+subject.name+'</h5>'+
-                                    '<p class="card-text"><i class="bi bi-person-add"></i> '+subject.teacher+'</p>'+
-                                    '<a href="#" class="btn faded rounded-4 mt-3">Ver asignatura</a>'+
-                                    '</div>'+
-                                    '<button type="button" class="d-inline rounded-5 faded"><i class="bi bi-pencil"></i></button>'+
-                                    '<button type="button" class="d-inline rounded-5 faded"><i class="bi bi-trash3"></i></button>'+
-                                    '</div>';
-    });
+
+
+//FIRESTORE <CREATE>
+
+async function addingUser(){
+
+    try{
+        let provider = await auth.currentUser.providerData;
+        let providerId = [];
+
+        provider.forEach(element => {
+
+            if (element.providerId == "google.com") {
+
+                providerId.push("GOOGLE");
+
+            } else if (element.providerId == "password") {
+
+                providerId.push("BASIC");
+
+            } else {
+                console.log("Provider encontrado que no coincide con Google ni Password");
+            }
+        });
+
+        await setDoc(doc(db, "users/", userEmail), { provider: providerId }, { merge: true });
+        console.info("User merge successfully");
+
+    }catch(error){
+        console.error("Error adding user: ",error);
+    } 
+} 
+
+async function addSubject(e){
+
+    e.preventDefault();
+
+    try {
+
+        let subjectName = addSubjectForm["subjectName"].value;
+        let teacher = addSubjectForm["subjectTeacher"].value;
+
+        await setDoc(doc(db, "users/" + userEmail + "/asignaturas", subjectName), { name: subjectName, teacher: teacher }, { merge: true });
+
+        addSubjectForm.reset();
+        getSubjects();
+        
+    } catch (error) {
+        console.error("Error adding subject: ", error);
+    }
+
+    
+}
+
+async function addTask(e){
+    
+    
+
+     
 }
 
 
+
+//FIRESTORE <READ>
+
+async function getSubjects(){
+    try {
+
+        let subjectsRetrieved = [];
+        const q = query(collection(db, "users/" + userEmail + "/asignaturas")/*, where("state", "==", "CA")*/);
+        
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            subjectsRetrieved.push(doc.data());
+        });
+            
+        console.info("Subjects retrieved successfully");
+        printSubjects(subjectsRetrieved);
+
+    } catch (error) {
+        console.error("Error getting subjects: ",error);
+    }
+    
+}
+//Print Subjects
+function printSubjects(subjects){
+    try{
+        subjectsCanvas.innerHTML = "";  
+        for (const subject of subjects) {
+
+            let arr = String(subject.teacher).split(" ");
+
+            for (var i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+            
+            }
+            let subjectTeacher = arr.join(" ");
+            let subjectName = String(subject.name).toUpperCase();
+
+            subjectsCanvas.innerHTML += '<div class="card btn col-md-3 mx-3 my-2 p-1 appCard">'+
+                                            '<div class="d-flex justify-content-left">'+
+                                                '<button type="button" class="btn fadedPencil options"><i class="bi bi-pencil"></i></button>'+
+                                            '</div>'+
+                                            '<div class="card-body my-4">'+
+                                                '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> '+subjectName+'</h5>'+
+                                                '<p class="card-text"><i class="bi bi-person-add"></i> '+subjectTeacher+'</p>'+
+                                            '</div>'+
+                                            '<div class="d-flex flex-row-reverse">'+
+                                                '<button type="button" class="btn fadedTrash options"><i class="bi bi-trash3"></i></button>'+
+                                            '</div>'+
+                                        '</div>';
+        }
+               
+    }catch(error){
+        console.error("Error printing subjects: ",error);
+    }
+}
+
+async function getTasks(){
+    const q = query(collection(db, "users/" + userEmail + "/asignaturas/"+currentSubject+"/tareas")/*, where("state", "==", "CA")*/);
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        let tasksRetrieved = [];
+        querySnapshot.forEach((doc) => {
+            tasksRetrieved.push(doc.data());
+        });
+        tasks = tasksRetrieved;
+    });
+}
 
 
 

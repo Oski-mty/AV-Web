@@ -47,31 +47,72 @@ nav{
 .faded{
   width: fit-content;
   border: 2px solid var(--blue);
-  background-color: var(--blue_light);
   color: black;
-  background: var(--blue);
   background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
   background: linear-gradient(to right, var(--blue_light),  var(--blue));
+  transition: transform 0.3s ease;
 }
 
 .faded:hover{
   width: fit-content;
   border: 2px solid var(--blue_light);
-  background-color: var(--blue);
   color: white;
   background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
   background: linear-gradient(to left, var(--blue_light), var(--blue));
+  transform: scale(1.1);
+}
+
+.fadedPencil{
+  width: fit-content;
+  border: 2px solid black;
+  color: black;
+  background: -webkit-linear-gradient(135deg, var(--blue_light), var(--blue));
+  background: linear-gradient(135deg, var(--blue_light),  var(--blue));
+  transition: transform 0.3s ease;
+
+}
+
+.fadedPencil:hover{
+  width: fit-content;
+  border: 2px solid var(--blue_light);
+  color: var(--blue_light);
+  background: -webkit-linear-gradient(-45deg, var(--blue_light), var(--blue));
+  background: linear-gradient(-45deg, var(--blue_light), var(--blue));
+  transform: scale(1.1);
+
+}
+
+.fadedTrash{
+  width: fit-content;
+  border: 2px solid black;
+  color: black;
+  background: -webkit-linear-gradient(135deg, var(--danger), white);
+  background: linear-gradient(135deg, var(--danger), white);
+  transition: transform 0.3s ease;
+}
+
+.fadedTrash:hover{
+  width: fit-content;
+  border: 2px solid var(--danger);
+  color: var(--danger);
+  background: -webkit-linear-gradient(315deg, var(--danger), white);
+  background: linear-gradient(315deg, var(--danger), white);
+  transform: scale(1.1);
+
 }
 
 #btnLogOut{
   border-radius: 50%;
   border: 2px solid black;
   background-color: white;
+  transition: transform 0.3s ease;
 }
 
 #btnLogOut:hover{
   background: -webkit-linear-gradient(225deg, var(--danger), var(--blue_light));
   background: linear-gradient(225deg, var(--danger), var(--blue_light));
+  transform: scale(1.1);
+
 }
 
 #openAddSubjectModal{
@@ -81,11 +122,25 @@ nav{
   right: 20px;
 }
 
-
-
 .appCard{
   background-color: var(--blue_light_soft);
   border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+  width:15em;
+  height:23em;
+  transition: transform 0.3s ease;
+}
+.appCard:hover{
+  background-color: var(--blue_light);  
+  border: 2px solid black;
+  box-shadow: 10px 5px 5px black;
+  transform: scale(0.95);
+}
+
+
+.options{
+  border-radius: 50%;
+ 
 }
 
 
