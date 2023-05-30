@@ -142,6 +142,9 @@ nav{
   border-radius: 50%;
  
 }
+.options>i{
+  pointer-events: none;
+}
 
 
 

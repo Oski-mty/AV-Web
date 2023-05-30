@@ -8,6 +8,7 @@ import {
     addDoc,
     setDoc,
     getDocs,
+    deleteDoc ,
     query,
     where,
     onSnapshot 
@@ -245,19 +246,33 @@ function printSubjects(subjects){
             let subjectTeacher = arr.join(" ");
             let subjectName = String(subject.name).toUpperCase();
 
-            subjectsCanvas.innerHTML += '<div class="card btn col-md-3 mx-3 my-2 p-1 appCard">'+
-                                            '<div class="d-flex justify-content-left">'+
-                                                '<button type="button" class="btn fadedPencil options"><i class="bi bi-pencil"></i></button>'+
-                                            '</div>'+
-                                            '<div class="card-body my-4">'+
-                                                '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> '+subjectName+'</h5>'+
-                                                '<p class="card-text"><i class="bi bi-person-add"></i> '+subjectTeacher+'</p>'+
-                                            '</div>'+
-                                            '<div class="d-flex flex-row-reverse">'+
-                                                '<button type="button" class="btn fadedTrash options"><i class="bi bi-trash3"></i></button>'+
-                                            '</div>'+
-                                        '</div>';
+            subjectsCanvas.innerHTML += 
+                '<div id="'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+                    '<div class="d-flex justify-content-left">' +
+                        '<button id="update-'+subject.name+'" type="button" class="btn fadedPencil options"><i class="bi bi-pencil"></i></button>' +
+                    '</div>' +
+                    '<div class="card-body my-4">' +
+                        '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
+                        '<p class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
+                    '</div>' +
+                    '<div class="d-flex flex-row-reverse">' +
+                        '<button id="delete-'+subject.name+'" type="button" class="btn fadedTrash options"><i class="bi bi-trash3"></i></button>' +
+                    '</div>' +
+                '</div>';
+
+                
         }
+
+        subjectsCanvas.addEventListener("click", function(event) {
+            if (event.target.id.split("-")[0] === "delete") {
+                deleteSubject(event);
+            }else{
+                updateSubject(event);
+            }
+        });
+
+
+
                
     }catch(error){
         console.error("Error printing subjects: ",error);
@@ -277,8 +292,20 @@ async function getTasks(){
 
 
 
+//FIRESTORE <DELETE>
+
+async function deleteSubject(button){
+
+    try{
+        let idSubject = button.target.id.split("-")[1];
+        await deleteDoc(doc(db,"users/" + userEmail + "/asignaturas", idSubject));
+        console.info("Subject: "+idSubject+" has been deleted succesfully");
+        getSubjects();
+    }catch(error){
+        console.error(error);
+    } 
+}
+
 //------------------------------MAIN-----------------------------------//
 
 showContenido();
-
-
