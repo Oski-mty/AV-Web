@@ -2,17 +2,18 @@
     "users": {
         "user": {
             "id": "ej:oscarsainzcano@gmail.com",
-            "provider": "BASIC , GOOGLE",
-            "asignaturas": {
-                "asignatura": {
-                    "nombre": "ej:Acceso a datos",
-                    "tareas": {
-                        "tarea": {
+            "provider": ["BASIC , GOOGLE"],
+            "subjects": {
+                "subject": {
+                    "name": "ej:Acceso a datos",
+                    "teacher": "ej:Marta",
+                    "tasks": {
+                        "task": {
                             "id": "ej:rDgv9pqCBMS4uJHHq9w8",
-                            "nombre": "ej:spring API res",
-                            "descripcion": "ej:Lorem Ipsum",
-                            "fechaEntrega": "ej:23 feb 2023",
-                            "completada": "ej:true"
+                            "name": "ej:spring API res",
+                            "description": "ej:Lorem Ipsum",
+                            "deadline": "ej:23 feb 2023",
+                            "completed": "ej:true"
                         }
                     }
                 }
