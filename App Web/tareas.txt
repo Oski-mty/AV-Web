@@ -1,4 +1,5 @@
 ---------------------------------------------------------
+3.Cambiar de Span-English a FULL English
 
 ----------------------------------------------------------
 4.CRUD Asignaturas
@@ -6,4 +7,3 @@
 ----------------------------------------------------------
 6.Hacer pagina web segura ==> https://www.youtube.com/watch?v=yPyOi7OQHKM
 9.Plantillas de correo electrónico recoverPw & sendEmailVerification
-10.Cambiar de Span-English a FULL English

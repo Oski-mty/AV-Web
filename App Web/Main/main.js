@@ -1,10 +1,20 @@
 //-----------------------IMPORTs-----------------------------------//
 
 import {auth} from "../FireBase.js";
+import {db} from "../FireBase.js";
+import {
+    collection,
+    doc,
+    addDoc,
+    setDoc
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
 //-----------------------DECLARATION OF VARIABLEs-----------------------------------//
 
+
+//FORMS
+let addSubjectForm = document.querySelector("#addSubjectForm");
 //NAV
 let appNav = document.querySelector("#appNav");
 let generalNav = document.querySelector("#generalNav");
@@ -19,6 +29,8 @@ let apkDoc = document.querySelector("#apkDiv");
 let loadingDiv = document.querySelector("#loading-page");
 //BUTTONs
 let btnLogOut = document.querySelector("#btnLogOut");
+let btnopenAddSubjectModal = document.querySelector("#openAddSubjectModal");
+let btnAddSubject = document.querySelector("#addSubject");
 
 
 //------------------------------EVENTs-----------------------------------//
@@ -30,7 +42,8 @@ webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
 //BUTTONs EVENTs
 btnLogOut.addEventListener("click",logOut);
-
+//FORMs EVENTs
+addSubjectForm.addEventListener("submit",addSubject)
 //------------------------------FUNCTIONs-----------------------------------//
 
 //SPA EVENTs FUNCTIONs
@@ -78,14 +91,34 @@ async function logOut(){
         console.log(error);
     }
 }
-auth.onAuthStateChanged ( user =>{
-    if(user){
+auth.onAuthStateChanged ( async user =>{
+
+    if (user) {
         console.log("Usuario activo");
-    }else{
+        if (user.emailVerified) {
+            console.log("Usuario activo y verificado");           
+        }else{
+            window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
+        }
+    } else {
+        console.log("Usuario Inactivo");
         window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
     }
 });
 
+//FIREBASE FIRESTORE DB
+async function addSubject(e){
+
+    e.preventDefault();
+    let subjectName = addSubjectForm["subjectName"].value;
+      
+    try {
+        await addDoc(collection(db, "users/"+auth.currentUser.email+"/asignaturas"), subjectName , {nombre:subjectName});
+    }catch (error) {
+        console.error("Error adding document: ", error);
+    }
+    addSubjectForm.reset();
+}
 
 //------------------------------MAIN-----------------------------------//
 
