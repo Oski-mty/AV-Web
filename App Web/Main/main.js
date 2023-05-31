@@ -8,6 +8,7 @@ import {
     addDoc,
     setDoc,
     getDocs,
+    updateDoc,
     deleteDoc ,
     query,
     where,
@@ -20,17 +21,20 @@ import {
 
 //USEREMAIL
 let userEmail;
-//SUBJECTS
 
-//TASKS
-
-//FORMS
+//FORMs
 let addSubjectForm = document.querySelector("#addSubjectForm");
+
 //NAV
 let appNav = document.querySelector("#appNav");
 let generalNav = document.querySelector("#generalNav");
 let webDocNav = document.querySelector("#webNav");
 let apkDocNav = document.querySelector("#apkNav");
+
+//NAV BUTTONs
+let btnLogOut = document.querySelector("#btnLogOut");
+let theme = document.querySelector("#theme");
+
 //DIVs
 let contenido = document.querySelector("#Contenido");
 let app = document.querySelector("#appDiv");
@@ -38,9 +42,8 @@ let generalDoc = document.querySelector("#generalDiv");
 let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
 let loadingDiv = document.querySelector("#loading-page");
-//BUTTONs
-let btnLogOut = document.querySelector("#btnLogOut");
-//CANVAS
+
+//CANVAs
 let subjectsCanvas = document.querySelector("#subjectsCanvas");
 
 
@@ -54,10 +57,28 @@ webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
 //BUTTONs EVENTs
 btnLogOut.addEventListener("click",logOut);
+theme.addEventListener("click",changeTheme);
+
 //FORMs EVENTs
 addSubjectForm.addEventListener("submit",addSubject)
 
+
 //------------------------------FUNCTIONs-----------------------------------//
+
+//Change theme dark/light
+function changeTheme() {
+
+    var link = document.getElementById("theme-link");
+    var themeToggle = document.getElementById("theme");
+  
+    if (link.getAttribute("href") === "styles.css") {
+      link.setAttribute("href", "stylesDark.css");
+    } else {
+      link.setAttribute("href", "styles.css");
+    }
+}
+
+
 
 //SPA EVENTs FUNCTIONs
 
@@ -94,13 +115,13 @@ function showApkDoc(){
     webDoc.style.display = "none";
 }
 
-function showContenido(){
+function showContent(){
 
     setTimeout(
         ()=>{
             loadingDiv.classList.add("d-none");
             contenido.classList.remove("d-none");
-        },100);
+        },500);
 }
 
 
@@ -188,12 +209,9 @@ async function addSubject(e){
 
         let subjectName = addSubjectForm["subjectName"].value;
         let teacher = addSubjectForm["subjectTeacher"].value;
-
         await setDoc(doc(db, "users/" + userEmail + "/asignaturas", subjectName), { name: subjectName, teacher: teacher }, { merge: true });
-
         addSubjectForm.reset();
         getSubjects();
-        
     } catch (error) {
         console.error("Error adding subject: ", error);
     }
@@ -231,7 +249,7 @@ async function getSubjects(){
     }
     
 }
-//Print Subjects
+
 function printSubjects(subjects){
     try{
         subjectsCanvas.innerHTML = "";  
@@ -247,32 +265,71 @@ function printSubjects(subjects){
             let subjectName = String(subject.name).toUpperCase();
 
             subjectsCanvas.innerHTML += 
-                '<div id="'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+                '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
                     '<div class="d-flex justify-content-left">' +
-                        '<button id="update-'+subject.name+'" type="button" class="btn fadedPencil options"><i class="bi bi-pencil"></i></button>' +
+                        '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal"><i class="bi bi-pencil"></i></button>' +
                     '</div>' +
                     '<div class="card-body my-4">' +
                         '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
                         '<p class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
                     '</div>' +
                     '<div class="d-flex flex-row-reverse">' +
-                        '<button id="delete-'+subject.name+'" type="button" class="btn fadedTrash options"><i class="bi bi-trash3"></i></button>' +
+                        '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal"><i class="bi bi-trash3"></i></button>' +
                     '</div>' +
-                '</div>';
+                '</div>'+
 
-                
+                '<div class="modal fade" id="updateSubjectModal" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
+                    '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
+                        '<div class="modal-content">'+
+                            '<div class="modal-header p-2">'+
+                                '<h5 class="modal-title mx-auto" id="updateSubjectModalLabel">Update Subject</h5>'+
+                                '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
+                            '</div>'+
+                            '<div class="modal-body">'+
+                                '<form id="updateSubjectForm-'+subject.name+'">'+
+                                    '<div class="input-group mb-3 w-75 mx-auto align-items-center">'+
+                                        '<input id="updateSubjectName-'+subject.name+'" value="'+subject.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+subject.name+'" aria-describedby="updateSubjectName'+subject.name+'" required>'+
+                                        '<span class="input-group-text" id="subjectName'+subject.name+'"><i class="bi bi-journal-bookmark"></i></span>'+
+                                        '<input id="updateSubjectTeacher-'+subject.name+'" value="'+subject.teacher+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+subject.teacher+'" aria-describedby="updateSubjectTeacher'+subject.teacher+'" required>'+
+                                        '<span class="input-group-text" id="subjectTeacher'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
+                                    '</div>'+
+                                    '<div class="text-center pt-1 pb-1">'+
+                                        '<button type="button" id="updateSubject-'+subject.name+'" class="faded p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                    '</div>'+
+                                '</form>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+
+
+                '<div class="modal fade" id="deleteSubjectModal" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
+                    '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
+                        '<div class="modal-content">'+
+                            '<div class="modal-header p-2">'+
+                                '<h5 class="modal-title mx-auto" id="deleteSubjectModalLabel">Delete Subject</h5>'+
+                                '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
+                            '</div>'+
+                            '<div class="modal-body">'+
+                                '<div class="text-center pt-1 pb-1">'+
+                                    '<button type="button" id="deleteSubject-'+subject.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>';
         }
 
         subjectsCanvas.addEventListener("click", function(event) {
-            if (event.target.id.split("-")[0] === "delete") {
+
+            if (event.target.id.split("-")[0] === "deleteSubject") {
                 deleteSubject(event);
-            }else{
+            }else if(event.target.id.split("-")[0] === "updateSubject"){
                 updateSubject(event);
+            }else if(event.target.id.split("-")[0] === "card"){
+                
             }
         });
-
-
-
                
     }catch(error){
         console.error("Error printing subjects: ",error);
@@ -292,20 +349,93 @@ async function getTasks(){
 
 
 
-//FIRESTORE <DELETE>
+//FIRESTORE <UPDATE>
 
 async function deleteSubject(button){
 
     try{
         let idSubject = button.target.id.split("-")[1];
+        
         await deleteDoc(doc(db,"users/" + userEmail + "/asignaturas", idSubject));
         console.info("Subject: "+idSubject+" has been deleted succesfully");
+
+
+        try {
+            const q = query(collection(db, "users/" + userEmail + "/asignaturas"), where("name", "==", idSubject));
+            const querySnapshot = await getDocs(q);
+    
+            if (!querySnapshot.empty) {
+    
+                const documentSnapshot = querySnapshot.docs[0];
+                const documentRef = doc(db, "users/" + userEmail + "/asignaturas", documentSnapshot.id);
+    
+                await deleteDoc(documentRef);
+    
+                console.log("Documento borrado exitosamente");
+            } else {
+                console.error("No se encontró ningún documento que coincida con la consulta");
+            }
+    
+        } catch (error) {
+            console.error("Error al borrar el documento:", error);
+        }
+
+        const cerrarModal = document.querySelector(".modal-backdrop");
+        cerrarModal.remove();
+
         getSubjects();
+        
     }catch(error){
         console.error(error);
     } 
 }
 
+
+
+//FIRESTORE <DELETE>
+
+async function updateSubject(button) {
+
+    try {
+
+        let idSubject = button.target.id.split("-")[1];
+        let newName = document.querySelector("#updateSubjectName-" + idSubject).value;
+        let newTeacher = document.querySelector("#updateSubjectTeacher-" + idSubject).value;
+
+        try {
+            const q = query(collection(db, "users/" + userEmail + "/asignaturas"), where("name", "==", idSubject));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+
+                const documentSnapshot = querySnapshot.docs[0];
+                const documentRef = doc(db, "users/" + userEmail + "/asignaturas", documentSnapshot.id);
+
+                await updateDoc(documentRef, {
+                    name: newName,
+                    teacher: newTeacher
+                });
+
+                console.log("Documento actualizado exitosamente");
+            } else {
+                console.error("No se encontró ningún documento que coincida con la consulta");
+            }
+
+        } catch (error) {
+            console.error("Error al actualizar el documento:", error);
+        }
+
+        const cerrarModal = document.querySelector(".modal-backdrop");
+        cerrarModal.remove();
+
+        getSubjects();
+
+    } catch (error) {
+        console.error(error);
+    }
+}
+    
+
 //------------------------------MAIN-----------------------------------//
 
-showContenido();
+showContent();

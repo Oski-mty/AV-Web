@@ -52,14 +52,13 @@ nav{
   background: linear-gradient(to right, var(--blue_light),  var(--blue));
   transition: transform 0.3s ease;
 }
-
 .faded:hover{
   width: fit-content;
   border: 2px solid var(--blue_light);
   color: white;
   background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
   background: linear-gradient(to left, var(--blue_light), var(--blue));
-  transform: scale(1.1);
+  transform: scale(1.2);
 }
 
 .fadedPencil{
@@ -71,7 +70,6 @@ nav{
   transition: transform 0.3s ease;
 
 }
-
 .fadedPencil:hover{
   width: fit-content;
   border: 2px solid var(--blue_light);
@@ -90,7 +88,6 @@ nav{
   background: linear-gradient(135deg, var(--danger), white);
   transition: transform 0.3s ease;
 }
-
 .fadedTrash:hover{
   width: fit-content;
   border: 2px solid var(--danger);
@@ -101,18 +98,12 @@ nav{
 
 }
 
-#btnLogOut{
+.navBtn{
   border-radius: 50%;
-  border: 2px solid black;
-  background-color: white;
   transition: transform 0.3s ease;
 }
-
-#btnLogOut:hover{
-  background: -webkit-linear-gradient(225deg, var(--danger), var(--blue_light));
-  background: linear-gradient(225deg, var(--danger), var(--blue_light));
-  transform: scale(1.1);
-
+.navBtn:hover{
+  transform: scale(1.3);
 }
 
 #openAddSubjectModal{
@@ -137,7 +128,6 @@ nav{
   transform: scale(0.95);
 }
 
-
 .options{
   border-radius: 50%;
  
@@ -146,6 +136,14 @@ nav{
   pointer-events: none;
 }
 
+#liveAlertPlaceholder{
+  position: sticky;
+  top: 10px;
+}
+
+.modal-body{
+  background-color: var(--blue_dark_2);
+}
 
 
 /* Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel----Carousel */

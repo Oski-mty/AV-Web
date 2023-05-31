@@ -13,7 +13,8 @@
                             "name": "ej:spring API res",
                             "description": "ej:Lorem Ipsum",
                             "deadline": "ej:23 feb 2023",
-                            "completed": "ej:true"
+                            "completed": "ej:true",
+                            "delivered": "ej:false"
                         }
                     }
                 }
