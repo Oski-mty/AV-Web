@@ -2,15 +2,14 @@
 
 
 :root{
-	--blue:#2196F3;
-	--blue_light:#79F0FF;
+    --blue:#2196F3;
+      --blue_light:#79F0FF;
+    --blue_light_soft:#b2f1fa75;
     --gray:#615D5D;
     --blue_dark_1:#1C4D53;
     --blue_dark_2:#0E3C60;
     --danger:#dc3545;
-}
-
-/*-------------------------------GENERAL-------------------------------*/
+  }
 
 @font-face {
     font-family:'Ubuntu Condensed';
@@ -18,6 +17,9 @@
     font-style: normal;
     font-weight: normal;
 }
+
+/* Elements----Elements----Elements----Elements----Elements----Elements----Elements----Elements----Elements */
+
 
 body {
     font-family: 'Ubuntu Condensed';
@@ -76,7 +78,10 @@ a:hover{
     background: linear-gradient(to left, var(--blue_light), var(--blue));
 }
 
+
 /*-------------------------------GRADIENTS-------------------------------*/
+
+
 .gradient-custom {
     background: var(--blue);
     background: -webkit-linear-gradient(to top, var(--blue_light), var(--blue),  var(--blue_dark_2), var(--blue_dark_1));
