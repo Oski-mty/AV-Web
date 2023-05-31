@@ -79,7 +79,6 @@ function changeTheme() {
 }
 
 
-
 //SPA EVENTs FUNCTIONs
 
 function showApp(){
@@ -141,10 +140,10 @@ async function logOut(){
 auth.onAuthStateChanged ( async user =>{
     
     if (user) {
-        console.debug("Usuario activo");
+        console.debug("Active user");
 
         if (user.emailVerified) {
-            console.debug("Usuario verificado");
+            console.debug("Verified user");
 
             try {
 
@@ -158,11 +157,11 @@ auth.onAuthStateChanged ( async user =>{
                 console.error(error);
             }           
         }else{
-            console.debug("Usuario no verificado");
+            console.error("Unverified user");
             window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
         }
     } else {
-        console.debug("Usuario Inactivo");
+        console.error("Inactive user");
         window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
     }
 
@@ -194,7 +193,7 @@ async function addingUser(){
         });
 
         await setDoc(doc(db, "users/", userEmail), { provider: providerId }, { merge: true });
-        console.info("User merge successfully");
+        console.debug("User merge successfully");
 
     }catch(error){
         console.error("Error adding user: ",error);
@@ -209,21 +208,17 @@ async function addSubject(e){
 
         let subjectName = addSubjectForm["subjectName"].value;
         let teacher = addSubjectForm["subjectTeacher"].value;
-        await setDoc(doc(db, "users/" + userEmail + "/asignaturas", subjectName), { name: subjectName, teacher: teacher }, { merge: true });
+        await addDoc(collection(db, "users/" + userEmail + "/asignaturas"), { name: subjectName, teacher: teacher }, { merge: true });
         addSubjectForm.reset();
+        console.debug("Subject added successfully");
         getSubjects();
+        console.debug("Subject printed successfully");
+
     } catch (error) {
         console.error("Error adding subject: ", error);
     }
 
     
-}
-
-async function addTask(e){
-    
-    
-
-     
 }
 
 
@@ -241,7 +236,7 @@ async function getSubjects(){
             subjectsRetrieved.push(doc.data());
         });
             
-        console.info("Subjects retrieved successfully");
+        console.debug("Subjects retrieved successfully");
         printSubjects(subjectsRetrieved);
 
     } catch (error) {
@@ -294,7 +289,7 @@ function printSubjects(subjects){
                                         '<span class="input-group-text" id="subjectTeacher'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
                                     '</div>'+
                                     '<div class="text-center pt-1 pb-1">'+
-                                        '<button type="button" id="updateSubject-'+subject.name+'" class="faded p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                        '<button type="button" id="updateSubject-'+subject.name+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
                                     '</div>'+
                                 '</form>'+
                             '</div>'+
@@ -336,17 +331,6 @@ function printSubjects(subjects){
     }
 }
 
-async function getTasks(){
-    const q = query(collection(db, "users/" + userEmail + "/asignaturas/"+currentSubject+"/tareas")/*, where("state", "==", "CA")*/);
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-        let tasksRetrieved = [];
-        querySnapshot.forEach((doc) => {
-            tasksRetrieved.push(doc.data());
-        });
-        tasks = tasksRetrieved;
-    });
-}
-
 
 
 //FIRESTORE <UPDATE>
@@ -356,10 +340,6 @@ async function deleteSubject(button){
     try{
         let idSubject = button.target.id.split("-")[1];
         
-        await deleteDoc(doc(db,"users/" + userEmail + "/asignaturas", idSubject));
-        console.info("Subject: "+idSubject+" has been deleted succesfully");
-
-
         try {
             const q = query(collection(db, "users/" + userEmail + "/asignaturas"), where("name", "==", idSubject));
             const querySnapshot = await getDocs(q);
@@ -371,13 +351,13 @@ async function deleteSubject(button){
     
                 await deleteDoc(documentRef);
     
-                console.log("Documento borrado exitosamente");
+                console.debug("Subject has been deleted successfully");
             } else {
-                console.error("No se encontró ningún documento que coincida con la consulta");
+                console.error("No subjects found matching the query");
             }
     
         } catch (error) {
-            console.error("Error al borrar el documento:", error);
+            console.error("Error deleting subject: ", error);
         }
 
         const cerrarModal = document.querySelector(".modal-backdrop");
@@ -416,13 +396,13 @@ async function updateSubject(button) {
                     teacher: newTeacher
                 });
 
-                console.log("Documento actualizado exitosamente");
+                console.debug("Subject has been updated successfully");
             } else {
-                console.error("No se encontró ningún documento que coincida con la consulta");
+                console.error("No subjects found matching the query");
             }
 
         } catch (error) {
-            console.error("Error al actualizar el documento:", error);
+            console.error("Error updating subject: ", error);
         }
 
         const cerrarModal = document.querySelector(".modal-backdrop");

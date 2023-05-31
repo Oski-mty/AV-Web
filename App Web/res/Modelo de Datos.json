@@ -1,8 +1,8 @@
-[{
+{
     "users": {
         "user": {
             "id": "ej:oscarsainzcano@gmail.com",
-            "provider": ["BASIC , GOOGLE"],
+            "provider": ["BASIC" , "GOOGLE"],
             "subjects": {
                 "subject": {
                     "name": "ej:Acceso a datos",
@@ -21,4 +21,4 @@
             }
         }
     }
-}]
+}
