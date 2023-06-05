@@ -29,11 +29,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
   <!--MY CSS-->
-<<<<<<< HEAD
-  <link rel="stylesheet" href="./styles.css">
-=======
   <link id="theme-link" rel="stylesheet" type="text/css" href="styles.css">
->>>>>>> subjectCrud
   <!--MY JS-->
   <script defer type="module" src="./main.js"></script>
 </head>
@@ -48,23 +44,6 @@
     
     
     
-<<<<<<< HEAD
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-=======
->>>>>>> subjectCrud
     <!--BARRA DE NAVEGACIÓN-->
     <nav class="navbar navbar-expand-lg my-3 mx-2 rounded shadow-lg">
       <div class="container-fluid">
@@ -95,12 +74,6 @@
               </ul>
             </li>
           </ul>
-<<<<<<< HEAD
-          <button type="button" id="btnLogOut" class="btn">
-            <ul class="navbar-nav">
-              <li><a class="dropdown-item text-right " href="#" id="apkNav"><img src="../img/log_out.png" width="35em"
-                    height="35em"></a></li>
-=======
           <button type="button" id="theme" class="btn navBtn mx-1">
             <ul class="navbar-nav">
               <li>
@@ -115,7 +88,6 @@
                   <img src="../img/log_out.png" width="35em" height="35em">
                 </a>
               </li>
->>>>>>> subjectCrud
             </ul>
           </button>
         </div>
@@ -126,40 +98,6 @@
     
     
     
-<<<<<<< HEAD
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-=======
 
 
 
@@ -172,89 +110,111 @@
 
 
 
->>>>>>> subjectCrud
     
     <!--APLICACIÓN-->
     <div id="appDiv" class="mx-4" style="display:none;">
-      
-<<<<<<< HEAD
-      <div class="row" id="subjectsCanvas">
-        <div class="card col-3 mx-1 my-1" style="width: 18rem;">
-          <img src="../img/log_out.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-          </div>
-        </div>
-        
-      </div>
-      
-      
-      <div class="writeDownSubjectsHere animate__heartBeat">
-        Write down your subjects here
-      </div>
-      
-=======
-        
-
-        <div class="row justify-content-center" id="subjectsCanvas">
-
-        </div>
-      
-        
-        
     
-      
-      <!--BTN SUBJECT MODAL-->
->>>>>>> subjectCrud
-      <button id="openAddSubjectModal" type="button" class="faded" data-bs-toggle="modal" data-bs-target="#addSubjectModal">
-        <h1 class="my-0">
-          <i class="bi bi-plus"></i>
-        </h1>
-      </button>
-      <!--ADD SUBJECT MODAL-->
-      <div class="modal fade" id="addSubjectModal" tabindex="-1" aria-labelledby="addSubjectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
-          <div class="modal-content">
-            <div class="modal-header p-2">
-              <h5 class="modal-title mx-auto" id="addSubjectModalLabel">Añade una asignatura</h5>
-              <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
-                aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form id="addSubjectForm">
-                <div class="input-group mb-3 w-75 mx-auto align-items-center">
-                  <input id="subjectName" type="text" class="form-control" placeholder="Name"
-                    aria-label="subjectName" aria-describedby="subjectName" required>
-                  <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
-<<<<<<< HEAD
-                </div>
-                <div class="text-center pt-1 pb-1">
-                  <button type="submit" id="addSubject" class="faded p-2">Add</button>
-                </div>
-              </form>
-              <div id="liveAlertPlaceholderModal"></div>
-=======
-                  <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
-                    aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
-                  <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
-                </div>
-                <div class="text-center pt-1 pb-1">
-                  <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i class="bi bi-database-fill-add"></i></button>
-                </div>
-              </form>
-              <div id="liveAlertPlaceholderModalAdd"></div>
->>>>>>> subjectCrud
+    
+      <div id="subjectsLayout">
+    
+        <div class="row justify-content-center" id="subjectsCanvas">
+    
+        </div>
+        <!--BTN SUBJECT MODAL-->
+        <button id="openAddSubjectModal" type="button" class="faded" data-bs-toggle="modal"
+          data-bs-target="#addSubjectModal">
+          <h1 class="my-0">
+            <i class="bi bi-plus"></i>
+          </h1>
+        </button>
+        <!--ADD SUBJECT MODAL-->
+        <div class="modal fade" id="addSubjectModal" tabindex="-1" aria-labelledby="addSubjectModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
+            <div class="modal-content">
+              <div class="modal-header p-2">
+                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">Añade una asignatura</h5>
+                <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="addSubjectForm">
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center">
+                    <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
+                      aria-describedby="subjectName" required>
+                    <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
+                    <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
+                      aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
+                    <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
+                  </div>
+                  <div class="text-center pt-1 pb-1">
+                    <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i
+                        class="bi bi-database-fill-add"></i></button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
+    
       </div>
-<<<<<<< HEAD
-=======
-      
->>>>>>> subjectCrud
+    
+    
+    
+    
+      <div id="loadingTasks" style="display: none;">
+        <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    
+    
+    
+    
+      <div id="tasksLayout" style="display: none;">
+    
+        <div class="row justify-content-center" id="tasksCanvas">
+    
+        </div>
+        <!--BTN TASK MODAL-->
+        <button id="openAddTaskModal" type="button" class="faded" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+          <h1 class="my-0">
+            <i class="bi bi-plus"></i>
+          </h1>
+        </button>
+        <!--ADD TASK MODAL-->
+        <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
+            <div class="modal-content">
+              <div class="modal-header p-2">
+                <h5 class="modal-title mx-auto" id="addTaskModalLabel">Añade una asignatura</h5>
+                <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
+                  aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <form id="addTaskForm">
+                  <!--<div class="input-group mb-3 w-75 mx-auto align-items-center">
+                          <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
+                            aria-describedby="subjectName" required>
+                          <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
+                          <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
+                            aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
+                          <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
+                        </div>
+                        <div class="text-center pt-1 pb-1">
+                          <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i
+                              class="bi bi-database-fill-add"></i></button>
+                        </div>-->
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+    
+    
+    
     </div>
     
     
@@ -276,33 +236,6 @@
     
     
     
-<<<<<<< HEAD
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-=======
->>>>>>> subjectCrud
     <!--DOCUMENTACIÓN-->
     <div id="documentation" class="mx-4">
       <div id="generalDiv" style="display:none;">
@@ -334,11 +267,7 @@
             </h2>
             <div id="collapseTwoGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
               <div class="accordion-body row">
-<<<<<<< HEAD
-                <p class="col-lg mx-auto text-center mt-5 pt-5">
-=======
                 <p class="col-lg  ml-5 mt-5 pt-5">
->>>>>>> subjectCrud
                   La base de datos nos la proporciona 
                   <a href="https://firebase.google.com"target="_blank">Firebase</a>,
                   plataforma en la nube que nos proporciona una serie de herramientas<br>
@@ -354,11 +283,7 @@
                   La estructura es formato JSON lo que permite manejar grandes cantidades de datos con mayor ligereza
                   que las SQL.<br>
                 </p>
-<<<<<<< HEAD
-                <img src="../img/Doc/MDD.png" width="auto" height="aria-expanded" class="col-lg-4 " />
-=======
                 <img src="../img/Doc/MDD.png" class="col-lg-4 mt-3"/>
->>>>>>> subjectCrud
               </div>
             </div>
           </div>

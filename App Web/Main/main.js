@@ -6,9 +6,6 @@ import {
     collection,
     doc,
     addDoc,
-<<<<<<< HEAD
-    setDoc
-=======
     setDoc,
     getDocs,
     updateDoc,
@@ -16,24 +13,18 @@ import {
     query,
     where,
     onSnapshot 
->>>>>>> subjectCrud
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
 //-----------------------DECLARATION OF VARIABLEs-----------------------------------//
 
 
-<<<<<<< HEAD
-//FORMS
-let addSubjectForm = document.querySelector("#addSubjectForm");
-=======
 //USEREMAIL
 let userEmail;
 
 //FORMs
 let addSubjectForm = document.querySelector("#addSubjectForm");
 
->>>>>>> subjectCrud
 //NAV
 let appNav = document.querySelector("#appNav");
 let generalNav = document.querySelector("#generalNav");
@@ -51,39 +42,29 @@ let generalDoc = document.querySelector("#generalDiv");
 let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
 let loadingDiv = document.querySelector("#loading-page");
-<<<<<<< HEAD
-//BUTTONs
-let btnLogOut = document.querySelector("#btnLogOut");
-let btnopenAddSubjectModal = document.querySelector("#openAddSubjectModal");
-let btnAddSubject = document.querySelector("#addSubject");
-=======
-
-//CANVAs
 let subjectsCanvas = document.querySelector("#subjectsCanvas");
+let tasksCanvas = document.querySelector("#tasksCanvas");
+let subjectsLayout= document.querySelector("#subjectsLayout");
+let tasksLayouts = document.querySelector("#tasksLayouts");
+let loadingTasks = document.querySelector("#loadingTasks");
 
->>>>>>> subjectCrud
 
 
 //------------------------------EVENTs-----------------------------------//
 
 //SPA EVENTs (Single-Page-Aplication)
-appNav.addEventListener("click",showApp);
+appNav.addEventListener("click",showSubjects);
 generalNav.addEventListener("click",showGeneralNav);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
 //BUTTONs EVENTs
 btnLogOut.addEventListener("click",logOut);
-<<<<<<< HEAD
-//FORMs EVENTs
-addSubjectForm.addEventListener("submit",addSubject)
-=======
 theme.addEventListener("click",changeTheme);
 
 //FORMs EVENTs
 addSubjectForm.addEventListener("submit",addSubject)
 
 
->>>>>>> subjectCrud
 //------------------------------FUNCTIONs-----------------------------------//
 
 //Change theme dark/light
@@ -100,17 +81,8 @@ function changeTheme() {
 }
 
 
+
 //SPA EVENTs FUNCTIONs
-
-function showApp(){
-
-    app.style.display = "block";
-    generalDoc.style.display = "none";
-    apkDoc.style.display = "none";
-    webDoc.style.display = "none";
-    getSubjects();
-}
-
 function showGeneralNav(){
 
     app.style.display = "none";
@@ -144,6 +116,37 @@ function showContent(){
         },500);
 }
 
+function showSubjects(){
+
+    generalDoc.style.display = "none";
+    apkDoc.style.display = "none";
+    webDoc.style.display = "none";
+    subjectsLayout.style.display = "block";
+    app.style.display = "block";
+    getSubjects();
+}
+
+function showLoadingTasks(){
+
+    generalDoc.style.display = "none";
+    apkDoc.style.display = "none";
+    webDoc.style.display = "none";
+    subjectsLayout.style.display = "none";
+    tasksLayouts.style.display = "block";
+    app.style.display = "block";
+
+}
+
+function unShowLoadingTasks(){
+
+    generalDoc.style.display = "none";
+    apkDoc.style.display = "none";
+    webDoc.style.display = "none";
+    tasksLayouts.style.display = "none";
+    subjectsLayout.style.display = "block";
+    app.style.display = "block";
+}
+
 
 
 //LOGOUT
@@ -154,19 +157,6 @@ async function logOut(){
         console.log(error);
     }
 }
-<<<<<<< HEAD
-auth.onAuthStateChanged ( async user =>{
-
-    if (user) {
-        console.log("Usuario activo");
-        if (user.emailVerified) {
-            console.log("Usuario activo y verificado");           
-        }else{
-            window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
-        }
-    } else {
-        console.log("Usuario Inactivo");
-=======
 
 
 
@@ -196,25 +186,10 @@ auth.onAuthStateChanged ( async user =>{
         }
     } else {
         console.error("Inactive user");
->>>>>>> subjectCrud
         window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
     }
 
 });
-
-//FIREBASE FIRESTORE DB
-async function addSubject(e){
-
-    e.preventDefault();
-    let subjectName = addSubjectForm["subjectName"].value;
-      
-    try {
-        await addDoc(collection(db, "users/"+auth.currentUser.email+"/asignaturas"), subjectName , {nombre:subjectName});
-    }catch (error) {
-        console.error("Error adding document: ", error);
-    }
-    addSubjectForm.reset();
-}
 
 
 //FIRESTORE <CREATE>
@@ -310,18 +285,18 @@ function printSubjects(subjects){
             subjectsCanvas.innerHTML += 
                 '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
                     '<div class="d-flex justify-content-left">' +
-                        '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal"><i class="bi bi-pencil"></i></button>' +
+                        '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subject.name+'"><i class="bi bi-pencil"></i></button>' +
                     '</div>' +
                     '<div class="card-body my-4">' +
                         '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
                         '<p class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
                     '</div>' +
                     '<div class="d-flex flex-row-reverse">' +
-                        '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal"><i class="bi bi-trash3"></i></button>' +
+                        '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subject.name+'"><i class="bi bi-trash3"></i></button>' +
                     '</div>' +
                 '</div>'+
 
-                '<div class="modal fade" id="updateSubjectModal" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal fade" id="updateSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
@@ -346,7 +321,7 @@ function printSubjects(subjects){
                 '</div>'+
 
 
-                '<div class="modal fade" id="deleteSubjectModal" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal fade" id="deleteSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
@@ -408,8 +383,13 @@ async function deleteSubject(button){
             console.error("Error deleting subject: ", error);
         }
 
-        const cerrarModal = document.querySelector(".modal-backdrop");
-        cerrarModal.remove();
+        try {
+            const cerrarModal = document.querySelector(".modal-backdrop");
+            cerrarModal.remove();
+        } catch (error) {
+            
+        }
+       
 
         getSubjects();
         
@@ -453,8 +433,12 @@ async function updateSubject(button) {
             console.error("Error updating subject: ", error);
         }
 
-        const cerrarModal = document.querySelector(".modal-backdrop");
-        cerrarModal.remove();
+        try {
+            const cerrarModal = document.querySelector(".modal-backdrop");
+            cerrarModal.remove();
+        } catch (error) {
+            
+        }
 
         getSubjects();
 
@@ -466,8 +450,4 @@ async function updateSubject(button) {
 
 //------------------------------MAIN-----------------------------------//
 
-<<<<<<< HEAD
-showContenido();    
-=======
 showContent();
->>>>>>> subjectCrud
