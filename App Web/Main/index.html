@@ -35,13 +35,14 @@
 </head>
 
 <body>
+
   <!--LOADING...-->
   <div class="loadding-page" id="loading-page">
     <div class="cssload-box-loading"></div>
   </div>
+
   <!--CONTENIDO-->
   <section id="Contenido" class="d-none">
-    
     
     
     <!--BARRA DE NAVEGACIÓN-->
@@ -112,14 +113,16 @@
 
     
     <!--APLICACIÓN-->
-    <div id="appDiv" class="mx-4" style="display:none;">
+    <div id="appDiv" class="mx-4" >
     
     
-      <div id="subjectsLayout">
+      <div id="subjectsLayout" style="display: none;">
     
         <div class="row justify-content-center" id="subjectsCanvas">
     
         </div>
+
+
         <!--BTN SUBJECT MODAL-->
         <button id="openAddSubjectModal" type="button" class="faded" data-bs-toggle="modal"
           data-bs-target="#addSubjectModal">
@@ -133,7 +136,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">Añade una asignatura</h5>
+                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">ADD A SUBJECT</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -162,7 +165,7 @@
     
     
     
-      <div id="loadingTasks" style="display: none;">
+      <div id="loadingTasks" class="d-none justify-content-center align-items-center vh-100">
         <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -172,10 +175,14 @@
     
     
       <div id="tasksLayout" style="display: none;">
-    
+
+        <button id="goToSubjects" class="btn btn-lg faded rounded-5"><i class="bi bi-arrow-left-circle"></i></button>
+        
         <div class="row justify-content-center" id="tasksCanvas">
     
         </div>
+
+
         <!--BTN TASK MODAL-->
         <button id="openAddTaskModal" type="button" class="faded" data-bs-toggle="modal" data-bs-target="#addTaskModal">
           <h1 class="my-0">
@@ -187,25 +194,35 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-                <h5 class="modal-title mx-auto" id="addTaskModalLabel">Añade una asignatura</h5>
+                <h5 class="modal-title mx-auto" id="addTaskModalLabel">ADD A TASK</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
               <div class="modal-body">
+              
                 <form id="addTaskForm">
-                  <!--<div class="input-group mb-3 w-75 mx-auto align-items-center">
-                          <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
-                            aria-describedby="subjectName" required>
-                          <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
-                          <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
-                            aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
-                          <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
-                        </div>
-                        <div class="text-center pt-1 pb-1">
-                          <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i
-                              class="bi bi-database-fill-add"></i></button>
-                        </div>-->
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <input id="taskName" type="text" class="form-control " placeholder="Name" aria-label="taskName"
+                      aria-describedby="taskName" required>
+                    <span class="input-group-text" id="taskName"><i class="bi bi-clipboard2"></i></span>
+                  </div>
+              
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <textarea id="taskDescription" type="text" class="form-control rounded" placeholder="Description"
+                      required></textarea>
+                  </div>
+              
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <input id="taskDeadline" type="date" class="form-control " aria-label="taskDeadline"
+                      aria-describedby="taskDeadline" required>
+                  </div>
+              
+                  <div class="text-center pt-1 pb-1">
+                    <button type="submit" id="addTask" class="faded p-2 rounded-4">Add <i
+                        class="bi bi-database-fill-add"></i></button>
+                  </div>
                 </form>
+  
               </div>
             </div>
           </div>
@@ -563,7 +580,10 @@
         </div>
       </div>
     </div>
+
+
   </section>
+
 </body>
 
 </html>

@@ -5,6 +5,7 @@
             "provider": ["BASIC" , "GOOGLE"],
             "subjects": {
                 "subject": {
+                    "id": "ej:l7TRnzjQXKMrNF0VqRxu",
                     "name": "ej:Acceso a datos",
                     "teacher": "ej:Marta",
                     "tasks": {

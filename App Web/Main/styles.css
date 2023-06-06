@@ -105,11 +105,17 @@ nav{
   transform: scale(1.3);
 }
 
-#openAddSubjectModal{
+#openAddSubjectModal,#openAddTaskModal{
   border-radius: 50%;
   position: fixed;
   bottom: 20px;
   right: 20px;
+}
+
+#goToSubjects{
+  position: sticky;
+  top: 20px;
+  left: 20px;
 }
 
 .appCard{
