@@ -86,6 +86,7 @@ nav{
   background: -webkit-linear-gradient(135deg, var(--danger), white);
   background: linear-gradient(135deg, var(--danger), white);
   transition: transform 0.3s ease;
+  margin-right:0px ;
 }
 .fadedTrash:hover{
   width: fit-content;

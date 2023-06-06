@@ -11,8 +11,7 @@ import {
     updateDoc,
     deleteDoc ,
     query,
-    where,
-    onSnapshot 
+    where 
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
@@ -129,25 +128,25 @@ function showContent(){
         },1000);
 }
 async function showSubjectsLayout(event){
-    showLoading();
-    subjectsLayout.style.display = "block";
     tasksLayout.style.display = "none";
-    app.style.display = "block";
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    showLoading();
     await getSubjects(event);
+    subjectsLayout.style.display = "block";
+    app.style.display = "block";
     unShowLoadingSubjects();
 }
 async function showTasksLayout(subjectId){
-    showLoading();
     subjectsLayout.style.display = "none";
-    tasksLayout.style.display = "block";
-    app.style.display = "block";
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    showLoading();
     await getTasks(subjectId);
+    tasksLayout.style.display = "block";
+    app.style.display = "block";
     unShowLoadingTasks();
 }
 
@@ -377,14 +376,14 @@ function printSubjects(subjects){
 
             subjectsCanvas.innerHTML += 
                 '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
-                    '<div class="d-flex justify-content-left">' +
+                    '<div id="card-'+subject.name+'" class="d-inline-flex justify-content-left">' +
                         '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subject.name+'"><i class="bi bi-pencil"></i></button>' +
                     '</div>' +
                     '<div id="card-'+subject.name+'" class="card-body my-4">' +
-                        '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
-                        '<p class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
+                        '<h5 id="card-'+subject.name+'" class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
+                        '<p id="card-'+subject.name+'" class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
                     '</div>' +
-                    '<div class="d-flex flex-row-reverse">' +
+                    '<div id="card-'+subject.name+'" class="d-inline-flex flex-row-reverse">' +
                         '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subject.name+'"><i class="bi bi-trash3"></i></button>' +
                     '</div>' +
                 '</div>'+
@@ -432,19 +431,16 @@ function printSubjects(subjects){
         }
 
         subjectsCanvas.addEventListener("click", async function(event) {
-
             if (event.target.id.split("-")[0] === "deleteSubject") {
-                deleteSubject(event);
+                await deleteSubject(event); 
             }else if(event.target.id.split("-")[0] === "updateSubject"){
-                updateSubject(event);
+                await updateSubject(event);
             }else if(event.target.id.split("-")[0] === "card"){
-               
                 await setCurrentSubjectId(event);
                 await showTasksLayout(currentSubjectId);
-                
             }
         });
-               
+        
     }catch(error){
         console.error("Error printing subjects: ",error);
     }
@@ -483,59 +479,59 @@ function printTasks(tasks){
         for (const task of tasks) {
 
             tasksCanvas.innerHTML += 
-                '<div id="card-'+task.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
-                    '<div class="d-flex justify-content-left">' +
-                        '<button id="update-'+task.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+task.name+'"><i class="bi bi-pencil"></i></button>' +
-                    '</div>' +
-                    '<div class="card-body my-4">' +
-                        '<h5 class="card-title"><i class="bi bi-journal-bookmark"></i> ' + task.name + '</h5>' +
-                        '<p class="card-text"><i class="bi bi-person-add"></i> ' + task.naem + '</p>' +
-                    '</div>' +
-                    '<div class="d-flex flex-row-reverse">' +
-                        '<button id="delete-'+task.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+task.name+'"><i class="bi bi-trash3"></i></button>' +
-                    '</div>' +
-                '</div>'+
+            '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+                '<div id="card-'+subject.name+'" class="d-inline-flex justify-content-left">' +
+                    '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subject.name+'"><i class="bi bi-pencil"></i></button>' +
+                '</div>' +
+                '<div id="card-'+subject.name+'" class="card-body my-4">' +
+                    '<h5 id="card-'+subject.name+'" class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
+                    '<p id="card-'+subject.name+'" class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
+                '</div>' +
+                '<div id="card-'+subject.name+'" class="d-inline-flex flex-row-reverse">' +
+                    '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subject.name+'"><i class="bi bi-trash3"></i></button>' +
+                '</div>' +
+            '</div>'+
 
-                '<div class="modal fade" id="updateSubjectModal-'+task.name+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
-                    '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
-                        '<div class="modal-content">'+
-                            '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto" id="updateSubjectModalLabel">Update Subject</h5>'+
-                                '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
-                            '</div>'+
-                            '<div class="modal-body">'+
-                                '<form id="updateSubjectForm-'+task.name+'">'+
-                                    '<div class="input-group mb-3 w-75 mx-auto align-items-center">'+
-                                        '<input id="updateSubjectName-'+task.name+'" value="'+task.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+task.name+'" aria-describedby="updateSubjectName'+task.name+'" required>'+
-                                        '<span class="input-group-text" id="subjectName'+task.name+'"><i class="bi bi-journal-bookmark"></i></span>'+
-                                        '<input id="updateSubjectTeacher-'+task.name+'" value="'+task.name+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+task.name+'" aria-describedby="updateSubjectTeacher'+task.name+'" required>'+
-                                        '<span class="input-group-text" id="subjectTeacher'+task.name+'"><i class="bi bi-person-add"></i></span>'+
-                                    '</div>'+
-                                    '<div class="text-center pt-1 pb-1">'+
-                                        '<button type="button" id="updateSubject-'+task.name+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
-                                    '</div>'+
-                                '</form>'+
-                            '</div>'+
+            '<div class="modal fade" id="updateSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
+                    '<div class="modal-content">'+
+                        '<div class="modal-header p-2">'+
+                            '<h5 class="modal-title mx-auto" id="updateSubjectModalLabel">Update Subject</h5>'+
+                            '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                         '</div>'+
-                    '</div>'+
-                '</div>'+
-
-
-                '<div class="modal fade" id="deleteSubjectModal-'+task.name+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
-                    '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
-                        '<div class="modal-content">'+
-                            '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto" id="deleteSubjectModalLabel">Delete Subject</h5>'+
-                                '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
-                            '</div>'+
-                            '<div class="modal-body">'+
-                                '<div class="text-center pt-1 pb-1">'+
-                                    '<button type="button" id="deleteSubject-'+task.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
+                        '<div class="modal-body">'+
+                            '<form id="updateSubjectForm-'+subject.name+'">'+
+                                '<div class="input-group mb-3 w-75 mx-auto align-items-center">'+
+                                    '<input id="updateSubjectName-'+subject.name+'" value="'+subject.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+subject.name+'" aria-describedby="updateSubjectName'+subject.name+'" required>'+
+                                    '<span class="input-group-text" id="subjectName'+subject.name+'"><i class="bi bi-journal-bookmark"></i></span>'+
+                                    '<input id="updateSubjectTeacher-'+subject.name+'" value="'+subject.teacher+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+subject.teacher+'" aria-describedby="updateSubjectTeacher'+subject.teacher+'" required>'+
+                                    '<span class="input-group-text" id="subjectTeacher'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
                                 '</div>'+
+                                '<div class="text-center pt-1 pb-1">'+
+                                    '<button type="button" id="updateSubject-'+subject.name+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                '</div>'+
+                            '</form>'+
+                        '</div>'+
+                    '</div>'+
+                '</div>'+
+            '</div>'+
+
+
+            '<div class="modal fade" id="deleteSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
+                    '<div class="modal-content">'+
+                        '<div class="modal-header p-2">'+
+                            '<h5 class="modal-title mx-auto" id="deleteSubjectModalLabel">Delete Subject</h5>'+
+                            '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
+                        '</div>'+
+                        '<div class="modal-body">'+
+                            '<div class="text-center pt-1 pb-1">'+
+                                '<button type="button" id="deleteSubject-'+subject.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
                             '</div>'+
                         '</div>'+
                     '</div>'+
-                '</div>';
+                '</div>'+
+            '</div>';
         }
 
         tasksCanvas.addEventListener("click", function(event) {
@@ -560,59 +556,10 @@ function printTasks(tasks){
 
 //FIRESTORE <UPDATE>
 
-async function deleteSubject(button){
-    console.debug("deleteSubject()...");
-    try{
-        let idSubject = button.target.id.split("-")[1];
-        
-        try {
-            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", idSubject));
-            const querySnapshot = await getDocs(q);
-    
-            if (!querySnapshot.empty) {
-    
-                const documentSnapshot = querySnapshot.docs[0];
-                const documentRef = doc(db, "users/" + userEmail + "/subjects", documentSnapshot.id);
-    
-                await deleteDoc(documentRef);
-    
-                console.info("Subject has been deleted successfully");
-            } else {
-                console.error("No subject found matching the query");
-            }
-    
-        } catch (error) {
-            console.error("Error deleting subject: ", error);
-        }
-
-        try {
-            const backdrop = document.querySelector(".modal-backdrop");
-            //backdrop.classList.remove("show");
-            //backdrop.classList.add("close");
-            backdrop.remove();
-            
-        } catch (error) {
-            console.error("Error al cerrar el modal")
-        }
-       
-
-        await showSubjectsLayout();
-        
-    }catch(error){
-        console.error(error);
-    }
-    console.debug("deleteSubject()...Completed"); 
-}
-
-
-
-
-//FIRESTORE <DELETE>
-
 async function updateSubject(button) {
     console.debug("updateSubject()...");
     try {
-
+     
         let idSubject = button.target.id.split("-")[1];
         let newName = document.querySelector("#updateSubjectName-" + idSubject).value;
         let newTeacher = document.querySelector("#updateSubjectTeacher-" + idSubject).value;
@@ -642,22 +589,67 @@ async function updateSubject(button) {
 
         try {
             const backdrop = document.querySelector(".modal-backdrop");
-            //backdrop.classList.remove("show");
-            //backdrop.classList.add("close");
             backdrop.remove();
-            
+            document.body.classList.remove("modal-open");
+            document.body.style="";
         } catch (error) {
-            console.error("Error al cerrar el modal")
+           
         }
 
         await showSubjectsLayout();
-
+        
     } catch (error) {
         console.error(error);
     }
     console.debug("updateSubject()...Completed");
 }
+
+
+
+//FIRESTORE <DELETE>
+
+async function deleteSubject(button){
+    console.debug("deleteSubject()...");
+    try{
+        let idSubject = button.target.id.split("-")[1];
+        
+        try {
+            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", idSubject));
+            const querySnapshot = await getDocs(q);
     
+            if (!querySnapshot.empty) {
+    
+                const documentSnapshot = querySnapshot.docs[0];
+                const documentRef = doc(db, "users/" + userEmail + "/subjects", documentSnapshot.id);
+    
+                await deleteDoc(documentRef);
+    
+                console.info("Subject has been deleted successfully");
+            } else {
+                console.error("No subject found matching the query");
+            }
+    
+        } catch (error) {
+            console.error("Error deleting subject: ", error);
+        }
+
+        try {
+            const backdrop = document.querySelector(".modal-backdrop");
+            backdrop.remove();
+            document.body.classList.remove("modal-open");
+            document.body.style="";
+        } catch (error) {
+            
+        }
+       
+
+        await showSubjectsLayout();
+        
+    }catch(error){
+        console.error(error);
+    }
+    console.debug("deleteSubject()...Completed"); 
+}
 
 //------------------------------MAIN-----------------------------------//
 
