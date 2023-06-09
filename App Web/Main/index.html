@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agenda Virtual</title>
+  <title>AV</title>
   <!--PAGE PICTURE-->
   <link rel="shortcut icon" href="../img/titleColor.ico" type="image/x-icon">
 
@@ -34,7 +34,7 @@
   <script defer type="module" src="./main.js"></script>
 </head>
 
-<body>
+<body class="bg-light">
 
   <!--LOADING...-->
   <div class="loadding-page" id="loading-page">
@@ -57,21 +57,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#" id="appNav">Inicio</a>
+              <a class="nav-link" aria-current="page" href="#" id="appNav">Agenda Virtual</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Documentación</a>
+                aria-expanded="false">Docs</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-center" href="#" id="generalNav">General</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="webNav">Página Web</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="webNav">Web</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="apkNav">Aplicación Móvil</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="apkNav">Apk</a></li>
               </ul>
             </li>
           </ul>
@@ -145,7 +145,7 @@
                   <div class="input-group mb-3 w-75 mx-auto align-items-center">
                     <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
                       aria-describedby="subjectName" required>
-                    <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
+                    <span class="input-group-text" id="subjectNameSpan"><i class="bi bi-journal-bookmark"></i></span>
                     <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
                       aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
                     <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
@@ -204,7 +204,7 @@
                   <div class="input-group mb-3 w-75 mx-auto align-items-center col">
                     <input id="taskName" type="text" class="form-control " placeholder="Name" aria-label="taskName"
                       aria-describedby="taskName" required>
-                    <span class="input-group-text" id="taskName"><i class="bi bi-clipboard2"></i></span>
+                    <span class="input-group-text" id="taskNameSpan"><i class="bi bi-clipboard2"></i></span>
                   </div>
               
                   <div class="input-group mb-3 w-75 mx-auto align-items-center col">
@@ -224,12 +224,11 @@
                 </form>
   
               </div>
-            </div>
+            </div>  
           </div>
         </div>
     
       </div>
-    
     
     
     </div>

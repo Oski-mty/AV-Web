@@ -61,7 +61,7 @@ let goToSubjects = document.querySelector("#goToSubjects");
 //------------------------------EVENTs-----------------------------------//
 
 //SPA EVENTs (Single-Page-Aplication)
-appNav.addEventListener("click",showSubjectsLayout);
+appNav.addEventListener("click", showSubjectsLayout);
 generalNav.addEventListener("click",showGeneralNav);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
@@ -78,14 +78,14 @@ addTaskForm.addEventListener("submit",addTask)
 //THEME
 function changeTheme() {
 
-    var link = document.getElementById("theme-link");
-    var themeToggle = document.getElementById("theme");
-  
-    if (link.getAttribute("href") === "styles.css") {
-      link.setAttribute("href", "stylesDark.css");
-    } else {
-      link.setAttribute("href", "styles.css");
+    if(document.body.classList.contains("bg-light")){
+        document.body.classList.remove("bg-light");
+        document.body.classList.add("bg-dark");
+    }else{
+        document.body.classList.remove("bg-dark");
+        document.body.classList.add("bg-light");
     }
+
 }
 
 
@@ -127,16 +127,17 @@ function showContent(){
             contenido.classList.remove("d-none");
         },1000);
 }
-async function showSubjectsLayout(event){
+async function showSubjectsLayout(){
     tasksLayout.style.display = "none";
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
     showLoading();
-    await getSubjects(event);
+    await getSubjects();
     subjectsLayout.style.display = "block";
     app.style.display = "block";
     unShowLoadingSubjects();
+    currentSubjectId="";
 }
 async function showTasksLayout(subjectId){
     subjectsLayout.style.display = "none";
@@ -162,17 +163,6 @@ function showLoading(){
     loadingTasks.classList.remove("d-none")
     loadingTasks.classList.add("d-flex")
 }
-function unShowLoadingTasks(){
-
-    subjectsLayout.style.display = "none";
-    tasksLayout.style.display = "block";
-    app.style.display = "block";
-    generalDoc.style.display = "none";
-    apkDoc.style.display = "none";
-    webDoc.style.display = "none";
-    loadingTasks.classList.remove("d-flex")
-    loadingTasks.classList.add("d-none")  
-}
 function unShowLoadingSubjects(){
 
     subjectsLayout.style.display = "block";
@@ -184,6 +174,18 @@ function unShowLoadingSubjects(){
     loadingTasks.classList.remove("d-flex")
     loadingTasks.classList.add("d-none")  
 }
+function unShowLoadingTasks(){
+
+    subjectsLayout.style.display = "none";
+    tasksLayout.style.display = "block";
+    app.style.display = "block";
+    generalDoc.style.display = "none";
+    apkDoc.style.display = "none";
+    webDoc.style.display = "none";
+    loadingTasks.classList.remove("d-flex")
+    loadingTasks.classList.add("d-none")  
+}
+
 
 
 //LOGOUT
@@ -245,6 +247,8 @@ async function setCurrentSubjectId(event){
             const documentSnapshot = querySnapshot.docs[0];
 
             currentSubjectId = documentSnapshot.id;
+            
+           
 
         } else {
             console.error("No subject found matching the query");
@@ -254,6 +258,7 @@ async function setCurrentSubjectId(event){
         console.error(error);
     }
 
+    await showTasksLayout(currentSubjectId);
     console.debug("setCurrentSubjectId()...Completed");
 }
 
@@ -320,7 +325,7 @@ async function addTask(e){
         let deadline = addTaskForm["taskDeadline"].value;
 
 
-        await addDoc(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks"), { name: name, description: description, deadline: deadline }, { merge: true });
+        await addDoc(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks"), { name: name, description: description, deadline: deadline, completed: false, submited: false }, { merge: true });
         addTaskForm.reset();
         console.info("Task added successfully");
         await showTasksLayout(currentSubjectId);
@@ -352,7 +357,6 @@ async function getSubjects(){
             
         console.info("Subjects retrieved successfully");
         printSubjects(subjectsRetrieved);
-        unShowLoadingSubjects();
     } catch (error) {
         console.error("Error getting subjects: ",error);
     }
@@ -437,9 +441,10 @@ function printSubjects(subjects){
                 await updateSubject(event);
             }else if(event.target.id.split("-")[0] === "card"){
                 await setCurrentSubjectId(event);
-                await showTasksLayout(currentSubjectId);
             }
         });
+
+        console.info("Subjects printed successfully");
         
     }catch(error){
         console.error("Error printing subjects: ",error);
@@ -478,38 +483,80 @@ function printTasks(tasks){
 
         for (const task of tasks) {
 
+            let completedIsChecked;
+            let submitedIsChecked;
+
+            if(task.completed){
+                completedIsChecked = "checked";
+            }else{
+                completedIsChecked = "";
+            }
+            if(task.submited){
+                submitedIsChecked = "checked";
+            }else{
+                submitedIsChecked = "";
+            }
+
+
             tasksCanvas.innerHTML += 
-            '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
-                '<div id="card-'+subject.name+'" class="d-inline-flex justify-content-left">' +
-                    '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subject.name+'"><i class="bi bi-pencil"></i></button>' +
+            '<div id="card-'+task.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+                '<div class="d-inline-flex justify-content-left">' +
+                    '<button id="update-'+task.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateTaskModal-'+task.name+'"><i class="bi bi-pencil"></i></button>' +
                 '</div>' +
-                '<div id="card-'+subject.name+'" class="card-body my-4">' +
-                    '<h5 id="card-'+subject.name+'" class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
-                    '<p id="card-'+subject.name+'" class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
+                '<div  class="card-body my-4">' +
+                    '<h5  class="card-title"><i class="bi bi-clipboard"></i> ' + task.name + '</h5>' +
+                    '<p class="card-text"><i class="bi bi-calendar-event"></i> ' + task.deadline + '</p>' +
+                    '<div class="form-check form-switch px-5">'+
+                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskCompleted-'+task.name+'" disabled '+completedIsChecked+'>'+
+                        '<label class="form-check-label mx-0" for="cardTaskCompleted-'+task.name+'">Completed</label>'+
+                    '</div>'+
+                    '<div class="form-check form-switch px-5">'+
+                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskSubmited-'+task.name+'" disabled '+submitedIsChecked+'>'+
+                        '<label class="form-check-label mx-0" for="cardTaskSubmited-'+task.name+'">Submited</label>'+
+                    '</div>'+
                 '</div>' +
-                '<div id="card-'+subject.name+'" class="d-inline-flex flex-row-reverse">' +
-                    '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subject.name+'"><i class="bi bi-trash3"></i></button>' +
+                '<div class="d-inline-flex flex-row-reverse">' +
+                    '<button id="delete-'+task.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteTaskModal-'+task.name+'"><i class="bi bi-trash3"></i></button>' +
                 '</div>' +
             '</div>'+
 
-            '<div class="modal fade" id="updateSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
-                '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
-                    '<div class="modal-content">'+
-                        '<div class="modal-header p-2">'+
-                            '<h5 class="modal-title mx-auto" id="updateSubjectModalLabel">Update Subject</h5>'+
-                            '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
-                        '</div>'+
+            '<div class="modal fade" id="updateTaskModal-'+task.name+'" tabindex="-1" aria-labelledby="updateTaskModalLabel-'+task.name+'" aria-hidden="true">'+
+                '<div  class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
+                    '<div  class="modal-content">'+
+                                '<div class="modal-header p-2">'+
+                                    '<h5 class="modal-title mx-auto" id="addTaskModalLabel">Update  '+task.name+'</h5>'+
+                                    '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal" aria-label="Close"></button>'+
+                                '</div>'+
                         '<div class="modal-body">'+
-                            '<form id="updateSubjectForm-'+subject.name+'">'+
-                                '<div class="input-group mb-3 w-75 mx-auto align-items-center">'+
-                                    '<input id="updateSubjectName-'+subject.name+'" value="'+subject.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+subject.name+'" aria-describedby="updateSubjectName'+subject.name+'" required>'+
-                                    '<span class="input-group-text" id="subjectName'+subject.name+'"><i class="bi bi-journal-bookmark"></i></span>'+
-                                    '<input id="updateSubjectTeacher-'+subject.name+'" value="'+subject.teacher+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+subject.teacher+'" aria-describedby="updateSubjectTeacher'+subject.teacher+'" required>'+
-                                    '<span class="input-group-text" id="subjectTeacher'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
+                
+                            '<form id="updateTaskForm-'+task.name+'">'+
+                                '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
+                                    '<input id="updateTaskName-'+task.name+'" type="text" class="form-control " placeholder="Name" aria-label="taskName" aria-describedby="taskName" value="'+task.name+'" >'+
+                                    '<span class="input-group-text" id="taskName"><i class="bi bi-clipboard2"></i></span>'+
                                 '</div>'+
+                
+                                '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
+                                    '<textarea id="updateTaskDescription-'+task.name+'" type="text" class="form-control rounded" placeholder="Description" >'+task.description+'</textarea>'+
+                                '</div>'+
+                
+                                '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
+                                    '<input id="updateTaskDeadline-'+task.name+'" type="date" class="form-control" value="'+task.deadline+'" aria-label="taskDeadline" aria-describedby="taskDeadline" >'+
+                                '</div>'+
+                                
+                                '<div class="form-check form-switch  mb-3 w-75 mx-auto align-items-center text-light">'+
+                                    '<input class="form-check-input " type="checkbox" role="switch" id="updateTaskCompleted-'+task.name+'" '+completedIsChecked+'>'+
+                                    '<label class="form-check-label " for="updateTaskCompleted-'+task.name+'">Completed</label>'+
+                                '</div>'+
+
+                                '<div class="form-check form-switch  mb-3 w-75 mx-auto align-items-center text-light">'+
+                                    '<input class="form-check-input" type="checkbox" role="switch" id="updateTaskSubmited-'+task.name+'"  '+submitedIsChecked+'>'+
+                                    '<label class="form-check-label" for="updateTaskSubmited-'+task.name+'">Submited</label>'+
+                                '</div>'+
+
                                 '<div class="text-center pt-1 pb-1">'+
-                                    '<button type="button" id="updateSubject-'+subject.name+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                    '<button type="submit" id="updateTask-'+task.name+'" class="faded p-2 rounded-4">Update <i class="bi bi-wrench-adjustable-circle"></i></button>'+
                                 '</div>'+
+
                             '</form>'+
                         '</div>'+
                     '</div>'+
@@ -517,16 +564,16 @@ function printTasks(tasks){
             '</div>'+
 
 
-            '<div class="modal fade" id="deleteSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
+            '<div class="modal fade" id="deleteTaskModal-'+task.name+'" tabindex="-1" aria-labelledby="deleteTaskModalLabel-'+task.name+'" aria-hidden="true">'+
                 '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                     '<div class="modal-content">'+
                         '<div class="modal-header p-2">'+
-                            '<h5 class="modal-title mx-auto" id="deleteSubjectModalLabel">Delete Subject</h5>'+
+                            '<h5 class="modal-title mx-auto" id="deleteTaskModalLabel-'+task.name+'">Delete '+task.name+'</h5>'+
                             '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                         '</div>'+
                         '<div class="modal-body">'+
                             '<div class="text-center pt-1 pb-1">'+
-                                '<button type="button" id="deleteSubject-'+subject.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
+                                '<button type="button" id="deleteTask-'+task.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
                             '</div>'+
                         '</div>'+
                     '</div>'+
@@ -534,16 +581,16 @@ function printTasks(tasks){
             '</div>';
         }
 
-        tasksCanvas.addEventListener("click", function(event) {
+        tasksCanvas.addEventListener("click", async function(event) {
 
             if (event.target.id.split("-")[0] === "deleteTask") {
-                
+                await deleteTask(event);
             }else if(event.target.id.split("-")[0] === "updateTask"){
-                
-            }else if(event.target.id.split("-")[0] === "card"){
-                
+                await updateTask(event);
             }
         });
+        console.info("Tasks printed successfully");
+
                
     }catch(error){
         console.error("Error printing tasks: ",error);
@@ -604,6 +651,59 @@ async function updateSubject(button) {
     console.debug("updateSubject()...Completed");
 }
 
+async function updateTask(button) {
+    console.debug("updateTask()...");
+    try {
+     
+        let idTask = button.target.id.split("-")[1];
+        let newName = document.querySelector("#updateTaskName-" + idTask).value;
+        let newDescription = document.querySelector("#updateTaskDescription-" + idTask).value;
+        let newDeadline = document.querySelector("#updateTaskDeadline-" + idTask).value;
+        let newCompleted = document.querySelector("#updateTaskCompleted-" + idTask).checked;
+        let newSubmited = document.querySelector("#updateTaskSubmited-" + idTask).checked;
+
+        try {
+            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", idTask));
+            const querySnapshot = await getDocs(q);
+
+            if (!querySnapshot.empty) {
+
+                const documentSnapshot = querySnapshot.docs[0];
+                const documentRef = doc(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/", documentSnapshot.id);
+
+                await updateDoc(documentRef, {
+                    name: newName,
+                    description: newDescription,
+                    deadline:newDeadline,
+                    completed:newCompleted,
+                    submited:newSubmited,
+                });
+
+                console.info("Task has been updated successfully");
+            } else {
+                console.error("No task found matching the query");
+            }
+
+        } catch (error) {
+            console.error("Error updating task: ", error);
+        }
+
+        try {
+            const backdrop = document.querySelector(".modal-backdrop");
+            backdrop.remove();
+            document.body.classList.remove("modal-open");
+            document.body.style="";
+        } catch (error) {
+           
+        }
+
+        await showTasksLayout(currentSubjectId);
+        
+    } catch (error) {
+        console.error(error);
+    }
+    console.debug("updateTask()...Completed");
+}
 
 
 //FIRESTORE <DELETE>
@@ -649,6 +749,49 @@ async function deleteSubject(button){
         console.error(error);
     }
     console.debug("deleteSubject()...Completed"); 
+}
+
+async function deleteTask(button){
+    console.debug("deleteTask()...");
+    try{
+        let idTask = button.target.id.split("-")[1];
+        
+        try {
+            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", idTask));
+            const querySnapshot = await getDocs(q);
+    
+            if (!querySnapshot.empty) {
+    
+                const documentSnapshot = querySnapshot.docs[0];
+                const documentRef = doc(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/", documentSnapshot.id);
+    
+                await deleteDoc(documentRef);
+    
+                console.info("Task has been deleted successfully");
+            } else {
+                console.error("No task found matching the query");
+            }
+    
+        } catch (error) {
+            console.error("Error deleting task: ", error);
+        }
+
+        try {
+            const backdrop = document.querySelector(".modal-backdrop");
+            backdrop.remove();
+            document.body.classList.remove("modal-open");
+            document.body.style="";
+        } catch (error) {
+            
+        }
+       
+
+        await showTasksLayout(currentSubjectId);
+        
+    }catch(error){
+        console.error(error);
+    }
+    console.debug("deleteTask()...Completed"); 
 }
 
 //------------------------------MAIN-----------------------------------//
