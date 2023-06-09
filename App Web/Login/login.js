@@ -50,6 +50,8 @@ frmLogin.addEventListener('submit', async (e)=> {
             appendAlert(email +": correo NO válido.","danger");
         }else if(errorCode=="auth/wrong-password"){
             appendAlert("La contraseña es incorrecta.","danger");
+        }else if(errorCode=="auth/too-many-requests"){
+            appendAlert("Demasiados intentos. Intentalo más tarde","warning");
         }else{
             console.log(error);
         }
@@ -184,9 +186,3 @@ btnGoogle.addEventListener ('click', async (e)=> {
 });
 
 //------------------------------MAIN-----------------------------------//
-
-
-
-
-
-

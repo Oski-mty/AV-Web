@@ -5,6 +5,7 @@
             "provider": ["BASIC" , "GOOGLE"],
             "subjects": {
                 "subject": {
+                    "id": "ej:l7TRnzjQXKMrNF0VqRxu",
                     "name": "ej:Acceso a datos",
                     "teacher": "ej:Marta",
                     "tasks": {
@@ -14,7 +15,7 @@
                             "description": "ej:Lorem Ipsum",
                             "deadline": "ej:23 feb 2023",
                             "completed": "ej:true",
-                            "delivered": "ej:false"
+                            "submited": "ej:false"
                         }
                     }
                 }

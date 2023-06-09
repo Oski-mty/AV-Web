@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agenda Virtual</title>
+  <title>AV</title>
   <!--PAGE PICTURE-->
   <link rel="shortcut icon" href="../img/titleColor.ico" type="image/x-icon">
 
@@ -34,16 +34,21 @@
   <script defer type="module" src="./main.js"></script>
 </head>
 
-<body>
+<body class="bg-light">
+
   <!--LOADING...-->
   <div class="loadding-page" id="loading-page">
     <div class="cssload-box-loading"></div>
   </div>
+
   <!--CONTENIDO-->
   <section id="Contenido" class="d-none">
     
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> taskCrud
     <!--BARRA DE NAVEGACIÓN-->
     <nav class="navbar navbar-expand-lg my-3 mx-2 rounded shadow-lg">
       <div class="container-fluid">
@@ -56,21 +61,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#" id="appNav">Inicio</a>
+              <a class="nav-link" aria-current="page" href="#" id="appNav">Agenda Virtual</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Documentación</a>
+                aria-expanded="false">Docs</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-center" href="#" id="generalNav">General</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="webNav">Página Web</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="webNav">Web</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="apkNav">Aplicación Móvil</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="apkNav">Apk</a></li>
               </ul>
             </li>
           </ul>
@@ -112,14 +117,26 @@
 
     
     <!--APLICACIÓN-->
+<<<<<<< HEAD
     <div id="appDiv" class="mx-4" style="display:none;">
     
     
       <div id="subjectsLayout">
+=======
+    <div id="appDiv" class="mx-4" >
+    
+    
+      <div id="subjectsLayout" style="display: none;">
+>>>>>>> taskCrud
     
         <div class="row justify-content-center" id="subjectsCanvas">
     
         </div>
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> taskCrud
         <!--BTN SUBJECT MODAL-->
         <button id="openAddSubjectModal" type="button" class="faded" data-bs-toggle="modal"
           data-bs-target="#addSubjectModal">
@@ -133,7 +150,11 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
+<<<<<<< HEAD
                 <h5 class="modal-title mx-auto" id="addSubjectModalLabel">Añade una asignatura</h5>
+=======
+                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">ADD A SUBJECT</h5>
+>>>>>>> taskCrud
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -142,7 +163,11 @@
                   <div class="input-group mb-3 w-75 mx-auto align-items-center">
                     <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
                       aria-describedby="subjectName" required>
+<<<<<<< HEAD
                     <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
+=======
+                    <span class="input-group-text" id="subjectNameSpan"><i class="bi bi-journal-bookmark"></i></span>
+>>>>>>> taskCrud
                     <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
                       aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
                     <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
@@ -162,7 +187,11 @@
     
     
     
+<<<<<<< HEAD
       <div id="loadingTasks" style="display: none;">
+=======
+      <div id="loadingTasks" class="d-none justify-content-center align-items-center vh-100">
+>>>>>>> taskCrud
         <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -172,10 +201,21 @@
     
     
       <div id="tasksLayout" style="display: none;">
+<<<<<<< HEAD
     
         <div class="row justify-content-center" id="tasksCanvas">
     
         </div>
+=======
+
+        <button id="goToSubjects" class="btn btn-lg faded rounded-5"><i class="bi bi-arrow-left-circle"></i></button>
+        
+        <div class="row justify-content-center" id="tasksCanvas">
+    
+        </div>
+
+
+>>>>>>> taskCrud
         <!--BTN TASK MODAL-->
         <button id="openAddTaskModal" type="button" class="faded" data-bs-toggle="modal" data-bs-target="#addTaskModal">
           <h1 class="my-0">
@@ -187,11 +227,16 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
+<<<<<<< HEAD
                 <h5 class="modal-title mx-auto" id="addTaskModalLabel">Añade una asignatura</h5>
+=======
+                <h5 class="modal-title mx-auto" id="addTaskModalLabel">ADD A TASK</h5>
+>>>>>>> taskCrud
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
               <div class="modal-body">
+<<<<<<< HEAD
                 <form id="addTaskForm">
                   <!--<div class="input-group mb-3 w-75 mx-auto align-items-center">
                           <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
@@ -208,13 +253,44 @@
                 </form>
               </div>
             </div>
+=======
+              
+                <form id="addTaskForm">
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <input id="taskName" type="text" class="form-control " placeholder="Name" aria-label="taskName"
+                      aria-describedby="taskName" required>
+                    <span class="input-group-text" id="taskNameSpan"><i class="bi bi-clipboard2"></i></span>
+                  </div>
+              
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <textarea id="taskDescription" type="text" class="form-control rounded" placeholder="Description"
+                      required></textarea>
+                  </div>
+              
+                  <div class="input-group mb-3 w-75 mx-auto align-items-center col">
+                    <input id="taskDeadline" type="date" class="form-control " aria-label="taskDeadline"
+                      aria-describedby="taskDeadline" required>
+                  </div>
+              
+                  <div class="text-center pt-1 pb-1">
+                    <button type="submit" id="addTask" class="faded p-2 rounded-4">Add <i
+                        class="bi bi-database-fill-add"></i></button>
+                  </div>
+                </form>
+  
+              </div>
+            </div>  
+>>>>>>> taskCrud
           </div>
         </div>
     
       </div>
     
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> taskCrud
     </div>
     
     
@@ -563,7 +639,10 @@
         </div>
       </div>
     </div>
+
+
   </section>
+
 </body>
 
 </html>
