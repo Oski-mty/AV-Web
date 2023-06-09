@@ -36,22 +36,22 @@ frmLogin.addEventListener('submit', async (e)=> {
         await signInWithEmailAndPassword(auth, email, pw);
         if(auth.currentUser.emailVerified){
             frmLogin.reset();
-            window.location.href = "http://localhost:5500/App%20Web/Main/index.html";
+            window.location.href = "http://localhost:5500/Main/index.html";
         }else{
-            appendAlert("Estamos esperando a que verifiques tu email.","warning");
+            appendAlert("First verify your email address.","warning");
         }
     }catch(error){
         const errorCode = error.code;
         if(errorCode=="auth/user-disabled"){
-            appendAlert(email +": el usuario ha sido deshabilitado.","danger");
+            appendAlert(email +": the user has been disabled.","danger");
         }else if(errorCode=="auth/user-not-found"){
-            appendAlert(email +": el usuario no existe, registrate." ,"danger");
+            appendAlert(email +": the user does not exist, please register." ,"danger");
         }else if(errorCode=="auth/invalid-email"){
-            appendAlert(email +": correo NO válido.","danger");
+            appendAlert(email +": email not valid.","danger");
         }else if(errorCode=="auth/wrong-password"){
-            appendAlert("La contraseña es incorrecta.","danger");
+            appendAlert("The password is incorrect.","danger");
         }else if(errorCode=="auth/too-many-requests"){
-            appendAlert("Demasiados intentos. Intentalo más tarde","warning");
+            appendAlert("Too many attempts, try again later.","warning");
         }else{
             console.log(error);
         }
@@ -67,18 +67,18 @@ frmSignUp.addEventListener('submit', async (e)=> {
     try{
         await createUserWithEmailAndPassword(auth, email, pw);
         await sendEmailVerification(auth.currentUser)
-        appendAlertModal("Usuario creado. Verifica el email recibido.", "success");
+        appendAlertModal("User created. Verify the received email.", "success");
         frmSignUp.reset();
     }catch(error){
         const errorCode = error.code;
         if(errorCode=="auth/network-request-failed"){
-            appendAlertModal(email +" ya está en uso.", "danger");
+            appendAlertModal(email +" is already in use.", "danger");
         }else if(errorCode=="auth/email-already-in-use"){
-            appendAlertModal(email +" ya está en uso.", "danger");
+            appendAlertModal(email +" is already in use.", "danger");
         }else if(errorCode=="auth/invalid-email"){
-            appendAlertModal(email +": correo NO válido.", "danger");
+            appendAlertModal(email +": email not valid.", "danger");
         }else if(errorCode=="auth/weak-password"){
-            appendAlertModal("La contraseña debe tener al menos 6 caracteres.", "info");
+            appendAlertModal("The password must be at least 6 characters long.", "info");
         }else{
             console.log(error);
         }
@@ -89,10 +89,10 @@ frmSignUp.addEventListener('submit', async (e)=> {
 auth.onAuthStateChanged ( user =>{
 
     if(user){
-        console.log("Usuario activo");
+        console.log("Active user");
         if(user.emailVerified){
-            console.log("Usuario activo y verificado");
-            window.location.href = "http://localhost:5500/App%20Web/Main/index.html";
+            console.log("Active and verified user");
+            window.location.href = "http://localhost:5500/Main/index.html";
         }
     }else{
         console.log("Usuario Inactivo");
@@ -108,16 +108,16 @@ recoverPw.addEventListener ('click', async (e)=> {
     var isValidEmail = emailRegex.test(email);
 
     if(email==""){
-        appendAlert("Introduce el email." , "warning");
+        appendAlert("Please enter your email address." , "warning");
     }else if(isValidEmail){
         try{
             await sendPasswordResetEmail(auth ,email);
-            appendAlert("Te hemos enviado un correo para la recuperación de tu contraseña." , "success");
+            appendAlert("We have sent you an email to recover your password." , "success");
         }catch(error){
             console.log(error);
         }
     }else{
-        appendAlert("El email introducido no es válido." , "danger");
+        appendAlert("The email entered is invalid." , "danger");
     }
     
 });

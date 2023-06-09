@@ -11,12 +11,7 @@ import {
     updateDoc,
     deleteDoc ,
     query,
-<<<<<<< HEAD
-    where,
-    onSnapshot 
-=======
     where 
->>>>>>> taskCrud
 } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
@@ -54,31 +49,19 @@ let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
 
 let loadingDiv = document.querySelector("#loading-page");
-<<<<<<< HEAD
-let subjectsCanvas = document.querySelector("#subjectsCanvas");
-let tasksCanvas = document.querySelector("#tasksCanvas");
-let subjectsLayout= document.querySelector("#subjectsLayout");
-let tasksLayouts = document.querySelector("#tasksLayouts");
-let loadingTasks = document.querySelector("#loadingTasks");
-=======
 let loadingTasks = document.querySelector("#loadingTasks");
 
 //BUTTONs
 let goToSubjects = document.querySelector("#goToSubjects");
 
 
->>>>>>> taskCrud
 
 
 
 //------------------------------EVENTs-----------------------------------//
 
 //SPA EVENTs (Single-Page-Aplication)
-<<<<<<< HEAD
-appNav.addEventListener("click",showSubjects);
-=======
 appNav.addEventListener("click", showSubjectsLayout);
->>>>>>> taskCrud
 generalNav.addEventListener("click",showGeneralNav);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
@@ -90,21 +73,25 @@ goToSubjects.addEventListener("click",showSubjectsLayout);
 addSubjectForm.addEventListener("submit",addSubject)
 addTaskForm.addEventListener("submit",addTask)
 
-<<<<<<< HEAD
-
-=======
->>>>>>> taskCrud
 //------------------------------FUNCTIONs-----------------------------------//
 
 //THEME
 function changeTheme() {
 
     if(document.body.classList.contains("bg-light")){
+
         document.body.classList.remove("bg-light");
+        document.body.classList.remove("text-dark");
         document.body.classList.add("bg-dark");
+        document.body.classList.add("text-light");
+       
+
     }else{
         document.body.classList.remove("bg-dark");
+        document.body.classList.remove("text-light");
         document.body.classList.add("bg-light");
+        document.body.classList.add("text-dark");
+        
     }
 
 }
@@ -112,40 +99,6 @@ function changeTheme() {
 
 
 //SPA EVENTs FUNCTIONs
-<<<<<<< HEAD
-function showSubjects(){
-
-    generalDoc.style.display = "none";
-    apkDoc.style.display = "none";
-    webDoc.style.display = "none";
-    subjectsLayout.style.display = "block";
-    app.style.display = "block";
-    getSubjects();
-}
-
-function showLoadingTasks(){
-
-    generalDoc.style.display = "none";
-    apkDoc.style.display = "none";
-    webDoc.style.display = "none";
-    subjectsLayout.style.display = "none";
-    tasksLayouts.style.display = "block";
-    app.style.display = "block";
-
-}
-
-function unShowLoadingTasks(){
-
-    generalDoc.style.display = "none";
-    apkDoc.style.display = "none";
-    webDoc.style.display = "none";
-    tasksLayouts.style.display = "none";
-    subjectsLayout.style.display = "block";
-    app.style.display = "block";
-}
-
-=======
->>>>>>> taskCrud
 function showGeneralNav(){
 
     subjectsLayout.style.display = "none";
@@ -254,11 +207,6 @@ async function logOut(){
     }
     console.debug("logOut()...Completed");
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> taskCrud
 
 //AUTH ONCHANGE OBSERVER
 auth.onAuthStateChanged ( async user =>{
@@ -282,17 +230,15 @@ auth.onAuthStateChanged ( async user =>{
             }           
         }else{
             console.error("Unverified user");
-            window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
+            window.location.href = "http://localhost:5500/Login/login.html";
         }
     } else {
         console.error("Inactive user");
-        window.location.href = "http://localhost:5500/App%20Web/Login/login.html";
+        window.location.href = "http://localhost:5500/Login/login.html";
     }
 
 });
 
-<<<<<<< HEAD
-=======
 //SET CURRENT SUBJECT
 async function setCurrentSubjectId(event){
 
@@ -325,7 +271,6 @@ async function setCurrentSubjectId(event){
     console.debug("setCurrentSubjectId()...Completed");
 }
 
->>>>>>> taskCrud
 
 
 //FIRESTORE <CREATE>
@@ -460,7 +405,7 @@ function printSubjects(subjects){
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto" id="updateSubjectModalLabel">Update Subject</h5>'+
+                                '<h5 class="modal-title mx-auto text-dark" id="updateSubjectModalLabel">Update Subject</h5>'+
                                 '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                             '</div>'+
                             '<div class="modal-body">'+
@@ -485,7 +430,7 @@ function printSubjects(subjects){
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto" id="deleteSubjectModalLabel">Delete Subject</h5>'+
+                                '<h5 class="modal-title mx-auto text-dark" id="deleteSubjectModalLabel">Delete Subject</h5>'+
                                 '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                             '</div>'+
                             '<div class="modal-body">'+
@@ -588,7 +533,7 @@ function printTasks(tasks){
                 '<div  class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                     '<div  class="modal-content">'+
                                 '<div class="modal-header p-2">'+
-                                    '<h5 class="modal-title mx-auto" id="addTaskModalLabel">Update  '+task.name+'</h5>'+
+                                    '<h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">Update  '+task.name+'</h5>'+
                                     '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal" aria-label="Close"></button>'+
                                 '</div>'+
                         '<div class="modal-body">'+
@@ -632,7 +577,7 @@ function printTasks(tasks){
                 '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                     '<div class="modal-content">'+
                         '<div class="modal-header p-2">'+
-                            '<h5 class="modal-title mx-auto" id="deleteTaskModalLabel-'+task.name+'">Delete '+task.name+'</h5>'+
+                            '<h5 class="modal-title mx-auto text-dark" id="deleteTaskModalLabel-'+task.name+'">Delete '+task.name+'</h5>'+
                             '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                         '</div>'+
                         '<div class="modal-body">'+
@@ -860,8 +805,4 @@ async function deleteTask(button){
 
 //------------------------------MAIN-----------------------------------//
 
-<<<<<<< HEAD
 showContent();
-=======
-showContent();
->>>>>>> taskCrud

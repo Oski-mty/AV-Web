@@ -47,39 +47,38 @@
                                         <h4 class="mt-1 mb-5 pb-1">Agenda Virtual</h4>
                                     </div>
                                     <form id="frmLogin">
-                                        <p>Porfavor autentificate con tu cuenta</p>
+                                        <p>Please authenticate with your account</p>
                                         <div class="form-outline mb-4">
                                             <input type="email" id="inputEmail" class="form-control" placeholder="Email" required />
                                             <label class="form-label" for="inputEmail"><i class="bi bi-arrow-return-right"></i> Email</label>
                                         </div>
                                         <div class="form-outline mb-4">
                                             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required />
-                                            <label class="form-label" for="inputPassword"><i class="bi bi-arrow-return-right"></i>Contraseña</label>
+                                            <label class="form-label" for="inputPassword"><i class="bi bi-arrow-return-right"></i>Password</label>
                                         </div>
                                         <div class="text-center mb-5">
                                             <button type="submit" id="btnAcceder" class="faded">LogIn</button>
                                             <button type="button" id="btnGoogle" class="btnGoogle"><img src="../img/Google-Icon.png"alt="Google Icon" width="40px" height="40px"></button>
-                                            <a id="recuperarContrasenya" class="my-4 d-block" href="#">¿Olvidaste la contraseña?</a>
+                                            <a id="recuperarContrasenya" class="my-4 d-block" href="#">Forgot your password?</a>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <p class="mb-0 me-2">¿No tienes una cuenta?</p>
+                                            <p class="mb-0 me-2">Don't have an account?</p>
                                             <button type="button" class="faded" data-bs-toggle="modal" data-bs-target="#RegistrarseModal" id="btnModalRegistrarse">SignUp</button>     
                                         </div>
                                     </form>
                                 </div>
                             </div>
                             <div class="col-lg-6 d-flex align-items-center gradient-custom">
-                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                    <h3 class="mb-4">No somos una empresa</h3>
+                                <div class="text-white px-3 py-4 p-md-5 mx-md-4 text-center">
+                                    <h3 class="mb-4">We are not a company</h3>
                                     <p class="small mb-0">
-                                        Esta página ha sido creada por Óscar Sainz Cano, alumno del grado superior de
-                                        D.A.M
-                                        (Desarrollador de Aplicaciones Multiplataforma) del centro
-                                        <a target="_blank" href="http://www.ieshnosmachado.org/"
+                                        This page has been created by <a style="color: wheat;">Óscar Sainz Cano</a>, student of the superior grade of
+                                        D.A.M. (Multiplatform Applications Developer) of the center
+                                        <a class="text-decoration-none" target="_blank" href="http://www.ieshnosmachado.org/"
                                             style="color: wheat;">I.E.S Hermanos Machado</a>.
-                                        Sería de gran apoyo la difusión de esta página web y de la aplicación móvil.
+                                        The diffusion of this website and the mobile application would be of great support.
                                     </p>
-                                    <h1 class="text-center my-5">¡Gracias!</h1>
+                                    <h1 class="my-5">Thank you!</h1>
                                 </div>
                             </div>
                         </div>
@@ -93,14 +92,14 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
                 <div class="modal-header p-2">
-                    <h5 class="modal-title mx-auto" id="RegistrarseModalLabel">REGISTRO</h5>
+                    <h5 class="modal-title mx-auto" id="RegistrarseModalLabel">SignUp</h5>
                     <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">    
                     <form id="frmSignUp">
                         <div class="input-group mb-3 w-75 mx-auto">
                             <input id="inputEmailRegistrarse" type="email" class="form-control" placeholder="Cuenta de correo" aria-label="email account" aria-describedby="email-addon" required>
-                            <span class="input-group-text" id="email-addon">@ejemplo.com</span>
+                            <span class="input-group-text" id="email-addon">abc@example.com</span>
                         </div>
                         <div class="input-group mb-3 w-75 mx-auto">
                             <input id="inputPasswordRegistrarse" type="password" class="form-control" placeholder="Contraseña" aria-label="password of account" aria-describedby="password-addon" required>

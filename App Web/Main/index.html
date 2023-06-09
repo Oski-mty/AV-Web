@@ -43,12 +43,8 @@
 
   <!--CONTENIDO-->
   <section id="Contenido" class="d-none">
-    
-    
-<<<<<<< HEAD
-    
-=======
->>>>>>> taskCrud
+
+
     <!--BARRA DE NAVEGACIÓN-->
     <nav class="navbar navbar-expand-lg my-3 mx-2 rounded shadow-lg">
       <div class="container-fluid">
@@ -65,17 +61,17 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">Docs</a>
+                aria-expanded="false"><i class="bi bi-file-earmark-text"></i></a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item text-center" href="#" id="generalNav">General</a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="webNav">Web</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="webNav"><i class="bi bi-globe2"></i></a></li>
                 <li>
                   <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item text-center" href="#" id="apkNav">Apk</a></li>
+                <li><a class="dropdown-item text-center" href="#" id="apkNav"><i class="bi bi-android2"></i></a></li>
               </ul>
             </li>
           </ul>
@@ -98,45 +94,19 @@
         </div>
       </div>
     </nav>
-    
-    
-    
-    
-    
 
 
-
-
-
-
-
-
-
-
-
-
-    
     <!--APLICACIÓN-->
-<<<<<<< HEAD
-    <div id="appDiv" class="mx-4" style="display:none;">
-    
-    
-      <div id="subjectsLayout">
-=======
     <div id="appDiv" class="mx-4" >
     
     
       <div id="subjectsLayout" style="display: none;">
->>>>>>> taskCrud
     
         <div class="row justify-content-center" id="subjectsCanvas">
     
         </div>
-<<<<<<< HEAD
-=======
 
 
->>>>>>> taskCrud
         <!--BTN SUBJECT MODAL-->
         <button id="openAddSubjectModal" type="button" class="faded" data-bs-toggle="modal"
           data-bs-target="#addSubjectModal">
@@ -150,11 +120,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-<<<<<<< HEAD
-                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">Añade una asignatura</h5>
-=======
-                <h5 class="modal-title mx-auto" id="addSubjectModalLabel">ADD A SUBJECT</h5>
->>>>>>> taskCrud
+                <h5 class="modal-title mx-auto text-dark" id="addSubjectModalLabel">ADD A SUBJECT</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -163,11 +129,7 @@
                   <div class="input-group mb-3 w-75 mx-auto align-items-center">
                     <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
                       aria-describedby="subjectName" required>
-<<<<<<< HEAD
-                    <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
-=======
                     <span class="input-group-text" id="subjectNameSpan"><i class="bi bi-journal-bookmark"></i></span>
->>>>>>> taskCrud
                     <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
                       aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
                     <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
@@ -187,11 +149,7 @@
     
     
     
-<<<<<<< HEAD
-      <div id="loadingTasks" style="display: none;">
-=======
       <div id="loadingTasks" class="d-none justify-content-center align-items-center vh-100">
->>>>>>> taskCrud
         <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
@@ -201,12 +159,6 @@
     
     
       <div id="tasksLayout" style="display: none;">
-<<<<<<< HEAD
-    
-        <div class="row justify-content-center" id="tasksCanvas">
-    
-        </div>
-=======
 
         <button id="goToSubjects" class="btn btn-lg faded rounded-5"><i class="bi bi-arrow-left-circle"></i></button>
         
@@ -215,7 +167,6 @@
         </div>
 
 
->>>>>>> taskCrud
         <!--BTN TASK MODAL-->
         <button id="openAddTaskModal" type="button" class="faded" data-bs-toggle="modal" data-bs-target="#addTaskModal">
           <h1 class="my-0">
@@ -227,33 +178,11 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-<<<<<<< HEAD
-                <h5 class="modal-title mx-auto" id="addTaskModalLabel">Añade una asignatura</h5>
-=======
-                <h5 class="modal-title mx-auto" id="addTaskModalLabel">ADD A TASK</h5>
->>>>>>> taskCrud
+                <h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">ADD A TASK</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
               <div class="modal-body">
-<<<<<<< HEAD
-                <form id="addTaskForm">
-                  <!--<div class="input-group mb-3 w-75 mx-auto align-items-center">
-                          <input id="subjectName" type="text" class="form-control" placeholder="Name" aria-label="subjectName"
-                            aria-describedby="subjectName" required>
-                          <span class="input-group-text" id="subjectName"><i class="bi bi-journal-bookmark"></i></span>
-                          <input id="subjectTeacher" type="text" class="form-control" placeholder="Teacher name"
-                            aria-label="subjectTeacher" aria-describedby="subjectTeacher" required>
-                          <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
-                        </div>
-                        <div class="text-center pt-1 pb-1">
-                          <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i
-                              class="bi bi-database-fill-add"></i></button>
-                        </div>-->
-                </form>
-              </div>
-            </div>
-=======
               
                 <form id="addTaskForm">
                   <div class="input-group mb-3 w-75 mx-auto align-items-center col">
@@ -280,57 +209,33 @@
   
               </div>
             </div>  
->>>>>>> taskCrud
           </div>
         </div>
     
       </div>
     
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> taskCrud
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
     <!--DOCUMENTACIÓN-->
     <div id="documentation" class="mx-4">
+
       <div id="generalDiv" style="display:none;">
-        <h1 class="text-center title shadow">GENERAL</h1>
+        <h1 class="text-center title  shadow">GENERAL</h1>
         <div class="accordion my-4" id="accordionGeneral">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseOneGeneral" aria-expanded="false" aria-controls="collapseOneGeneral">
-                Descripción
+                Description
               </button>
             </h2>
             <div id="collapseOneGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
               <div class="accordion-body">
-                El nombre del proyecto es <b>Agenda Virtual</b> y como su nombre indica se trata del conjunto
-                de una aplicación móvil y una aplicación web que te ayudarán a gestionar y organizar tus
-                asignaturas y tareas.<br>
-                Al usar una base de datos en la nube las tareas y asignaturas de cada usuario están
-                sincronizadas en las dos aplicaciones.
+                The name of the project is <b>Agenda Virtual</b> and as its name suggests, it is a set of
+                of a mobile application and a web application that will help you manage and organize your subjects and homework.
+                By using a cloud database, each user's tasks and assignments are synchronized between the two applications.
               </div>
             </div>
           </div>
@@ -338,38 +243,67 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwoGeneral" aria-expanded="false" aria-controls="collapseTwoGeneral">
-                Modelo de datos
+                Data model
               </button>
             </h2>
             <div id="collapseTwoGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
               <div class="accordion-body row">
-                <p class="col-lg  ml-5 mt-5 pt-5">
-                  La base de datos nos la proporciona 
-                  <a href="https://firebase.google.com"target="_blank">Firebase</a>,
-                  plataforma en la nube que nos proporciona una serie de herramientas<br>
-                  las cuales facilitan el desarrollo de aplicaciones. En concreto la herramienta que nos permite alojar
-                  y gestionar<br>
-                  la base de datos en la nube se llama Firestore. Se trata de una base de datos documental , un tipo de
-                  las
-                  <a href="https://www.acens.com/wp-content/images/2014/02/bbdd-nosql-wp-acens.pdf"
-                    target="_blank">noSQL</a>,<br>
-                  a diferencia de las bases de datos relacionales una entidad o tabla equivale a una colección,<br>
-                  cada registro o fila de la tabla equivale a un documento y los atributos o columnas de la tabla son
-                  sustituidos por propiedades.<br>
-                  La estructura es formato JSON lo que permite manejar grandes cantidades de datos con mayor ligereza
-                  que las SQL.<br>
+                <p class="col-lg-4 mx-auto my-auto">
+                  The database is provided by
+                  <a class="text-decoration-none" href="https://firebase.google.com"target="_blank"> Firebase</a>,
+                  cloud platform that provides us with a variety of tools and services
+                  which facilitate the development of applications. In particular, the tool that allows us to host
+                  and manage the database is called Firestore.
+                  This is a documentary database, a type of the
+                  <a class="text-decoration-none" href="https://www.acens.com/wp-content/images/2014/02/bbdd-nosql-wp-acens.pdf" target="_blank">noSQL</a>,
+                  Unlike relational databases, an entity or table is equivalent to a collection,
+                  each record or row of the table is equivalent to a document and the attributes or columns of the table are replaced by properties.
+                  The structure is in JSON format, which makes it possible to handle large amounts of data more lightly than SQL.
                 </p>
-                <img src="../img/Doc/MDD.png" class="col-lg-4 mt-3"/>
+                <img src="../img/Doc/MDD.png"  class="col-lg-6 mx-auto responsive-image"/>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThreeGeneral" aria-expanded="false" aria-controls="collapseThreeGeneral">
+                Project organization
+              </button>
+            </h2>
+            <div id="collapseThreeGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body row">
+                <p class="col-lg-4 mx-auto my-auto">
+                  The organization has been done with
+                  <a class="text-decoration-none" href="https://trello.com/"target="_blank"> Trello</a>, 
+                  a multiplatform application where you can organize any type of activity in a very visual way with a Canvas board
+                  which allows you to drag labels, change their color, add a description and much more.
+                </p>
+                <img src="../img/Doc/trello.png"  class="col-lg-6 mx-auto responsive-image"/>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+
+
+
+
+
       <div id="webDiv" style="display:none;">
-        <h1 class="text-center title shadow">PÁGINA WEB</h1>
+        <h1 class="text-center title shadow">WEB PAGE</h1>
       </div>
+
+
+
+
+
+
+
       <div id="apkDiv" style="display:none;">
-        <h1 class="text-center title shadow">APLICACIÓN MÓVIL</h1>
+        <h1 class="text-center title shadow">MOBILE APPLICATION</h1>
         <div class="accordion my-4" id="accordionAPK">
           <div class="accordion-item">
             <h2 class="accordion-header">
@@ -380,7 +314,7 @@
             </h2>
             <div id="collapseOneAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
-                Aplicación Android para gestionar y organizar tus asignaturas y tareas desde tu teléfono móvil.
+                Android application to manage and organize your subjects and homework from your cell phone.
               </div>
             </div>
           </div>
@@ -388,16 +322,16 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwoAPK" aria-expanded="false" aria-controls="collapseTwoAPK">
-                Requisitos técnicos
+                Technical requirements
               </button>
             </h2>
             <div id="collapseTwoAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
-                -Registrarse y loguearse en la aplicación. <br>
-                -Desloguearse de la aplicación. <br>
-                -Crear, Visualizar, Actualizar y Eliminar tareas de la base de datos. <br>
-                -Crear, Visualizar y Eliminar asignaturas de la base de datos. <br>
-                -Cambiar de tema (claro/oscuro).
+                <dd>-Register and login in the application.</dd>
+                <dd>-Logout of the application.</dd>
+                <dd>-Create, Read, Update and Delete database tasks.</dd>
+                <dd>-Create, Read and Delete subjects from the database.</dd>
+                <dd>-Change theme (light/dark).</dd>
               </div>
             </div>
           </div>
@@ -405,24 +339,28 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThreeAPK" aria-expanded="false" aria-controls="collapseThreeAPK">
-                Tecnologías Backend
+                Backend Technologies
               </button>
             </h2>
             <div id="collapseThreeAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
                 <dl>
-                  <dt>Lenguaje de programación: Kotlin.</dt>
-                  <dd><dt> &nbsp;&nbsp;&nbsp;&nbsp;Dependencias de kotlin utilizadas:</dt></dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Corrutinas (procesos asíncronos).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ViewModel (intermediario entre UI y lógica de la aplicación).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LiveData (clase de contenedor de datos observables).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fragment (Pantallas de la UI).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Navigation (Navegación entre fragmentos).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;<sub><u>Firebase:</u></sub></dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Analytics (Análisis de las acciones de los usuarios en la app).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Auth (Registro y login del usuario con correo y contraseña).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Auth-Google (Registro y login del usuario con Google).</dd>
-                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FireStore (Acceso a la base de datos).</dd>
+                  <dt>Programming language: Kotlin.</dt>
+                  <br>
+                  <dd><dt> &nbsp;&nbsp;&nbsp;&nbsp;Kotlin dependencies used:</dt></dd>
+                  <br>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Corrutines (asynchronous processes).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-ViewModel (intermediary between UI and application logic).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-LiveData (observable data container class).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Fragment (UI screens).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Navigation (Navigation between fragments).</dd>
+                  <br>
+                  <dt>&nbsp;&nbsp;&nbsp;&nbsp;<sub><u>Firebase:</u></sub></dt>
+                  <br>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Analytics (Analysis of user actions in the app).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Auth (User registration and login with email and password).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Auth-Google (User registration and login with Google).</dd>
+                  <dd> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FireStore (Database access).</dd>
                 </dl>
               </div>
             </div>
@@ -431,29 +369,31 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseFourAPK" aria-expanded="false" aria-controls="collapseFourAPK">
-                Tecnologías y componentes Frontend
+                Frontend technologies and components
               </button>
             </h2>
             <div id="collapseFourAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
                 <dl>
                   <dt>Android xml.</dt>
-                  <dt>&nbsp;&nbsp;&nbsp;&nbsp;Vistas utilizadas:</dt>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Contenedor de fragmentos. </dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para contener las diferentes pantallas de la app.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Botones.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Vistas de texto plano.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Vistas de texto editable (inputs).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-RecyclerView (deslizar hacia abajo hasta que no queden elementos que mostrar).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para mostrar la lista de asignaturas y tareas. </dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cards o tarjetas (contiene otras vistas, da la sensación de que flota).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para mostrar cada elemento de la lista de asignaturas y tareas. </dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Datepicker (calendario para seleccionar una fecha).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para seleccionar la fecha de entrega de la tarea.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FloatingActionButton (botón flotante).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para insertar y modificar asignaturas y tareas.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Switch (interruptor). </dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilizado para marcar si la tarea está completa o no. </dd>
+                  <br>
+                  <dt>&nbsp;&nbsp;&nbsp;&nbsp;Views used:</dt>
+                  <br>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Fragment container.</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to contain the different screens of the app.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Buttons.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Plain text views.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Editable text views (inputs).</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-RecyclerView (scroll down until there are no items left to display).</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to display the list of subjects and tasks.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cards (contains other views, gives the sensation of floating).</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to display each item in the list of subjects and tasks.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Datepicker (calendar to select a date).</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to select the submit date of the task.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FloatingActionButton (floating button).</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to add and modify subjects and tasks.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Switch (interruptor).</dd>
+                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to mark if the task is completed or not.</dd>
                 </dl>
               </div>
             </div>
@@ -462,7 +402,7 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseFiveAPK" aria-expanded="false" aria-controls="collapseFiveAPK">
-                Interfaz de usuario (UI)
+                User Interface (UI)
               </button>
             </h2>
             <div id="collapseFiveAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
@@ -490,55 +430,55 @@
                         alt="Primera pantalla, login.">
                       <div class="carousel-caption d-none d-md-block">
                         <h5 class="numPantalla">Login</h5>
-                        <p class="numPantalla">1º pantalla.</p>
+                        <p class="numPantalla">1º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image2.png" class="d-block mx-auto" height="500em"
                         alt="Segunda pantalla, Lista de asignaturas.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Lista de asignaturas</h5>
-                        <p class="numPantalla">2º pantalla.</p>
+                        <h5 class="numPantalla">List of subjects</h5>
+                        <p class="numPantalla">2º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image3.png" class="d-block mx-auto" height="500em"
                         alt="Tercera pantalla, Añadir asignatura.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Añadir asignatura</h5>
-                        <p class="numPantalla">3º pantalla.</p>
+                        <h5 class="numPantalla">Add subject</h5>
+                        <p class="numPantalla">3º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image4.png" class="d-block mx-auto" height="500em"
                         alt="Cuarta pantalla, Lista de tareas.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Lista de tareas</h5>
-                        <p class="numPantalla">4º pantalla.</p>
+                        <h5 class="numPantalla">List of tasks</h5>
+                        <p class="numPantalla">4º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image5.png" class="d-block mx-auto" height="500em"
                         alt="Quinta pantalla, Añadir tarea.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Lista de tareas</h5>
-                        <p class="numPantalla">5º pantalla.</p>
+                        <h5 class="numPantalla">Add task</h5>
+                        <p class="numPantalla">5º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image6.png" class="d-block mx-auto" height="500em"
                         alt="Sexta pantalla, Detalle de la tarea.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Lista de tareas</h5>
-                        <p class="numPantalla">6º pantalla.</p>
+                        <h5 class="numPantalla">Detail of task</h5>
+                        <p class="numPantalla">6º display.</p>
                       </div>
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
                       <img src="../img/Doc/carrousel_UI/image7.png" class="d-block mx-auto" height="500em"
                         alt="Séptima pantalla, Modificar de la tarea.">
                       <div class="carousel-caption d-none d-md-block">
-                        <h5 class="numPantalla">Lista de tareas</h5>
-                        <p class="numPantalla">7º pantalla.</p>
+                        <h5 class="numPantalla">Modify task</h5>
+                        <p class="numPantalla">7º display.</p>
                       </div>
                     </div>
                   </div>
@@ -560,13 +500,12 @@
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseSixAPK" aria-expanded="false" aria-controls="collapseSixAPK">
-                Generar APK con firma digital
+                Generate APK with digital signature
               </button>
             </h2>
             <div id="collapseSixAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
-                <div class="text-center">Requisitos: <a target="_blank" href="https://www.java.com/es/download/">Tener
-                    descargado e instalado Java</a></div>
+                <div class="text-center">Requirements: <a class="text-decoration-none" target="_blank" href="https://www.java.com/es/download/">Have Java downloaded and installed</a></div>
                 <div id="carouselApkDocApk" class="carousel slide my-3">
                   <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselApkDocApk" data-bs-slide-to="0" class="active"
@@ -586,33 +525,30 @@
                   </div>
                   <div class="carousel-inner align-self-stretch">
                     <div class="carousel-item carousel-item-apkDoc active">
-                      <img src="../img/Doc/carrousel_APK/image1.png" class="d-block mx-auto" height="500em">
+                      <img src="../img/Doc/carrousel_APK/image1-LG.png" class="d-block mx-auto responsive-image">
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image2.png" class="d-block mx-auto" height="500em">
+                      <img src="../img/Doc/carrousel_APK/image2-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image3.png" class="d-block mx-auto" height="500em">
+                      <img src="../img/Doc/carrousel_APK/image3-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image4.png" class="d-block mx-auto" height="500em">
+                      <img src="../img/Doc/carrousel_APK/image4-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image5.png" class="d-block mx-auto" height="500em">
+                      <img src="../img/Doc/carrousel_APK/image5-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc text-center">
-                      En mi caso tuve que <a target="_blank"
-                        href="https://mscdroidlabs.es/como-obtener-la-huella-digital-sha1-de-tu-app/">extraer la huella
-                        digital</a> (SHA-1) de la apk de producción generada e introducirla en la configuración general
-                      del proyecto en Firebase.
+                      In my case I had to <a class="text-decoration-none" target="_blank" href="https://mscdroidlabs.es/como-obtener-la-huella-digital-sha1-de-tu-app/">extract the fingerprint</a> 
+                      (SHA-1) of the generated production apk and insert it in the general configuration of the firebase project.
                       <br><code>cd C:\Program Files\Java\&lt;jdk_versión&gt;\bin</code>
-                      <br><code>-list -v -keystore &lt;nombre_keystore&gt; -alias &lt;nombre_alias&gt;</code>
-                      <img src="../img/Doc/carrousel_APK/image6.png" class="d-block mx-auto" height="500em">
+                      <br><code>-list -v -keystore &lt;keystore_name&gt; -alias &lt;alias_name&gt;</code>
+                      <img src="../img/Doc/carrousel_APK/image6-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc text-center">
-                      Si no hago esto no funcionaría el login con Google, esto se debe a que Firebase es mi proveedor de
-                      autenticación con Google.
-                      <img src="../img/Doc/carrousel_APK/image7.png" class="d-block mx-auto" height="500em">
+                      If I don't do this the login with Google will not work, this is because Firebase is my Google authentication provider.
+                      <img src="../img/Doc/carrousel_APK/image7-LG.png" class="d-block mx-auto responsive-image" >
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselApkDocApk"
@@ -626,16 +562,17 @@
                     <span class="visually-hidden">Next</span>
                   </button>
                 </div>
-                <div class="text-center">Explicación detallada: <a target="_blank"
+                <div class="text-center ">Detailed explanation: <a target="_blank" class="text-decoration-none"
                     href="https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key">https://developer.android.com/studio/publish/app-signing?hl=es-419#generate-key</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center">
-            <a href="../res/AV.apk" download="Agenda Virtual"><button id="descargarAPK" type="button"
-                class="btn faded my-5">Descargar APK</button></a>
+            <a href="../res/AV.apk" download="Agenda Virtual"><button id="descargarAPK" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-android"></i></button></a>
+            <a href="https://github.com/MTY-git/AgendaVirtual.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
           </div>
+
         </div>
       </div>
     </div>
