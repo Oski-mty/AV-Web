@@ -84,6 +84,20 @@ function changeTheme() {
         document.body.classList.remove("text-dark");
         document.body.classList.add("bg-dark");
         document.body.classList.add("text-light");
+        let accordionButtons = document.querySelectorAll(".accordion-button");
+        accordionButtons.forEach(element => {
+            element.classList.remove("bg-light");
+            element.classList.add("bg-secondary");
+        });
+        let links = document.querySelectorAll(".text-decoration-none");
+        links.forEach(a => {
+            a.classList.add("text-info");
+        });
+        let dropdownMenus = document.querySelectorAll(".dropdown-menu");
+        dropdownMenus.forEach(menu => {
+          
+            menu.classList.add("bg-secondary");
+        });
        
 
     }else{
@@ -91,6 +105,21 @@ function changeTheme() {
         document.body.classList.remove("text-light");
         document.body.classList.add("bg-light");
         document.body.classList.add("text-dark");
+        let accordionButtons = document.querySelectorAll(".accordion-button");
+        accordionButtons.forEach(element => {
+            element.classList.remove("bg-secondary");
+            element.classList.add("bg-light");
+        });
+        let links = document.querySelectorAll(".text-decoration-none");
+        links.forEach(a => {
+            a.classList.remove("text-info");
+        });
+        let dropdownMenus = document.querySelectorAll(".dropdown-menu");
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove("bg-secondary");
+          
+        });
+        
         
     }
 
@@ -134,7 +163,7 @@ function showContent(){
         ()=>{
             loadingDiv.classList.add("d-none");
             contenido.classList.remove("d-none");
-        },1000);
+        },500);
 }
 async function showSubjectsLayout(){
     tasksLayout.style.display = "none";
@@ -230,11 +259,11 @@ auth.onAuthStateChanged ( async user =>{
             }           
         }else{
             console.error("Unverified user");
-            window.location.href = "http://localhost:5500/Login/login.html";
+            window.location.href = "../Login/login.html";
         }
     } else {
         console.error("Inactive user");
-        window.location.href = "http://localhost:5500/Login/login.html";
+        window.location.href = "../Login/login.html";
     }
 
 });
@@ -405,7 +434,7 @@ function printSubjects(subjects){
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto text-dark" id="updateSubjectModalLabel">Update Subject</h5>'+
+                                '<h5 class="modal-title mx-auto text-dark" id="updateSubjectModalLabel">Update '+subjectName+'</h5>'+
                                 '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                             '</div>'+
                             '<div class="modal-body">'+
@@ -430,7 +459,7 @@ function printSubjects(subjects){
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
-                                '<h5 class="modal-title mx-auto text-dark" id="deleteSubjectModalLabel">Delete Subject</h5>'+
+                                '<h5 class="modal-title mx-auto text-dark" id="deleteSubjectModalLabel">Delete '+subjectName+'</h5>'+
                                 '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                             '</div>'+
                             '<div class="modal-body">'+
@@ -563,7 +592,7 @@ function printTasks(tasks){
                                 '</div>'+
 
                                 '<div class="text-center pt-1 pb-1">'+
-                                    '<button type="submit" id="updateTask-'+task.name+'" class="faded p-2 rounded-4">Update <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                    '<button type="submit" id="updateTask-'+task.name+'" class="faded p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
                                 '</div>'+
 
                             '</form>'+

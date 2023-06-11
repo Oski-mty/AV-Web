@@ -36,7 +36,7 @@ frmLogin.addEventListener('submit', async (e)=> {
         await signInWithEmailAndPassword(auth, email, pw);
         if(auth.currentUser.emailVerified){
             frmLogin.reset();
-            window.location.href = "http://localhost:5500/Main/index.html";
+            window.location.href = "../Main/index.html";
         }else{
             appendAlert("First verify your email address.","warning");
         }
@@ -92,7 +92,7 @@ auth.onAuthStateChanged ( user =>{
         console.log("Active user");
         if(user.emailVerified){
             console.log("Active and verified user");
-            window.location.href = "http://localhost:5500/Main/index.html";
+            window.location.href = "../Main/index.html";
         }
     }else{
         console.log("Usuario Inactivo");

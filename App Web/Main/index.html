@@ -120,7 +120,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-                <h5 class="modal-title mx-auto text-dark" id="addSubjectModalLabel">ADD A SUBJECT</h5>
+                <h5 class="modal-title mx-auto text-dark" id="addSubjectModalLabel">Add a Subject</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -135,7 +135,7 @@
                     <span class="input-group-text" id="subjectTeacher"><i class="bi bi-person-add"></i></span>
                   </div>
                   <div class="text-center pt-1 pb-1">
-                    <button type="submit" id="addSubject" class="faded p-2 rounded-4">Add <i
+                    <button type="submit" id="addSubject" class="faded p-2 rounded-4">ADD <i
                         class="bi bi-database-fill-add"></i></button>
                   </div>
                 </form>
@@ -178,7 +178,7 @@
           <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">
             <div class="modal-content">
               <div class="modal-header p-2">
-                <h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">ADD A TASK</h5>
+                <h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">Add a Task</h5>
                 <button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal"
                   aria-label="Close"></button>
               </div>
@@ -202,7 +202,7 @@
                   </div>
               
                   <div class="text-center pt-1 pb-1">
-                    <button type="submit" id="addTask" class="faded p-2 rounded-4">Add <i
+                    <button type="submit" id="addTask" class="faded p-2 rounded-4">ADD <i
                         class="bi bi-database-fill-add"></i></button>
                   </div>
                 </form>
@@ -221,9 +221,13 @@
     <!--DOCUMENTACIÓN-->
     <div id="documentation" class="mx-4">
 
+
       <div id="generalDiv" style="display:none;">
+
         <h1 class="text-center title  shadow">GENERAL</h1>
+
         <div class="accordion my-4" id="accordionGeneral">
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -239,6 +243,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -264,6 +269,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -283,7 +289,57 @@
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFourGeneral" aria-expanded="false" aria-controls="collapseFourGeneral">
+                Problems along the way
+              </button>
+            </h2>
+            <div id="collapseFourGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body row">
+
+                <h5>During development, I encountered two main challenges:</h5>
+                <p class="col-lg-4 mx-auto mt-4">
+                  First, I faced difficulties with CSS selectors, as they affected unwanted elements, generating chaos in the styling of my page. To solve this problem, I decided to replace the selectors with classes, which allowed me to have more control over the styles and avoid unwanted conflicts.
+                </p>
+                <p class="col-lg-8 mx-auto mt-4">
+                  The second challenge was related to the management of subject identifiers (IDs). Initially, I used the name of the subjects as the ID, but this had a drawback. The IDs are immutable, which means that they cannot be modified. Therefore, if a user changed the name of a subject, the associated ID would remain the previous name. This created problems when trying to add another subject with the modified name, since there was a conflict with the previous ID. To overcome this difficulty, I implemented the generation of auto-generated codes as subject IDs. This ensured that each subject had a unique ID and avoided duplication problems when changing names.
+                </p>
+                <p class="mt-4">These challenges gave me the opportunity to improve my approach and learn new strategies for solving technical problems. As I continue to develop, I am committed to finding efficient solutions and maintaining the integrity of my code and data.</p>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFiveGeneral" aria-expanded="false" aria-controls="collapseFiveGeneral">
+                Improvement proposals
+              </button>
+            </h2>
+            <div id="collapseFiveGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
+              <div class="accordion-body row">
+
+                <h5 class="mb-4">During development, I realized a couple of improvements that I could not implement due to lack of time:</h5>
+                <p class="col-lg-5 my-0">
+                  -Adding website extras to the mobile application.<br>
+                  -Task reminder notifications.<br>
+                  -The user can choose the colors of the cards.
+                  
+                </p>
+                <p class="col-lg-4 my-0">
+                  -You can drag the task cards to sort them.<br>
+                  -Your account can be deleted.
+                </p>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
 
 
@@ -293,7 +349,192 @@
 
 
       <div id="webDiv" style="display:none;">
-        <h1 class="text-center title shadow">WEB PAGE</h1>
+
+        <h1 class="text-center   title shadow">WEB PAGE</h1>
+
+        <div class="accordion my-4" id="accordionWEB">
+          
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseOneWEB" aria-expanded="false" aria-controls="collapseOneWEB">
+                Description
+              </button>
+            </h2>
+            <div id="collapseOneWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                Web application to manage and organize your subjects and homework from any device.
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseTwoWEB" aria-expanded="false" aria-controls="collapseTwoWEB">
+                Obligatory functionalities
+              </button>
+            </h2>
+            <div id="collapseTwoWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                <dt class="mb-2">Same as the mobile app</dt>
+                <dd>-Register and login in the application.</dd>
+                <dd>-Logout of the application.</dd>
+                <dd>-Create, Read, Update and Delete database tasks.</dd>
+                <dd>-Create, Read and Delete subjects from the database.</dd>
+                <dd>-Change theme (light/dark).</dd>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseThreeWEB" aria-expanded="false" aria-controls="collapseThreeWEB">
+                Extra functionalities
+              </button>
+            </h2>
+            <div id="collapseThreeWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                <dd class="mb-2">-Verify email address.</dd>
+                <dd>-Reset password.</dd>
+                <dd>-Update subjects.</dd>
+                <dd>-Attribute submitted in assignments.</dd>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFourWEB" aria-expanded="false" aria-controls="collapseFourWEB">
+                Backend Technologies
+              </button>
+            </h2>
+            <div id="collapseFourWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                <dl class="row">
+                  <dt>Programming language: Javascript.</dt>
+                  <br>  
+                  <dd><dt>Firebase libraries used:</dt></dd>
+                  <br>
+                  <div class="col my-3">
+                    <dd>Login:</dd>
+                    <dd>-Firebase Authentication.</dd>
+                    <dd>-Functions: createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup.</dd>
+                  </div>
+                  
+                  <div class="col my-3">
+                    <dd>Main:</dd>
+                    <dd>-Firebase Firestore.</dd>
+                    <dd>-Functions: collection, doc, addDoc, setDoc, getDocs, updateDoc, deleteDoc , query, where.</dd>
+                  </div>
+                 
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseFiveWEB" aria-expanded="false" aria-controls="collapseFiveWEB">
+                Frontend technologies and components
+              </button>
+            </h2>
+            <div id="collapseFiveWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                <dl>
+                  <dt>-HTML <i class="bi bi-file-earmark-code"></i></dt>
+                  <dt>-CSS <i class="bi bi-filetype-css"></i></dt>
+                  <dt>-BOOTSTRAP <i class="bi bi-bootstrap"></i></dt>
+                  <dd>Components: Card, Accordion, Navbar, Modals, Alerts, Spinner, Icons, Carousel, Buttons, Collapse, Dropdown</dd>
+                  <dt>-JS <i class="bi bi-filetype-js"></i></dt>
+                </dl>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapseSixWEB" aria-expanded="false" aria-controls="collapseSixWEB">
+                Hosting
+              </button>
+            </h2>
+            <div id="collapseSixWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
+              <div class="accordion-body">
+                <div id="carouselHosting" class="carousel slide">
+                  <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="0" class="active"
+                      aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="1"
+                      aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="2"
+                      aria-label="Slide 3"></button>
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="3"
+                      aria-label="Slide 4"></button>
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="4"
+                      aria-label="Slide 5"></button>
+                    <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="5"
+                      aria-label="Slide 6"></button>
+                    <button type="button" data-bs-target="#carouselApkDocUI" data-bs-slide-to="6"
+                      aria-label="Slide 7"></button>
+                  </div>
+                  <div class="carousel-inner align-self-stretch">
+                    <div class="carousel-item carousel-item-apkDoc active">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                    <div class="carousel-item carousel-item-apkDoc">
+                      <img src="" class="d-block mx-auto" height="500em"
+                        alt="">
+                      
+                    </div>
+                  </div>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselHosting"
+                    data-bs-slide="prev">
+                    <span class="bi bi-caret-left-fill nextImg" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselHosting"
+                    data-bs-slide="next">
+                    <span class="bi bi-caret-right-fill nextImg" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <a href="../res/App Web.rar" download="AgendaVirtual.rar"><button id="descargarWEB" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-file-earmark-zip"></i></button></a>
+            <a href="https://github.com/Oski-mty/AV-Web.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
+          </div>
+
+        </div>
+
       </div>
 
 
@@ -303,13 +544,16 @@
 
 
       <div id="apkDiv" style="display:none;">
+
         <h1 class="text-center title shadow">MOBILE APPLICATION</h1>
+
         <div class="accordion my-4" id="accordionAPK">
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseOneAPK" aria-expanded="false" aria-controls="collapseOneAPK">
-                Descripción
+                Description
               </button>
             </h2>
             <div id="collapseOneAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
@@ -318,11 +562,12 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwoAPK" aria-expanded="false" aria-controls="collapseTwoAPK">
-                Technical requirements
+                Obligatory functionalities
               </button>
             </h2>
             <div id="collapseTwoAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
@@ -335,6 +580,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -365,6 +611,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -379,25 +626,20 @@
                   <br>
                   <dt>&nbsp;&nbsp;&nbsp;&nbsp;Views used:</dt>
                   <br>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Fragment container.</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to contain the different screens of the app.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Fragment container (used to contain the different screens of the app).</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Buttons.</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Plain text views.</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Editable text views (inputs).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-RecyclerView (scroll down until there are no items left to display).</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to display the list of subjects and tasks.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cards (contains other views, gives the sensation of floating).</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to display each item in the list of subjects and tasks.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Datepicker (calendar to select a date).</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to select the submit date of the task.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FloatingActionButton (floating button).</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to add and modify subjects and tasks.</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Switch (interruptor).</dd>
-                  <dd style="color: gray;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Used to mark if the task is completed or not.</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-RecyclerView (scroll down until there are no items left to display, used to display the list of subjects and tasks).</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cards (contains other views, gives the sensation of floating, used to display each item in the list of subjects and tasks).</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Datepicker (calendar to select a date, used to select the submit date of the task).</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FloatingActionButton (floating button, used for the button to add and modify subjects and tasks).</dd>
+                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Switch (interruptor, used to mark if the task is completed or not).</dd>
                 </dl>
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -496,6 +738,7 @@
               </div>
             </div>
           </div>
+
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -568,13 +811,17 @@
               </div>
             </div>
           </div>
+
           <div class="text-center">
-            <a href="../res/AV.apk" download="Agenda Virtual"><button id="descargarAPK" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-android"></i></button></a>
+            <a href="../res/AV.apk" download="AgendaVirtual.apk"><button id="descargarAPK" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-android"></i></button></a>
             <a href="https://github.com/MTY-git/AgendaVirtual.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
           </div>
 
         </div>
+
       </div>
+
+
     </div>
 
 
