@@ -259,11 +259,11 @@ auth.onAuthStateChanged ( async user =>{
             }           
         }else{
             console.error("Unverified user");
-            window.location.href = "../Login/login.html";
+            window.location.href = "https://web-agenda-virtual.firebaseapp.com/Login/login.html";
         }
     } else {
         console.error("Inactive user");
-        window.location.href = "../Login/login.html";
+        window.location.href = "https://web-agenda-virtual.firebaseapp.com/Login/login.html";
     }
 
 });
