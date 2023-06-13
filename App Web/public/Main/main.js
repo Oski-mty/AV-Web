@@ -31,6 +31,8 @@ let appNav = document.querySelector("#appNav");
 let generalNav = document.querySelector("#generalNav");
 let webDocNav = document.querySelector("#webNav");
 let apkDocNav = document.querySelector("#apkNav");
+let robotNav = document.querySelector("#robotNav");
+
 //nav buttons
 let btnLogOut = document.querySelector("#btnLogOut");
 let theme = document.querySelector("#theme");
@@ -47,6 +49,7 @@ let tasksCanvas = document.querySelector("#tasksCanvas");
 let generalDoc = document.querySelector("#generalDiv");
 let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
+let robotDoc = document.querySelector("#robotDiv");
 
 let loadingDiv = document.querySelector("#loading-page");
 let loadingTasks = document.querySelector("#loadingTasks");
@@ -65,6 +68,8 @@ appNav.addEventListener("click", showSubjectsLayout);
 generalNav.addEventListener("click",showGeneralNav);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
+robotNav.addEventListener("click",showRobotDoc);
+
 //BUTTONs EVENTs
 btnLogOut.addEventListener("click",logOut);
 theme.addEventListener("click",changeTheme);
@@ -136,6 +141,7 @@ function showGeneralNav(){
     generalDoc.style.display = "block";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
 }
 function showWebDoc(){
 
@@ -145,6 +151,7 @@ function showWebDoc(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "block";
+    robotDoc.style.display = "none";
 }
 function showApkDoc(){
 
@@ -154,6 +161,18 @@ function showApkDoc(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "block";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
+}
+function showRobotDoc(){
+
+    subjectsLayout.style.display = "none";
+    tasksLayout.style.display = "none";
+    app.style.display = "none";
+    generalDoc.style.display = "none";
+    apkDoc.style.display = "none";
+    webDoc.style.display = "none";
+    robotDoc.style.display = "block";
+
 }
 
 
@@ -170,6 +189,7 @@ async function showSubjectsLayout(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
     showLoading();
     await getSubjects();
     subjectsLayout.style.display = "block";
@@ -182,6 +202,7 @@ async function showTasksLayout(subjectId){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
     showLoading();
     await getTasks(subjectId);
     tasksLayout.style.display = "block";
@@ -198,6 +219,7 @@ function showLoading(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
     loadingTasks.classList.remove("d-none")
     loadingTasks.classList.add("d-flex")
 }
@@ -209,6 +231,7 @@ function unShowLoadingSubjects(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
     loadingTasks.classList.remove("d-flex")
     loadingTasks.classList.add("d-none")  
 }
@@ -220,6 +243,7 @@ function unShowLoadingTasks(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
+    robotDoc.style.display = "none";
     loadingTasks.classList.remove("d-flex")
     loadingTasks.classList.add("d-none")  
 }
