@@ -1,0 +1,25 @@
+{
+    "users": {
+        "user": {
+            "id": "ej:oscarsainzcano@gmail.com",
+            "provider": ["BASIC" , "GOOGLE"],
+            "subjects": {
+                "subject": {
+                    "id": "ej:l7TRnzjQXKMrNF0VqRxu",
+                    "name": "ej:Acceso a datos",
+                    "teacher": "ej:Marta",
+                    "tasks": {
+                        "task": {
+                            "id": "ej:rDgv9pqCBMS4uJHHq9w8",
+                            "name": "ej:spring API res",
+                            "description": "ej:Lorem Ipsum",
+                            "deadline": "ej:23 feb 2023",
+                            "completed": "ej:true",
+                            "submited": "ej:false"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
