@@ -18,6 +18,7 @@
     font-weight: normal;
 }
 
+
 /* Elements----Elements----Elements----Elements----Elements----Elements----Elements----Elements----Elements */
 
 
@@ -27,7 +28,6 @@ body {
     background-color: #eee;
     
 }
-
 .faded{
     border: 2px solid var(--blue);
     border-radius: 1em;
@@ -39,7 +39,6 @@ body {
     background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
     background: linear-gradient(to right, var(--blue_light),  var(--blue));
 }
-
 .faded:hover{
     border: 2px solid var(--blue_light);
     background-color: var(--blue);
@@ -47,24 +46,19 @@ body {
     background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
     background: linear-gradient(to left, var(--blue_light), var(--blue));
 }
-
 a{
     color: var(--gray);
 }
-
 a:hover{
     color: var(--blue);
 }
-
 .modal-body{
     background-color: var(--blue_dark_2);
 }
-
 #liveAlertPlaceholder{
     position: sticky;
     top: 10px;
 }
-
 .btnGoogle{
     border-radius: 50%;
     padding: 5px;
@@ -72,7 +66,6 @@ a:hover{
     background: -webkit-linear-gradient(to right, var(--blue_light), var(--blue));
     background: linear-gradient(to right, var(--blue_light),  var(--blue));
 }
-
 .btnGoogle:hover{
     background: -webkit-linear-gradient(to left, var(--blue_light), var(--blue));
     background: linear-gradient(to left, var(--blue_light), var(--blue));
@@ -87,15 +80,13 @@ a:hover{
     background: -webkit-linear-gradient(to top, var(--blue_light), var(--blue),  var(--blue_dark_2), var(--blue_dark_1));
     background: linear-gradient(to top, var(--blue_light),  var(--blue),  var(--blue_dark_2), var(--blue_dark_1));
     border-radius: .3rem;
-}
-    
+} 
 @media (min-width: 768px) {
     .gradient-form {
         height: 100vh !important;
         border-radius: .3rem;
     }
 }
-
 @media (min-width: 769px) {
     .gradient-custom {
         border-radius: .3rem;

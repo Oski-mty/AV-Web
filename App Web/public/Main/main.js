@@ -38,7 +38,6 @@ let btnLogOut = document.querySelector("#btnLogOut");
 let theme = document.querySelector("#theme");
 
 //DIVs/LAYOUTSs
-let contenido = document.querySelector("#Contenido");
 let app = document.querySelector("#appDiv");
 
 let subjectsLayout= document.querySelector("#subjectsLayout");
@@ -51,7 +50,6 @@ let webDoc = document.querySelector("#webDiv");
 let apkDoc = document.querySelector("#apkDiv");
 let robotDoc = document.querySelector("#robotDiv");
 
-let loadingDiv = document.querySelector("#loading-page");
 let loadingTasks = document.querySelector("#loadingTasks");
 
 //BUTTONs
@@ -180,14 +178,7 @@ function showRobotDoc(){
 }
 
 
-function showContent(){
 
-    setTimeout(
-        ()=>{
-            loadingDiv.classList.add("d-none");
-            contenido.classList.remove("d-none");
-        },2500);
-}
 async function showSubjectsLayout(){
     tasksLayout.style.display = "none";
     generalDoc.style.display = "none";
@@ -881,5 +872,3 @@ async function deleteTask(button){
 }
 
 //------------------------------MAIN-----------------------------------//
-
-showContent();

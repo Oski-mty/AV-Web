@@ -1,5 +1,6 @@
 //-----------------------IMPORTs-----------------------------------//
 
+
 import {
     createUserWithEmailAndPassword, 
     sendEmailVerification,
@@ -11,7 +12,9 @@ import {
 
 import {auth} from "./FireBase.js";
 
+
 //-----------------------DECLARATION OF VARIABLEs-----------------------------------//
+
 
 //FORMS
 const frmLogin = document.querySelector("#frmLogin");
@@ -24,7 +27,9 @@ const recoverPw = document.querySelector('#recuperarContrasenya');
 //LOGIN WITH GOOGLE BUTTON
 const btnGoogle = document.querySelector('#btnGoogle');
 
+
 //------------------------------EVENTs/FUNCTIONs-----------------------------------//
+
 
 //LogIn
 frmLogin.addEventListener('submit', async (e)=> {
@@ -184,5 +189,6 @@ btnGoogle.addEventListener ('click', async (e)=> {
         console.log(error);
     }
 });
+
 
 //------------------------------MAIN-----------------------------------//
