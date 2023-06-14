@@ -186,7 +186,7 @@ function showContent(){
         ()=>{
             loadingDiv.classList.add("d-none");
             contenido.classList.remove("d-none");
-        },500);
+        },2500);
 }
 async function showSubjectsLayout(){
     tasksLayout.style.display = "none";
