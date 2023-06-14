@@ -13,7 +13,7 @@
 
 @font-face {
     font-family:'Ubuntu Condensed';
-    src: url('../res/UbuntuCondensed-Regular.ttf');
+    src: url('./res/UbuntuCondensed-Regular.ttf');
     font-style: normal;
     font-weight: normal;
 }

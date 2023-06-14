@@ -65,7 +65,7 @@ let goToSubjects = document.querySelector("#goToSubjects");
 
 //SPA EVENTs (Single-Page-Aplication)
 appNav.addEventListener("click", showSubjectsLayout);
-generalNav.addEventListener("click",showGeneralNav);
+generalNav.addEventListener("click",showGeneralDoc);
 webDocNav.addEventListener("click",showWebDoc);
 apkDocNav.addEventListener("click",showApkDoc);
 robotNav.addEventListener("click",showRobotDoc);
@@ -133,12 +133,13 @@ function changeTheme() {
 
 
 //SPA EVENTs FUNCTIONs
-function showGeneralNav(){
+function showGeneralDoc(){
 
     subjectsLayout.style.display = "none";
     tasksLayout.style.display = "none";
     app.style.display = "none";
     generalDoc.style.display = "block";
+    generalDoc.classList.add("animate__animated","animate__fadeInUp");
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
     robotDoc.style.display = "none";
@@ -151,6 +152,7 @@ function showWebDoc(){
     generalDoc.style.display = "none";
     apkDoc.style.display = "none";
     webDoc.style.display = "block";
+    webDoc.classList.add("animate__animated","animate__fadeInUp");
     robotDoc.style.display = "none";
 }
 function showApkDoc(){
@@ -160,6 +162,7 @@ function showApkDoc(){
     app.style.display = "none";
     generalDoc.style.display = "none";
     apkDoc.style.display = "block";
+    apkDoc.classList.add("animate__animated","animate__fadeInUp");
     webDoc.style.display = "none";
     robotDoc.style.display = "none";
 }
@@ -172,6 +175,7 @@ function showRobotDoc(){
     apkDoc.style.display = "none";
     webDoc.style.display = "none";
     robotDoc.style.display = "block";
+    robotDoc.classList.add("animate__animated","animate__fadeInUp");
 
 }
 
@@ -299,7 +303,9 @@ async function setCurrentSubjectId(event){
     
     try {
 
-        let nameSubject = event.target.id.split("-")[1];
+        let nameSubjectTreated = event.target.id.split("-");
+        nameSubjectTreated.shift();
+        let nameSubject = nameSubjectTreated.join(" ");
 
         const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", nameSubject));
         const querySnapshot = await getDocs(q);
@@ -307,11 +313,8 @@ async function setCurrentSubjectId(event){
         if (!querySnapshot.empty) {
 
             const documentSnapshot = querySnapshot.docs[0];
-
             currentSubjectId = documentSnapshot.id;
             
-           
-
         } else {
             console.error("No subject found matching the query");
         }
@@ -362,8 +365,8 @@ async function addSubject(e){
 
     try {
 
-        let subjectName = addSubjectForm["subjectName"].value;
-        let teacher = addSubjectForm["subjectTeacher"].value;
+        let subjectName = addSubjectForm["subjectName"].value.trim();
+        let teacher = addSubjectForm["subjectTeacher"].value.trim();
         await addDoc(collection(db, "users/" + userEmail + "/subjects"), { name: subjectName, teacher: teacher }, { merge: true });
         addSubjectForm.reset();
         console.info("Subject added successfully");
@@ -382,8 +385,8 @@ async function addTask(e){
 
     try {
 
-        let name = addTaskForm["taskName"].value;
-        let description = addTaskForm["taskDescription"].value;
+        let name = addTaskForm["taskName"].value.trim();
+        let description = addTaskForm["taskDescription"].value.trim();
         let deadline = addTaskForm["taskDeadline"].value;
 
 
@@ -438,23 +441,25 @@ function printSubjects(subjects){
             
             }
             let subjectTeacher = arr.join(" ");
-            let subjectName = String(subject.name).toUpperCase();
+
+            let subjectName = subject.name.toUpperCase();
+            let subjectNameTreated = subject.name.replace(/ /g, "-");
 
             subjectsCanvas.innerHTML += 
-                '<div id="card-'+subject.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
-                    '<div id="card-'+subject.name+'" class="d-inline-flex justify-content-left">' +
-                        '<button id="update-'+subject.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subject.name+'"><i class="bi bi-pencil"></i></button>' +
+                '<div id="card-'+subjectNameTreated+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+                    '<div id="card-'+subjectNameTreated+'" class="d-inline-flex justify-content-left">' +
+                        '<button id="update-'+subjectNameTreated+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateSubjectModal-'+subjectNameTreated+'"><i class="bi bi-pencil"></i></button>' +
                     '</div>' +
-                    '<div id="card-'+subject.name+'" class="card-body my-4">' +
-                        '<h5 id="card-'+subject.name+'" class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
-                        '<p id="card-'+subject.name+'" class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
+                    '<div id="card-'+subjectNameTreated+'" class="card-body my-4">' +
+                        '<h5 id="card-'+subjectNameTreated+'" class="card-title"><i class="bi bi-journal-bookmark"></i> ' + subjectName + '</h5>' +
+                        '<p id="card-'+subjectNameTreated+'" class="card-text"><i class="bi bi-person-add"></i> ' + subjectTeacher + '</p>' +
                     '</div>' +
-                    '<div id="card-'+subject.name+'" class="d-inline-flex flex-row-reverse">' +
-                        '<button id="delete-'+subject.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subject.name+'"><i class="bi bi-trash3"></i></button>' +
+                    '<div id="card-'+subjectNameTreated+'" class="d-inline-flex flex-row-reverse">' +
+                        '<button id="delete-'+subjectNameTreated+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteSubjectModal-'+subjectNameTreated+'"><i class="bi bi-trash3"></i></button>' +
                     '</div>' +
                 '</div>'+
 
-                '<div class="modal fade" id="updateSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal fade" id="updateSubjectModal-'+subjectNameTreated+'" tabindex="-1" aria-labelledby="updateSubjectModalLabel-'+subjectNameTreated+'"aria-hidden="true">'+
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
@@ -462,15 +467,15 @@ function printSubjects(subjects){
                                 '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                             '</div>'+
                             '<div class="modal-body">'+
-                                '<form id="updateSubjectForm-'+subject.name+'">'+
+                                '<form id="updateSubjectForm-'+subjectNameTreated+'">'+
                                     '<div class="input-group mb-3 w-75 mx-auto align-items-center">'+
-                                        '<input id="updateSubjectName-'+subject.name+'" value="'+subject.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+subject.name+'" aria-describedby="updateSubjectName'+subject.name+'" required>'+
-                                        '<span class="input-group-text" id="subjectName'+subject.name+'"><i class="bi bi-journal-bookmark"></i></span>'+
-                                        '<input id="updateSubjectTeacher-'+subject.name+'" value="'+subject.teacher+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+subject.teacher+'" aria-describedby="updateSubjectTeacher'+subject.teacher+'" required>'+
-                                        '<span class="input-group-text" id="subjectTeacher'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
+                                        '<input id="updateSubjectName-'+subjectNameTreated+'" value="'+subject.name+'" type="text" class="form-control" placeholder="Name"aria-label="updateSubjectName'+subjectNameTreated+'" aria-describedby="updateSubjectName'+subjectNameTreated+'" required>'+
+                                        '<span class="input-group-text" id="subjectName-'+subjectNameTreated+'"><i class="bi bi-journal-bookmark"></i></span>'+
+                                        '<input id="updateSubjectTeacher-'+subjectNameTreated+'" value="'+subject.teacher+'" type="text" class="form-control" placeholder="Teacher name"aria-label="updateSubjectTeacher'+subject.teacher+'" aria-describedby="updateSubjectTeacher'+subject.teacher+'" required>'+
+                                        '<span class="input-group-text" id="subjectTeacher-'+subject.teacher+'"><i class="bi bi-person-add"></i></span>'+
                                     '</div>'+
                                     '<div class="text-center pt-1 pb-1">'+
-                                        '<button type="button" id="updateSubject-'+subject.name+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                        '<button type="button" id="updateSubject-'+subjectNameTreated+'" class="fadedPencil p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
                                     '</div>'+
                                 '</form>'+
                             '</div>'+
@@ -479,7 +484,7 @@ function printSubjects(subjects){
                 '</div>'+
 
 
-                '<div class="modal fade" id="deleteSubjectModal-'+subject.name+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel"aria-hidden="true">'+
+                '<div class="modal fade" id="deleteSubjectModal-'+subjectNameTreated+'" tabindex="-1" aria-labelledby="deleteSubjectModalLabel-'+subjectNameTreated+'" aria-hidden="true">'+
                     '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                         '<div class="modal-content">'+
                             '<div class="modal-header p-2">'+
@@ -488,7 +493,7 @@ function printSubjects(subjects){
                             '</div>'+
                             '<div class="modal-body">'+
                                 '<div class="text-center pt-1 pb-1">'+
-                                    '<button type="button" id="deleteSubject-'+subject.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
+                                    '<button type="button" id="deleteSubject-'+subjectNameTreated+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'+
@@ -564,64 +569,66 @@ function printTasks(tasks){
                 submitedIsChecked = "";
             }
 
+            let taskName = String(task.name).toUpperCase();
+            let taskNameTreated = String(task.name).replace(/ /g, "-");
 
             tasksCanvas.innerHTML += 
-            '<div id="card-'+task.name+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
+            '<div id="card-'+taskNameTreated+'" class="card btn col-md-3 mx-3 my-2 p-1 appCard">' +
                 '<div class="d-inline-flex justify-content-left">' +
-                    '<button id="update-'+task.name+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateTaskModal-'+task.name+'"><i class="bi bi-pencil"></i></button>' +
+                    '<button id="update-'+taskNameTreated+'-modal" type="button" class="btn fadedPencil options" data-bs-toggle="modal" data-bs-target="#updateTaskModal-'+taskNameTreated+'"><i class="bi bi-pencil"></i></button>' +
                 '</div>' +
                 '<div  class="card-body my-4">' +
-                    '<h5  class="card-title"><i class="bi bi-clipboard"></i> ' + task.name + '</h5>' +
+                    '<h5  class="card-title"><i class="bi bi-clipboard"></i> ' + taskName + '</h5>' +
                     '<p class="card-text"><i class="bi bi-calendar-event"></i> ' + task.deadline + '</p>' +
                     '<div class="form-check form-switch px-5">'+
-                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskCompleted-'+task.name+'" disabled '+completedIsChecked+'>'+
-                        '<label class="form-check-label mx-0" for="cardTaskCompleted-'+task.name+'">Completed</label>'+
+                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskCompleted-'+taskNameTreated+'" disabled '+completedIsChecked+'>'+
+                        '<label class="form-check-label mx-0" for="cardTaskCompleted-'+taskNameTreated+'">Completed</label>'+
                     '</div>'+
                     '<div class="form-check form-switch px-5">'+
-                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskSubmited-'+task.name+'" disabled '+submitedIsChecked+'>'+
-                        '<label class="form-check-label mx-0" for="cardTaskSubmited-'+task.name+'">Submited</label>'+
+                        '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskSubmited-'+taskNameTreated+'" disabled '+submitedIsChecked+'>'+
+                        '<label class="form-check-label mx-0" for="cardTaskSubmited-'+taskNameTreated+'">Submited</label>'+
                     '</div>'+
                 '</div>' +
                 '<div class="d-inline-flex flex-row-reverse">' +
-                    '<button id="delete-'+task.name+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteTaskModal-'+task.name+'"><i class="bi bi-trash3"></i></button>' +
+                    '<button id="delete-'+taskNameTreated+'-modal" type="button" class="btn fadedTrash options" data-bs-toggle="modal" data-bs-target="#deleteTaskModal-'+taskNameTreated+'"><i class="bi bi-trash3"></i></button>' +
                 '</div>' +
             '</div>'+
 
-            '<div class="modal fade" id="updateTaskModal-'+task.name+'" tabindex="-1" aria-labelledby="updateTaskModalLabel-'+task.name+'" aria-hidden="true">'+
+            '<div class="modal fade" id="updateTaskModal-'+taskNameTreated+'" tabindex="-1" aria-labelledby="updateTaskModalLabel-'+taskNameTreated+'" aria-hidden="true">'+
                 '<div  class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                     '<div  class="modal-content">'+
                                 '<div class="modal-header p-2">'+
-                                    '<h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">Update  '+task.name+'</h5>'+
+                                    '<h5 class="modal-title mx-auto text-dark" id="addTaskModalLabel">Update  '+taskName+'</h5>'+
                                     '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1" data-bs-dismiss="modal" aria-label="Close"></button>'+
                                 '</div>'+
                         '<div class="modal-body">'+
                 
-                            '<form id="updateTaskForm-'+task.name+'">'+
+                            '<form id="updateTaskForm-'+taskNameTreated+'">'+
                                 '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
-                                    '<input id="updateTaskName-'+task.name+'" type="text" class="form-control " placeholder="Name" aria-label="taskName" aria-describedby="taskName" value="'+task.name+'" >'+
+                                    '<input id="updateTaskName-'+taskNameTreated+'" type="text" class="form-control " placeholder="Name" aria-label="taskName" aria-describedby="taskName" value="'+task.name+'" >'+
                                     '<span class="input-group-text" id="taskName"><i class="bi bi-clipboard2"></i></span>'+
                                 '</div>'+
                 
                                 '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
-                                    '<textarea id="updateTaskDescription-'+task.name+'" type="text" class="form-control rounded" placeholder="Description" >'+task.description+'</textarea>'+
+                                    '<textarea id="updateTaskDescription-'+taskNameTreated+'" type="text" class="form-control rounded" placeholder="Description" >'+task.description+'</textarea>'+
                                 '</div>'+
                 
                                 '<div class="input-group mb-3 w-75 mx-auto align-items-center col">'+
-                                    '<input id="updateTaskDeadline-'+task.name+'" type="date" class="form-control" value="'+task.deadline+'" aria-label="taskDeadline" aria-describedby="taskDeadline" >'+
+                                    '<input id="updateTaskDeadline-'+taskNameTreated+'" type="date" class="form-control" value="'+task.deadline+'" aria-label="taskDeadline" aria-describedby="taskDeadline" >'+
                                 '</div>'+
                                 
                                 '<div class="form-check form-switch  mb-3 w-75 mx-auto align-items-center text-light">'+
-                                    '<input class="form-check-input " type="checkbox" role="switch" id="updateTaskCompleted-'+task.name+'" '+completedIsChecked+'>'+
-                                    '<label class="form-check-label " for="updateTaskCompleted-'+task.name+'">Completed</label>'+
+                                    '<input class="form-check-input " type="checkbox" role="switch" id="updateTaskCompleted-'+taskNameTreated+'" '+completedIsChecked+'>'+
+                                    '<label class="form-check-label " for="updateTaskCompleted-'+taskNameTreated+'">Completed</label>'+
                                 '</div>'+
 
                                 '<div class="form-check form-switch  mb-3 w-75 mx-auto align-items-center text-light">'+
-                                    '<input class="form-check-input" type="checkbox" role="switch" id="updateTaskSubmited-'+task.name+'"  '+submitedIsChecked+'>'+
-                                    '<label class="form-check-label" for="updateTaskSubmited-'+task.name+'">Submited</label>'+
+                                    '<input class="form-check-input" type="checkbox" role="switch" id="updateTaskSubmited-'+taskNameTreated+'"  '+submitedIsChecked+'>'+
+                                    '<label class="form-check-label" for="updateTaskSubmited-'+taskNameTreated+'">Submited</label>'+
                                 '</div>'+
 
                                 '<div class="text-center pt-1 pb-1">'+
-                                    '<button type="submit" id="updateTask-'+task.name+'" class="faded p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
+                                    '<button type="submit" id="updateTask-'+taskNameTreated+'" class="faded p-2 rounded-4">UPDATE <i class="bi bi-wrench-adjustable-circle"></i></button>'+
                                 '</div>'+
 
                             '</form>'+
@@ -631,16 +638,16 @@ function printTasks(tasks){
             '</div>'+
 
 
-            '<div class="modal fade" id="deleteTaskModal-'+task.name+'" tabindex="-1" aria-labelledby="deleteTaskModalLabel-'+task.name+'" aria-hidden="true">'+
+            '<div class="modal fade" id="deleteTaskModal-'+taskNameTreated+'" tabindex="-1" aria-labelledby="deleteTaskModalLabel-'+taskNameTreated+'" aria-hidden="true">'+
                 '<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable my-0">'+
                     '<div class="modal-content">'+
                         '<div class="modal-header p-2">'+
-                            '<h5 class="modal-title mx-auto text-dark" id="deleteTaskModalLabel-'+task.name+'">Delete '+task.name+'</h5>'+
+                            '<h5 class="modal-title mx-auto text-dark" id="deleteTaskModalLabel-'+taskNameTreated+'">Delete '+task.name+'</h5>'+
                             '<button type="button" class="btn-close bg-danger rounded-5 p-2 mx-1 cerrarModal" data-bs-dismiss="modal"aria-label="Close"></button>'+
                         '</div>'+
                         '<div class="modal-body">'+
                             '<div class="text-center pt-1 pb-1">'+
-                                '<button type="button" id="deleteTask-'+task.name+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
+                                '<button type="button" id="deleteTask-'+taskNameTreated+'" class="fadedTrash p-2 rounded-4">DELETE <i class="bi bi-journal-x"></i></button>'+
                             '</div>'+
                         '</div>'+
                     '</div>'+
@@ -674,12 +681,16 @@ async function updateSubject(button) {
     console.debug("updateSubject()...");
     try {
      
-        let idSubject = button.target.id.split("-")[1];
-        let newName = document.querySelector("#updateSubjectName-" + idSubject).value;
-        let newTeacher = document.querySelector("#updateSubjectTeacher-" + idSubject).value;
+        let nameSubjectTreated = button.target.id.split("-");
+        nameSubjectTreated.shift();
+        let idSubject = nameSubjectTreated.join("-");
+        let nameSubject = nameSubjectTreated.join(" ");
+
+        let newName = document.querySelector("#updateSubjectName-" + idSubject).value.trim();
+        let newTeacher = document.querySelector("#updateSubjectTeacher-" + idSubject).value.trim();
 
         try {
-            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", idSubject));
+            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", nameSubject));
             const querySnapshot = await getDocs(q);
 
             if (!querySnapshot.empty) {
@@ -722,7 +733,11 @@ async function updateTask(button) {
     console.debug("updateTask()...");
     try {
      
-        let idTask = button.target.id.split("-")[1];
+        let nameSubjectTreated = button.target.id.split("-");
+        nameSubjectTreated.shift();
+        let idTask = nameSubjectTreated.join("-");
+        let nameTask = nameSubjectTreated.join(" ");
+
         let newName = document.querySelector("#updateTaskName-" + idTask).value;
         let newDescription = document.querySelector("#updateTaskDescription-" + idTask).value;
         let newDeadline = document.querySelector("#updateTaskDeadline-" + idTask).value;
@@ -730,7 +745,7 @@ async function updateTask(button) {
         let newSubmited = document.querySelector("#updateTaskSubmited-" + idTask).checked;
 
         try {
-            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", idTask));
+            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", nameTask));
             const querySnapshot = await getDocs(q);
 
             if (!querySnapshot.empty) {
@@ -778,10 +793,12 @@ async function updateTask(button) {
 async function deleteSubject(button){
     console.debug("deleteSubject()...");
     try{
-        let idSubject = button.target.id.split("-")[1];
+        let nameSubjectTreated = button.target.id.split("-");
+        nameSubjectTreated.shift();
+        let nameSubject = nameSubjectTreated.join(" ");
         
         try {
-            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", idSubject));
+            const q = query(collection(db, "users/" + userEmail + "/subjects"), where("name", "==", nameSubject));
             const querySnapshot = await getDocs(q);
     
             if (!querySnapshot.empty) {
@@ -821,10 +838,12 @@ async function deleteSubject(button){
 async function deleteTask(button){
     console.debug("deleteTask()...");
     try{
-        let idTask = button.target.id.split("-")[1];
+        let nameSubjectTreated = button.target.id.split("-");
+        nameSubjectTreated.shift();
+        let nameTask = nameSubjectTreated.join(" ");
         
         try {
-            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", idTask));
+            const q = query(collection(db, "users/" + userEmail + "/subjects/"+currentSubjectId+"/tasks/"), where("name", "==", nameTask));
             const querySnapshot = await getDocs(q);
     
             if (!querySnapshot.empty) {

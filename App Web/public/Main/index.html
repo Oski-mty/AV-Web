@@ -57,7 +57,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#" id="appNav">Agenda Virtual</a>
+              <a class="nav-link animate__animated animate__headShake" aria-current="page" href="#" id="appNav">Agenda Virtual</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -102,6 +102,7 @@
 
     <!--APLICACIÓN-->
     <div id="appDiv" class="mx-4" >
+
       <div id="subjectsLayout" style="display: none;">
     
         <div class="row justify-content-center" id="subjectsCanvas">
@@ -147,11 +148,13 @@
         </div>
     
       </div>
+
       <div id="loadingTasks" class="d-none justify-content-center align-items-center vh-100">
         <div class="spinner-border text-info" style="width: 3rem; height: 3rem;" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
+
       <div id="tasksLayout" style="display: none;">
 
         <button id="goToSubjects" class="btn btn-lg faded rounded-5"><i class="bi bi-arrow-left-circle"></i></button>
@@ -207,17 +210,17 @@
         </div>
     
       </div>
+
     </div>
 
 
     <!--DOCUMENTACIÓN-->
-    <div id="documentation" class="mx-4">
+    <div id="documentation" class="mx-4" >
+
       <div id="generalDiv" style="display:none;">
 
-        <h1 class="text-center title  shadow">GENERAL</h1>
-
+        <h1 class="text-center title  shadow animate__animated animate__flip">General</h1>
         <div class="accordion my-4" id="accordionGeneral">
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -233,7 +236,6 @@
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -255,11 +257,10 @@
                   each record or row of the table is equivalent to a document and the attributes or columns of the table are replaced by properties.
                   The structure is in JSON format, which makes it possible to handle large amounts of data more lightly than SQL.
                 </p>
-                <img src="../img/Doc/MDD.png"  class="col-lg-6 mx-auto responsive-image"/>
+                <img src="../img/Doc/MDD.png"  class="col-lg-4 mx-auto responsive-image"/>
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -275,11 +276,10 @@
                   a multiplatform application where you can organize any type of activity in a very visual way with a Canvas board
                   which allows you to drag labels, change their color, add a description and much more.
                 </p>
-                <img src="../img/Doc/trello.png"  class="col-lg-6 mx-auto responsive-image"/>
+                <img src="../img/Doc/trello.png"  class="col-lg-4 mx-auto responsive-image"/>
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -290,19 +290,25 @@
             <div id="collapseFourGeneral" class="accordion-collapse collapse" data-bs-parent="#accordionGeneral">
               <div class="accordion-body row">
 
-                <h5>During development, I encountered two main challenges:</h5>
+                <p class="col-lg-3 mx-auto mt-4">
+                  <b>First</b>, I faced difficulties with CSS selectors, as they affected unwanted elements, generating chaos in the styling of my page. To solve this problem, I decided to replace the selectors with classes, which allowed me to have more control over the styles and avoid unwanted conflicts.
+                </p>
+                <p class="col-lg-5 mx-auto mt-4">
+                  The <b>second</b> challenge was related to the management of subject identifiers (IDs). Initially, I used the name of the subjects as the ID, but this had a drawback. The IDs are immutable, which means that they cannot be modified. Therefore, if a user changed the name of a subject, the associated ID would remain the previous name. This created problems when trying to add another subject with the modified name, since there was a conflict with the previous ID. To overcome this difficulty, I implemented the generation of auto-generated codes as subject IDs. This ensured that each subject had a unique ID and avoided duplication problems when changing names.
+                </p>
                 <p class="col-lg-4 mx-auto mt-4">
-                  First, I faced difficulties with CSS selectors, as they affected unwanted elements, generating chaos in the styling of my page. To solve this problem, I decided to replace the selectors with classes, which allowed me to have more control over the styles and avoid unwanted conflicts.
+                  The <b>third</b> and big problem has been the dates, at the last minute I had to remove the calendar and everything related to the deadline in the mobile application because it was saved in the database in a timestamp type property and in the web page as String. With the shortage of time I have decided to remove this functionality in the apk because the parsing of the date was costing me more work than expected. 
                 </p>
-                <p class="col-lg-8 mx-auto mt-4">
-                  The second challenge was related to the management of subject identifiers (IDs). Initially, I used the name of the subjects as the ID, but this had a drawback. The IDs are immutable, which means that they cannot be modified. Therefore, if a user changed the name of a subject, the associated ID would remain the previous name. This created problems when trying to add another subject with the modified name, since there was a conflict with the previous ID. To overcome this difficulty, I implemented the generation of auto-generated codes as subject IDs. This ensured that each subject had a unique ID and avoided duplication problems when changing names.
-                </p>
-                <p class="mt-4">These challenges gave me the opportunity to improve my approach and learn new strategies for solving technical problems. As I continue to develop, I am committed to finding efficient solutions and maintaining the integrity of my code and data.</p>
+                <p class="mt-4">In the end I had two versions of the apk:
+                  <br>
+                  <b>1.</b>The one that did have datepicker to select delivery date but the database was not synchronized with the one on the website.
+                  <br>
+                  <b>2.</b>The one that had no datepicker but the data was synchronized (I chose this option although in gitHub you have the commit of the previous version).</p>
 
+                <p class="mt-4">These challenges gave me the opportunity to improve my approach and learn new strategies for solving technical problems. As I continue to develop, I am committed to finding efficient solutions and maintaining the integrity of my code and data.</p>
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -315,28 +321,26 @@
 
                 <h5 class="mb-4">During development, I realized a couple of improvements that I could not implement due to lack of time:</h5>
                 <p class="col-lg-5 my-0">
-                  -Adding website extras to the mobile application.<br>
-                  -Task reminder notifications.<br>
-                  -The user can choose the colors of the cards.
+                  <b>1.</b>Adding website extras to the mobile application.<br>
+                  <b>2.</b>Task reminder notifications.<br>
+                  <b>3.</b>The user can choose the colors of the cards.
                   
                 </p>
                 <p class="col-lg-4 my-0">
-                  -You can drag the task cards to sort them.<br>
-                  -Your account can be deleted.
+                  <b>4.</b>You can drag the task cards to sort them.<br>
+                  <b>5.</b>Your account can be deleted.
                 </p>
               </div>
             </div>
           </div>
-
         </div>
 
       </div>
+
       <div id="webDiv" style="display:none;">
 
-        <h1 class="text-center   title shadow">WEB PAGE</h1>
-
+        <h1 class="text-center   title shadow shadow animate__animated animate__flip">Web Page</h1>
         <div class="accordion my-4" id="accordionWEB">
-          
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -376,11 +380,12 @@
               </button>
             </h2>
             <div id="collapseThreeWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
-              <div class="accordion-body">
-                <dd class="mb-2">-Verify email address.</dd>
-                <dd>-Reset password.</dd>
-                <dd>-Update subjects.</dd>
-                <dd>-Attribute submitted in assignments.</dd>
+              <div class="accordion-body row">
+                <dd class="col"><b>1.</b>Verify email address</dd>
+                <dd class="col"><b>2.</b>Reset password</dd>
+                <dd class="col"><b>3.</b>Update subjects</dd>
+                <dd class="col"><b>4.</b>Attribute teacher in subject</dd>
+                <dd class="col"><b>5.</b>Attribute submitted in task</dd>
               </div>
             </div>
           </div>
@@ -399,15 +404,13 @@
                   <dd><dt>Firebase libraries used:</dt></dd>
                   <br>
                   <div class="col my-3">
-                    <dd>Login:</dd>
-                    <dd>-Firebase Authentication.</dd>
-                    <dd>-Functions: createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup.</dd>
+                    <dd><dt>Login.js</dt></dd>
+                    <dd><u>Firebase Authentication</u><br><u>Functions:</u> createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup.</dd>
                   </div>
                   
                   <div class="col my-3">
-                    <dd>Main:</dd>
-                    <dd>-Firebase Firestore.</dd>
-                    <dd>-Functions: collection, doc, addDoc, setDoc, getDocs, updateDoc, deleteDoc , query, where.</dd>
+                    <dd><dt>Main.js</dt></dd>
+                    <dd><u>Firebase Firestore</u><br><u>Functions:</u> collection, doc, addDoc, setDoc, getDocs, updateDoc, deleteDoc , query, where.</dd>
                   </div>
                  
                 </dl>
@@ -426,9 +429,13 @@
                 <dl>
                   <dt>-HTML <i class="bi bi-file-earmark-code"></i></dt>
                   <dt>-CSS <i class="bi bi-filetype-css"></i></dt>
-                  <dt>-BOOTSTRAP <i class="bi bi-bootstrap"></i></dt>
+                  <dt>-<a target="_blank" href="https://fonts.google.com/" class="text-decoration-none">Goole fonts </a><i class="bi bi-file-earmark-font"></i></dt>
+                  <dd>Font: Ubuntu Condensed</dd>
+                  <dt>-<a target="_blank" href="https://animate.style/" class="text-decoration-none">Animate.css </a><i class="bi bi-magic"></i></dt>
+                  <dd>Classes: animate__animated, animate__fadeInUp, animate__headShake</dd>
+                  <dt>-Bootstrap <i class="bi bi-bootstrap"></i></dt>
                   <dd>Components: Card, Accordion, Navbar, Modals, Alerts, Spinner, Icons, Carousel, Buttons, Collapse, Dropdown</dd>
-                  <dt>-JS <i class="bi bi-filetype-js"></i></dt>
+                  <dt>-Javascript <i class="bi bi-filetype-js"></i></dt>
                 </dl>
               </div>
             </div>
@@ -442,7 +449,9 @@
             </h2>
             <div id="collapseSixWEB" class="accordion-collapse collapse" data-bs-parent="#accordionWEB">
               <div class="accordion-body">
+                <p class="text-center my-2">Taking advantage of the fact that the database and authentication is provided by Firebase I decided to use their hosting because it would not be difficult to implement.</p>
                 <p class="text-center my-2">The steps I have taken to deploy my website are as follows:</p>
+                <p  class="text-center my-1">-Requirements: <a target="_blank" href="https://nodejs.org/es" class="text-decoration-none">node.js </a>installed.</p>
                 <div id="carouselHosting" class="carousel slide">
                   <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselHosting" data-bs-slide-to="0" class="active"
@@ -454,13 +463,13 @@
                   </div>
                   <div class="carousel-inner align-self-stretch">
                     <div class="carousel-item carousel-item-apkDoc active">
-                      <img src="../img/Doc/hosting/Screenshot_1.png" class="d-block mx-auto responsive-image" alt="first step">
+                      <img src="../img/Doc/hosting/Screenshot_1.png" class="d-block mx-auto w-75" alt="first step">
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/hosting/Screenshot_2.png" class="d-block mx-auto responsive-image" alt="second step">  
+                      <img src="../img/Doc/hosting/Screenshot_2.png" class="d-block mx-auto w-75" alt="second step">  
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/hosting/Screenshot_3.png" class="d-block mx-auto responsive-image" alt="third step">
+                      <img src="../img/Doc/hosting/Screenshot_3.png" class="d-block mx-auto w-75" alt="third step">
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselHosting"
@@ -477,21 +486,18 @@
               </div>
             </div>
           </div>
-          
           <div class="text-center">
             <a href="../res/App Web.rar" download="AgendaVirtual.rar"><button id="descargarWEB" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-file-earmark-zip"></i></button></a>
             <a href="https://github.com/Oski-mty/AV-Web.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
           </div>
-
         </div>
 
       </div>
+
       <div id="apkDiv" style="display:none;">
 
-        <h1 class="text-center title shadow">MOBILE APPLICATION</h1>
-
+        <h1 class="text-center title shadow shadow animate__animated animate__flip">Android Application</h1>
         <div class="accordion my-4" id="accordionAPK">
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -501,11 +507,10 @@
             </h2>
             <div id="collapseOneAPK" class="accordion-collapse collapse" data-bs-parent="#accordionAPK">
               <div class="accordion-body">
-                Android application to manage and organize your subjects and homework from your cell phone.
+                Android application to manage and organize your subjects and homework from your Android cell phone.
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -523,7 +528,6 @@
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -554,7 +558,6 @@
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -575,14 +578,12 @@
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Editable text views (inputs).</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-RecyclerView (scroll down until there are no items left to display, used to display the list of subjects and tasks).</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Cards (contains other views, gives the sensation of floating, used to display each item in the list of subjects and tasks).</dd>
-                  <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Datepicker (calendar to select a date, used to select the submit date of the task).</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-FloatingActionButton (floating button, used for the button to add and modify subjects and tasks).</dd>
                   <dd>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-Switch (interruptor, used to mark if the task is completed or not).</dd>
                 </dl>
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -681,7 +682,6 @@
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -711,30 +711,30 @@
                   </div>
                   <div class="carousel-inner align-self-stretch">
                     <div class="carousel-item carousel-item-apkDoc active">
-                      <img src="../img/Doc/carrousel_APK/image1-LG.png" class="d-block mx-auto responsive-image">
+                      <img src="../img/Doc/carrousel_APK/image1-LG.png" class="d-block mx-auto w-75">
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image2-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image2-LG.png" class="d-block mx-auto w-75" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image3-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image3-LG.png" class="d-block mx-auto w-75" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image4-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image4-LG.png" class="d-block mx-auto w-75" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc">
-                      <img src="../img/Doc/carrousel_APK/image5-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image5-LG.png" class="d-block mx-auto w-75" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc text-center">
                       In my case I had to <a class="text-decoration-none" target="_blank" href="https://mscdroidlabs.es/como-obtener-la-huella-digital-sha1-de-tu-app/">extract the fingerprint</a> 
                       (SHA-1) of the generated production apk and insert it in the general configuration of the firebase project.
                       <br><code>cd C:\Program Files\Java\&lt;jdk_versión&gt;\bin</code>
                       <br><code>-list -v -keystore &lt;keystore_name&gt; -alias &lt;alias_name&gt;</code>
-                      <img src="../img/Doc/carrousel_APK/image6-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image6-LG.png" class="d-block mx-auto w-75" >
                     </div>
                     <div class="carousel-item carousel-item-apkDoc text-center">
                       If I don't do this the login with Google will not work, this is because Firebase is my Google authentication provider.
-                      <img src="../img/Doc/carrousel_APK/image7-LG.png" class="d-block mx-auto responsive-image" >
+                      <img src="../img/Doc/carrousel_APK/image7-LG.png" class="d-block mx-auto w-75" >
                     </div>
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#carouselApkDocApk"
@@ -754,21 +754,18 @@
               </div>
             </div>
           </div>
-
           <div class="text-center">
             <a href="../res/AV.apk" download="AgendaVirtual.apk"><button id="descargarAPK" type="button"class="btn btn-lg faded rounded-5 my-5 mx-2"><i class="bi bi-android"></i></button></a>
             <a href="https://github.com/MTY-git/AgendaVirtual.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
           </div>
-
         </div>
 
       </div>
+
       <div id="robotDiv" style="display:none;">
 
-        <h1 class="text-center title  shadow">UiPath Robot</h1>
-
+        <h1 class="text-center title  shadow shadow animate__animated animate__flip">UiPath Robot</h1>
         <div class="accordion my-4" id="accordionRobot">
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -787,28 +784,28 @@
               </div>
             </div>
           </div>
-
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseTwoRobot" aria-expanded="false" aria-controls="collapseTwoRobot">
-                Execution video
+                Robot execution video
               </button>
             </h2>
             <div id="collapseTwoRobot" class="accordion-collapse collapse" data-bs-parent="#accordionRobot">
-              <div class="accordion-body row">
-                
+              <div class="accordion-body row justify-content-center">
+                <video class="w-75 my-3" poster="../img/Doc/uipathRobot.jpg" controls>
+                  <source src="../res/robotExe.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
           </div>
-
           <div class="text-center">
             <a href="https://github.com/Oski-mty/ClassroomAutomation.git" target="_blank" ><button type="button" class="btn btn-lg faded my-5 rounded-5 mx-2"><i class="bi bi-github"></i></button></a>
           </div>
-          
         </div>
 
       </div>
+
     </div>
  
   </section>
