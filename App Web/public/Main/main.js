@@ -577,7 +577,7 @@ function printTasks(tasks){
                     '</div>'+
                     '<div class="form-check form-switch px-5">'+
                         '<input class="form-check-input mx-0" type="checkbox" role="switch" id="cardTaskSubmited-'+taskNameTreated+'" disabled '+submitedIsChecked+'>'+
-                        '<label class="form-check-label mx-0" for="cardTaskSubmited-'+taskNameTreated+'">Submited</label>'+
+                        '<label class="form-check-label mx-0" for="cardTaskSubmited-'+taskNameTreated+'">Submitted</label>'+
                     '</div>'+
                 '</div>' +
                 '<div class="d-inline-flex flex-row-reverse">' +
@@ -615,7 +615,7 @@ function printTasks(tasks){
 
                                 '<div class="form-check form-switch  mb-3 w-75 mx-auto align-items-center text-light">'+
                                     '<input class="form-check-input" type="checkbox" role="switch" id="updateTaskSubmited-'+taskNameTreated+'"  '+submitedIsChecked+'>'+
-                                    '<label class="form-check-label" for="updateTaskSubmited-'+taskNameTreated+'">Submited</label>'+
+                                    '<label class="form-check-label" for="updateTaskSubmited-'+taskNameTreated+'">Submitted</label>'+
                                 '</div>'+
 
                                 '<div class="text-center pt-1 pb-1">'+
